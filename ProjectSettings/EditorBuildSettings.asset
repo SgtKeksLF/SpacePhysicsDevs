@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Lisa.unity
+    guid: b29ba711eff0848039bf12e5bf710357
+  - enabled: 1
+    path: Assets/Scenes/Mars.unity
+    guid: 20e29998517c98540aac1898cb1ac17f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d3507e0a4977a5e44b58a03568facdd8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5a4ef0487bb5e3543a4c5b1550d85aa6, type: 2}
