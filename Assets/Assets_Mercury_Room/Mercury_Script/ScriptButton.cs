@@ -6,11 +6,22 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class ScriptButton : MonoBehaviour
 {
-    public GameObject targetObject;
-    public GameObject prefabSample;
-    public Material newMaterial;
-    public Vector3 spawnPosition = new Vector3 (1, 1, 2);
-    public Quaternion spawnRotation = Quaternion.identity;
+    public GameObject planetSampleObject;
+    public GameObject roomWall;
+    public Material newPlanetMaterial;
+    public Material defaultPlanetMaterial;
+    private bool isNewPlanet = false;
+
+    //The Following are all variables for Item Physics
+    public GameObject bouncyBall;
+    public GameObject dice;
+    public GameObject canOfBeans;
+    public GameObject balloon;
+    public GameObject canOfWater;
+
+    //The following are for physics themselves
+    private float earthGravity = -9.8f;
+    private float mercuryGravity = -3.9f;
 
 
     // Start is called before the first frame update
@@ -27,35 +38,55 @@ public class ScriptButton : MonoBehaviour
 
     public void OnButtonPressed()
     {
-        if (targetObject != null && newMaterial != null)
+        RoomChange();
+        PhysicsChange();
+
+    }
+
+    public void RoomChange()
+    {
+        if (planetSampleObject != null && newPlanetMaterial != null && defaultPlanetMaterial != null)
         {
-            // Hole den Renderer des Ziel-GameObjects und setze das neue Material
-            Renderer renderer = targetObject.GetComponent<Renderer>();
-            if (renderer != null)
+            Renderer planetRenderer = planetSampleObject.GetComponent<Renderer>();
+            Renderer wallRenderer = roomWall.GetComponent<Renderer>();
+
+            if (planetRenderer != null && wallRenderer != null)
             {
-                renderer.material = newMaterial;
-                Debug.Log("Material wurde geändert!");
+                // Überprüfen, ob das neue Material bereits angewendet wurde
+                if (isNewPlanet)
+                {
+                    // Material auf das Standardmaterial zurücksetzen
+                    planetRenderer.material = defaultPlanetMaterial;
+                    wallRenderer.material = defaultPlanetMaterial;
+                   
+                }
+                else
+                {
+                    // Material auf das neue Material setzen
+                    planetRenderer.material = newPlanetMaterial;
+                    wallRenderer.material = newPlanetMaterial;
+                   
+                }
+
+                // Den Zustand umkehren, um beim nächsten Klick das Material zu wechseln
+                isNewPlanet = !isNewPlanet;
             }
+
+
+
+        }
+    }
+    public void PhysicsChange()
+    {
+        if (isNewPlanet == true)
+        {
+            Debug.Log("Mercury physics");
+            Physics.gravity = new Vector3(0, mercuryGravity, 0);
         }
         else
         {
-            Debug.LogWarning("Ziel-Objekt oder Material wurde nicht zugewiesen.");
+            Debug.Log("Earth physics");
+            Physics.gravity = new Vector3(0, earthGravity, 0);
         }
-
-        GameObject spawnedSample = Instantiate(prefabSample, spawnPosition, spawnRotation);
-
-        spawnedSample.AddComponent<XRGrabInteractable>();
-        if (spawnedSample.GetComponent<Rigidbody>() == null)
-        {
-            spawnedSample.AddComponent<Rigidbody>();
-        }
-        if (spawnedSample.GetComponent<BoxCollider>() == null)
-        {
-            spawnedSample.AddComponent<BoxCollider>();
-        }
-
-        // Verwende eine konkrete XRBaseGrabTransformer-Klasse
-        spawnedSample.AddComponent<XRSingleGrabFreeTransformer>();
-
     }
-}
+    }

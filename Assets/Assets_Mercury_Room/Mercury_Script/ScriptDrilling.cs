@@ -8,18 +8,16 @@ public class ScriptDrilling : MonoBehaviour
     public XRBaseController rightController; // Rechter Controller
     private bool leftControllerInZone = false;
     private bool rightControllerInZone = false;
-
-    public GameObject probePrefab;
-    public Vector3 spawnPoint = new Vector3(1, 1, 2);
-    public Quaternion spawnRotation = Quaternion.identity;
-
+ 
     // Update is called once per frame
     private bool bothControllersInZone = false;  // Zustand für beide Controller in der Zone
 
     // Update ist weiterhin aktiv, um den Status zu überwachen
     void Update()
     {
-        if (bothControllersInZone)
+        materialCheck();
+        
+        if (bothControllersInZone && materialCorrect)
         {
             // Starte den Bohrvorgang nur einmal
             StartCoroutine(StartDrilling());
@@ -27,17 +25,37 @@ public class ScriptDrilling : MonoBehaviour
         }
     }
 
+
+    public Material targetMaterial;
+    public GameObject planetSample;
+    public bool materialCorrect = false;
+    public void materialCheck()
+    {
+
+        Renderer objectRenderer = planetSample.GetComponent<Renderer>();
+        if (objectRenderer != null && objectRenderer.material.name == targetMaterial.name + " (Instance)")
+        {
+            // Code ausführen, wenn das Material übereinstimmt
+           
+            materialCorrect = true;
+        }
+        else
+        {
+           
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("A"))
         {
-            Debug.Log("Left Controller drinnen");
+           
             leftControllerInZone = true;
             CheckBothControllersInZone();
         }
         if (other.CompareTag("B"))
         {
-            Debug.Log("Right Controller drinnen");
+            
             rightControllerInZone = true;
             CheckBothControllersInZone();
         }
@@ -47,13 +65,13 @@ public class ScriptDrilling : MonoBehaviour
     {
         if (other.CompareTag("A"))
         {
-            Debug.Log("Left Controller draußen");
+          
             leftControllerInZone = false;
             bothControllersInZone = false;  // Beide Controller müssen gleichzeitig in der Zone sein
         }
         if (other.CompareTag("B"))
         {
-            Debug.Log("Right Controller draußen");
+            
             rightControllerInZone = false;
             bothControllersInZone = false;  // Beide Controller müssen gleichzeitig in der Zone sein
         }
@@ -64,21 +82,29 @@ public class ScriptDrilling : MonoBehaviour
     {
         if (leftControllerInZone && rightControllerInZone)
         {
-            Debug.Log("Beide Controller in der Zone!");
+            
             bothControllersInZone = true;
         }
     }
 
+    public ParticleSystem drillingParticleSystem;
+    public Vector3 particleSpawnPoint = new Vector3(0, 0, 0);
+    public GameObject probePrefab;
+    public Vector3 spawnPoint = new Vector3(1, 1, 2);
+    Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
+    public Quaternion spawnRotation = Quaternion.identity;
 
     private IEnumerator StartDrilling()
     {
-        Debug.Log("StartDrilling Coroutine gestartet");
+        
         TriggerHapticFeedback(); // Haptisches Feedback an beide Controller senden
+        ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
+        particlePlay.Play();
         yield return new WaitForSeconds(1.0f); // Wartezeit, um den Bohrvorgang zu simulieren
 
         // Erstelle das Bohrprobe-Objekt an der angegebenen Position
         GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
-        Debug.Log("Bohrprobe erstellt: " + spawnedSample.name);
+      
 
         // Füge dem Bohrprobenobjekt Interaktivität und Physik hinzu
         if (spawnedSample.GetComponent<XRGrabInteractable>() == null)
@@ -101,10 +127,20 @@ public class ScriptDrilling : MonoBehaviour
 
     private void TriggerHapticFeedback()
     {
+       
+            
         if (leftController != null)
-            leftController.SendHapticImpulse(0.5f, 1.0f); // Stärke 0.5, Dauer 1 Sekunde
+        {
+           
+            leftController.SendHapticImpulse(1.0f, 2.0f); // Stärke 0.5, Dauer 1 Sekunde
+            
+        }
 
         if (rightController != null)
-            rightController.SendHapticImpulse(0.5f, 1.0f);
+        {
+            
+            rightController.SendHapticImpulse(1.0f, 2.0f);
+        }
+           
     }
 }
