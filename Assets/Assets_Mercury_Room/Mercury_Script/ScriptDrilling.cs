@@ -1,27 +1,43 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Transformers;
+
 
 public class ScriptDrilling : MonoBehaviour
 {
-    public XRBaseController leftController;  // Linker Controller
-    public XRBaseController rightController; // Rechter Controller
+    public XRBaseController leftController;  
+    public XRBaseController rightController;
+
+    public InputAction leftHapticAction, rightHapticAction;
+ 
     private bool leftControllerInZone = false;
     private bool rightControllerInZone = false;
  
-    // Update is called once per frame
-    private bool bothControllersInZone = false;  // Zustand für beide Controller in der Zone
+    private bool bothControllersInZone = false;
 
-    // Update ist weiterhin aktiv, um den Status zu überwachen
+    public void OnEnable()
+    {
+        leftHapticAction.Enable();
+        rightHapticAction.Enable();
+    }
+
+    public void OnDisable()
+    {
+        leftHapticAction.Disable();
+        rightHapticAction.Disable();
+    }
+
     void Update()
     {
         materialCheck();
         
         if (bothControllersInZone && materialCorrect)
         {
-            // Starte den Bohrvorgang nur einmal
+            
             StartCoroutine(StartDrilling());
-            bothControllersInZone = false;  // Zustand zurücksetzen
+            bothControllersInZone = false; 
         }
     }
 
@@ -35,14 +51,11 @@ public class ScriptDrilling : MonoBehaviour
         Renderer objectRenderer = planetSample.GetComponent<Renderer>();
         if (objectRenderer != null && objectRenderer.material.name == targetMaterial.name + " (Instance)")
         {
-            // Code ausführen, wenn das Material übereinstimmt
+            
            
             materialCorrect = true;
         }
-        else
-        {
-           
-        }
+     
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,17 +80,17 @@ public class ScriptDrilling : MonoBehaviour
         {
           
             leftControllerInZone = false;
-            bothControllersInZone = false;  // Beide Controller müssen gleichzeitig in der Zone sein
+            bothControllersInZone = false;  
         }
         if (other.CompareTag("B"))
         {
             
             rightControllerInZone = false;
-            bothControllersInZone = false;  // Beide Controller müssen gleichzeitig in der Zone sein
+            bothControllersInZone = false;  
         }
     }
 
-    // Überprüft, ob beide Controller in der Zone sind
+
     private void CheckBothControllersInZone()
     {
         if (leftControllerInZone && rightControllerInZone)
@@ -97,48 +110,58 @@ public class ScriptDrilling : MonoBehaviour
     private IEnumerator StartDrilling()
     {
         
-        TriggerHapticFeedback(); // Haptisches Feedback an beide Controller senden
+        TriggerHapticFeedback(); 
         ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
         particlePlay.Play();
-        yield return new WaitForSeconds(1.0f); // Wartezeit, um den Bohrvorgang zu simulieren
+        yield return new WaitForSeconds(1.0f); 
 
-        // Erstelle das Bohrprobe-Objekt an der angegebenen Position
         GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
-      
 
-        // Füge dem Bohrprobenobjekt Interaktivität und Physik hinzu
-        if (spawnedSample.GetComponent<XRGrabInteractable>() == null)
+
+        // Sicherstellen, dass XRGrabInteractable existiert
+        XRGrabInteractable grabInteractable = spawnedSample.GetComponent<XRGrabInteractable>();
+        if (grabInteractable == null)
         {
-            spawnedSample.AddComponent<XRGrabInteractable>();
+            grabInteractable = spawnedSample.AddComponent<XRGrabInteractable>();
         }
 
+        // Rigidbody und Collider sicherstellen
         if (spawnedSample.GetComponent<Rigidbody>() == null)
         {
             spawnedSample.AddComponent<Rigidbody>();
         }
 
-        if (spawnedSample.GetComponent<BoxCollider>() == null)
+        if (spawnedSample.GetComponent<Collider>() == null)
         {
             spawnedSample.AddComponent<BoxCollider>();
         }
 
-        // Gib das Objekt nach dem Bohrvorgang zurück, um keine ungewollten Instanzen zu erstellen
+        // Einen Grab Transformer hinzufügen und konfigurieren
+        XRGeneralGrabTransformer grabTransformer = spawnedSample.AddComponent<XRGeneralGrabTransformer>();
+
+        // Den Transformer zur Transformer-Liste des XRGrabInteractable hinzufügen
+        //grabInteractable.transformers.Add(grabTransformer);
+
+
     }
 
     private void TriggerHapticFeedback()
     {
-       
-            
+        
         if (leftController != null)
         {
+            Debug.Log("Linker Impuls");
            
-            leftController.SendHapticImpulse(1.0f, 2.0f); // Stärke 0.5, Dauer 1 Sekunde
+            if (!leftController.SendHapticImpulse(1.0f, 5.0f))
+            {
+                Debug.Log("No impulse");
+            }
             
         }
 
         if (rightController != null)
         {
-            
+            Debug.Log("Rechter Impuls");
             rightController.SendHapticImpulse(1.0f, 2.0f);
         }
            
