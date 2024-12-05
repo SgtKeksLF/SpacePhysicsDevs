@@ -11,7 +11,6 @@ public class ScriptDrilling : MonoBehaviour
     public XRBaseController rightController;
 
     public InputAction leftHapticAction, rightHapticAction;
- 
     private bool leftControllerInZone = false;
     private bool rightControllerInZone = false;
  
@@ -105,44 +104,16 @@ public class ScriptDrilling : MonoBehaviour
     public GameObject probePrefab;
     public Vector3 spawnPoint = new Vector3(1, 1, 2);
     Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
-    public Quaternion spawnRotation = Quaternion.identity;
+    public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
 
     private IEnumerator StartDrilling()
     {
-        
         TriggerHapticFeedback(); 
         ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
         particlePlay.Play();
         yield return new WaitForSeconds(1.0f); 
 
         GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
-
-
-        // Sicherstellen, dass XRGrabInteractable existiert
-        XRGrabInteractable grabInteractable = spawnedSample.GetComponent<XRGrabInteractable>();
-        if (grabInteractable == null)
-        {
-            grabInteractable = spawnedSample.AddComponent<XRGrabInteractable>();
-        }
-
-        // Rigidbody und Collider sicherstellen
-        if (spawnedSample.GetComponent<Rigidbody>() == null)
-        {
-            spawnedSample.AddComponent<Rigidbody>();
-        }
-
-        if (spawnedSample.GetComponent<Collider>() == null)
-        {
-            spawnedSample.AddComponent<BoxCollider>();
-        }
-
-        // Einen Grab Transformer hinzufügen und konfigurieren
-        XRGeneralGrabTransformer grabTransformer = spawnedSample.AddComponent<XRGeneralGrabTransformer>();
-
-        // Den Transformer zur Transformer-Liste des XRGrabInteractable hinzufügen
-        //grabInteractable.transformers.Add(grabTransformer);
-
-
     }
 
     private void TriggerHapticFeedback()
