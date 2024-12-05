@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mars.unity
     guid: 20e29998517c98540aac1898cb1ac17f
+  - enabled: 1
+    path: Assets/Scenes/Leas Szene.unity
+    guid: c2b98c826346fbc4e8c7bcff8332bdef
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d3507e0a4977a5e44b58a03568facdd8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5a4ef0487bb5e3543a4c5b1550d85aa6, type: 2}
