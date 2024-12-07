@@ -10,19 +10,10 @@ public class ScriptButton : MonoBehaviour
     public GameObject roomWall;
     public Material newPlanetMaterial;
     public Material defaultPlanetMaterial;
-    private bool isNewPlanet = false;
+    private AudioSource audioSource;
 
-    //The Following are all variables for Item Physics
-    public GameObject bouncyBall;
-    public GameObject dice;
-    public GameObject canOfBeans;
-    public GameObject balloon;
-    public GameObject canOfWater;
 
-    //The following are for physics themselves
-    private float earthGravity = -9.8f;
-    private float mercuryGravity = -3.9f;
-
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -36,57 +27,49 @@ public class ScriptButton : MonoBehaviour
         
     }
 
+      private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void OnButtonPressed()
     {
         RoomChange();
-        PhysicsChange();
+        SoundFeedback();
 
     }
 
     public void RoomChange()
     {
         if (planetSampleObject != null && newPlanetMaterial != null && defaultPlanetMaterial != null)
+    {
+        Renderer planetRenderer = planetSampleObject.GetComponent<Renderer>();
+        Renderer wallRenderer = roomWall.GetComponent<Renderer>();
+
+        if (planetRenderer != null && wallRenderer != null)
         {
-            Renderer planetRenderer = planetSampleObject.GetComponent<Renderer>();
-            Renderer wallRenderer = roomWall.GetComponent<Renderer>();
-
-            if (planetRenderer != null && wallRenderer != null)
+            // Überprüfen, ob das neue Material bereits angewendet wurde
+            if (!PlanetStateManager.isNewPlanet)
             {
-                // Überprüfen, ob das neue Material bereits angewendet wurde
-                if (isNewPlanet)
-                {
-                    // Material auf das Standardmaterial zurücksetzen
-                    planetRenderer.material = defaultPlanetMaterial;
-                    wallRenderer.material = defaultPlanetMaterial;
-                   
-                }
-                else
-                {
-                    // Material auf das neue Material setzen
-                    planetRenderer.material = newPlanetMaterial;
-                    wallRenderer.material = newPlanetMaterial;
-                   
-                }
-
-                // Den Zustand umkehren, um beim nächsten Klick das Material zu wechseln
-                isNewPlanet = !isNewPlanet;
+                // Material auf das neue Material setzen (Merkur)
+                planetRenderer.material = newPlanetMaterial;
+                wallRenderer.material = newPlanetMaterial;
             }
-
-
-
+            else
+            {
+                // Material auf das Standardmaterial zurücksetzen (Erde)
+                planetRenderer.material = defaultPlanetMaterial;
+                wallRenderer.material = defaultPlanetMaterial;
+            }
         }
     }
-    public void PhysicsChange()
-    {
-        if (isNewPlanet == true)
+    }
+
+
+    public void SoundFeedback(){
+         if (audioSource != null && !audioSource.isPlaying)
         {
-            Debug.Log("Mercury physics");
-            Physics.gravity = new Vector3(0, mercuryGravity, 0);
-        }
-        else
-        {
-            Debug.Log("Earth physics");
-            Physics.gravity = new Vector3(0, earthGravity, 0);
+            audioSource.Play();
         }
     }
     }

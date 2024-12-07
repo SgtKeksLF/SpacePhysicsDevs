@@ -103,16 +103,16 @@ public class ScriptDrilling : MonoBehaviour
     public Vector3 particleSpawnPoint = new Vector3(0, 0, 0);
     public GameObject probePrefab;
     public Vector3 spawnPoint = new Vector3(1, 1, 2);
-    Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
+    public Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
+    private AudioSource audioSource;
 
     private IEnumerator StartDrilling()
     {
         TriggerHapticFeedback(); 
-        ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
-        particlePlay.Play();
+        particleTrigger();
+        playDrillingSound();
         yield return new WaitForSeconds(1.0f); 
-
         GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
     }
 
@@ -136,5 +136,22 @@ public class ScriptDrilling : MonoBehaviour
             rightController.SendHapticImpulse(1.0f, 2.0f);
         }
            
+    }
+
+    private void particleTrigger(){
+        ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
+        particlePlay.Play();
+    }
+
+    private void playDrillingSound(){
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogWarning("Keine AudioSource auf diesem Objekt gefunden!");
+        }
+         else if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     }
 }

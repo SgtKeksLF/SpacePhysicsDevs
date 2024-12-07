@@ -1,0 +1,67 @@
+{
+    "name": "Movement",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "dc3f02fa-8116-433a-8cf9-d2d8402bb022",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "355302b1-9b21-4499-93c2-c59c9b32fd06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d0ee0e5-aa5c-4a7f-a4df-3ce63efcd757",
+                    "path": "<OculusTouchController>/thumbstick/left",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19f4bc7c-d652-49ab-b97d-f045c2cd6952",
+                    "path": "<OculusTouchController>/thumbstick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b923391-72fc-45ff-a378-dab40bc166d2",
+                    "path": "<OculusTouchController>/thumbstick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8af12ebb-ea52-421e-ac74-725727cd9d0e",
+                    "path": "<OculusTouchController>/thumbstick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
