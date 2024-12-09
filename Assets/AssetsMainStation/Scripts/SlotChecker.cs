@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class SlotChecker : MonoBehaviour
 {
-    [SerializeField] private GameObject correctBall; // Kugel, die zu diesem Slot gehört
+    [SerializeField] private string correctTag; // Tag für die Kugel, die zu diesem Slot gehört
     [SerializeField] private Color greenColor = Color.green; // Farbe für richtig
     [SerializeField] private Color redColor = Color.red; // Farbe für falsch
 
@@ -24,7 +24,7 @@ public class SlotChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == correctBall)
+        if (other.CompareTag(correctTag))
         {
             // Richtige Kugel
             lampRenderer.material.color = greenColor;
@@ -41,7 +41,7 @@ public class SlotChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == correctBall)
+        if (other.CompareTag(correctTag))
         {
             // Zurücksetzen, wenn die korrekte Kugel entfernt wird
             lampRenderer.material.color = Color.white;
@@ -55,5 +55,3 @@ public class SlotChecker : MonoBehaviour
         return isCorrect;
     }
 }
-
-

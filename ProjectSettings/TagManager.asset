@@ -10,6 +10,10 @@ TagManager:
   - LeftController
   - A
   - B
+  - Slot1
+  - Slot2
+  - Slot3
+  - Slot4
   layers:
   - Default
   - TransparentFX
