@@ -20,6 +20,9 @@ public class SlotChecker : MonoBehaviour
         {
             Debug.LogError($"Kein Renderer für die Lampe gefunden in {gameObject.name}. Überprüfe, ob die Lampe ein Kind dieses Slots ist.");
         }
+
+        // Setze die Standardfarbe der Lampe auf rot
+        lampRenderer.material.color = redColor;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,8 +46,8 @@ public class SlotChecker : MonoBehaviour
     {
         if (other.CompareTag(correctTag))
         {
-            // Zurücksetzen, wenn die korrekte Kugel entfernt wird
-            lampRenderer.material.color = Color.white;
+            // Zurücksetzen auf rot, wenn die korrekte Kugel entfernt wird
+            lampRenderer.material.color = redColor;
             isCorrect = false;
         }
         PuzzleManager.Instance.CheckWinCondition();

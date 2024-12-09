@@ -36,7 +36,7 @@ public class PuzzleManager : MonoBehaviour
             if (!slot.IsCorrect())
             {
                 // Wenn ein Slot nicht korrekt ist, große Lampe zurücksetzen
-                bigLampRenderer.material.color = Color.white;
+                bigLampRenderer.material.color = Color.red;
                 return;
             }
         }
