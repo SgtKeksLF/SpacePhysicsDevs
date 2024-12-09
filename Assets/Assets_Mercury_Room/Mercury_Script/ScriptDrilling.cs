@@ -11,6 +11,7 @@ public class ScriptDrilling : MonoBehaviour
     public XRBaseController rightController;
 
     public InputAction leftHapticAction, rightHapticAction;
+
     private bool leftControllerInZone = false;
     private bool rightControllerInZone = false;
  

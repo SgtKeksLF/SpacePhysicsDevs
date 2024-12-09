@@ -143,13 +143,13 @@ public class ScriptPhysicsChange : MonoBehaviour
     {
        if (balloonRb != null)
     {   
-        Debug.Log("Ballon if erreicht");
+ 
         float buoyancyForce = 0f;
 
         // Auftrieb nur auf der Erde anwenden, wenn isNewPlanet false ist
         if (!PlanetStateManager.isNewPlanet)  // Erde
         {
-            Debug.Log("Ballon sollte auf der Erde schweben");
+           
             buoyancyForce = airDensityEarth * balloonVolume * Mathf.Abs(earthGravity);
         }
         else  // Merkur
@@ -160,7 +160,7 @@ public class ScriptPhysicsChange : MonoBehaviour
         // Wenn Auftriebskraft vorhanden, den Ballon anheben
         if (buoyancyForce > 0f)
         {
-            Debug.Log("Ballon sollte schweben");
+           
             balloonRb.AddForce(Vector3.up * buoyancyForce);
         }
     }
