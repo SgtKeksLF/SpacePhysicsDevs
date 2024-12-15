@@ -7,40 +7,27 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class ScriptDrilling : MonoBehaviour
 {
-    public XRBaseController leftController;  
-    public XRBaseController rightController;
-
-    public InputAction leftHapticAction, rightHapticAction;
-
-    private bool leftControllerInZone = false;
-    private bool rightControllerInZone = false;
+   
  
-    private bool bothControllersInZone = false;
+    private bool drillInZone = false;
 
-    public void OnEnable()
-    {
-        leftHapticAction.Enable();
-        rightHapticAction.Enable();
-    }
-
-    public void OnDisable()
-    {
-        leftHapticAction.Disable();
-        rightHapticAction.Disable();
-    }
+ 
 
     void Update()
     {
         materialCheck();
         
-        if (bothControllersInZone && materialCorrect)
+        if (drillInZone && materialCorrect)
         {
             
             StartCoroutine(StartDrilling());
-            bothControllersInZone = false; 
+            drillInZone = false; 
         }
     }
 
+    void Awake(){
+        spawnPoint = targetSpawnObject.position;
+    }
 
     public Material targetMaterial;
     public GameObject planetSample;
@@ -60,84 +47,44 @@ public class ScriptDrilling : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("A"))
+        if (other.CompareTag("Drill"))
         {
-           
-            leftControllerInZone = true;
-            CheckBothControllersInZone();
+          drillInZone = true;
         }
-        if (other.CompareTag("B"))
-        {
-            
-            rightControllerInZone = true;
-            CheckBothControllersInZone();
-        }
+      
+       
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("A"))
         {
-          
-            leftControllerInZone = false;
-            bothControllersInZone = false;  
+            drillInZone = false;
         }
-        if (other.CompareTag("B"))
-        {
-            
-            rightControllerInZone = false;
-            bothControllersInZone = false;  
-        }
+       
     }
 
 
-    private void CheckBothControllersInZone()
-    {
-        if (leftControllerInZone && rightControllerInZone)
-        {
-            
-            bothControllersInZone = true;
-        }
-    }
+ 
 
     public ParticleSystem drillingParticleSystem;
     public Vector3 particleSpawnPoint = new Vector3(0, 0, 0);
     public GameObject probePrefab;
-    public Vector3 spawnPoint = new Vector3(1, 1, 2);
+    public Vector3 spawnPoint;
+    public Transform targetSpawnObject;
     public Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource audioSource;
 
     private IEnumerator StartDrilling()
     {
-        TriggerHapticFeedback(); 
+       
         particleTrigger();
         playDrillingSound();
         yield return new WaitForSeconds(1.0f); 
         GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
     }
 
-    private void TriggerHapticFeedback()
-    {
-        
-        if (leftController != null)
-        {
-            Debug.Log("Linker Impuls");
-           
-            if (!leftController.SendHapticImpulse(1.0f, 5.0f))
-            {
-                Debug.Log("No impulse");
-            }
-            
-        }
-
-        if (rightController != null)
-        {
-            Debug.Log("Rechter Impuls");
-            rightController.SendHapticImpulse(1.0f, 2.0f);
-        }
-           
-    }
 
     private void particleTrigger(){
         ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
