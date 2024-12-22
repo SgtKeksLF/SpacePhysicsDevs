@@ -26,7 +26,7 @@ public class ScriptDrilling : MonoBehaviour
     }
 
     void Awake(){
-        spawnPoint = targetSpawnObject.position;
+       // spawnPoint = targetSpawnObject.position;
     }
 
     public Material targetMaterial;
@@ -41,6 +41,9 @@ public class ScriptDrilling : MonoBehaviour
             
            
             materialCorrect = true;
+        }
+        else {
+            materialCorrect = false;
         }
      
     }
@@ -68,11 +71,12 @@ public class ScriptDrilling : MonoBehaviour
  
 
     public ParticleSystem drillingParticleSystem;
-    public Vector3 particleSpawnPoint = new Vector3(0, 0, 0);
-    public GameObject probePrefab;
-    public Vector3 spawnPoint;
-    public Transform targetSpawnObject;
     public Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
+    public GameObject particleSpawnTargetObject;
+
+    public GameObject probePrefab;
+    public GameObject spawnPointObject;
+    public Transform targetSpawnObject;
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource audioSource;
 
@@ -82,13 +86,17 @@ public class ScriptDrilling : MonoBehaviour
         particleTrigger();
         playDrillingSound();
         yield return new WaitForSeconds(1.0f); 
-        GameObject spawnedSample = Instantiate(probePrefab, spawnPoint, spawnRotation);
+        Vector3 sampleSpawnPoint = spawnPointObject.transform.position;
+        GameObject spawnedSample = Instantiate(probePrefab, sampleSpawnPoint, spawnRotation);
     }
 
 
     private void particleTrigger(){
+        Vector3 particleSpawnPoint = new Vector3(-0.708f, 1.165f, 12.759f);
         ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
+        particlePlay.gameObject.SetActive(true);
         particlePlay.Play();
+        
     }
 
     private void playDrillingSound(){
