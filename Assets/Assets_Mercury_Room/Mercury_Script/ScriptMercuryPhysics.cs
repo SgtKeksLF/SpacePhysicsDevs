@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class ScriptMercuryPhysics : MonoBehaviour
 {
+    public Material redLampMaterial;
+    public Material greenLampMaterial;
+    public GameObject mercuryLampObject;
+    public GameObject earthLampObject;   
+
+
     // Die folgenden Variablen sind für die Physik selbst
     private float mercuryGravity = -3.9f;
     
@@ -44,10 +50,6 @@ public class ScriptMercuryPhysics : MonoBehaviour
             }
         }
     }
-        void FixedUpdate()
-    {
-    MercuryBalloonPhysics();
-    }
 
 
       public void OnButtonPressed()
@@ -58,12 +60,29 @@ public class ScriptMercuryPhysics : MonoBehaviour
 
     public void MercuryPhysicsChange()
     {
- 
-        Debug.Log("Mercury physics");
-        Physics.gravity = new Vector3(0, mercuryGravity, 1);  // Merkur-Schwerkraft
-            // Anwenden der spezifischen Physik für Objekte
-    MercuryBeansPhysics();
-    MercuryWaterPhysics();
+        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
+        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();     // Renderer des Erde-Objekts
+        if(mercuryLampRenderer != null && earthLampRenderer != null)
+        { 
+            Debug.Log("Render not null");
+            Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+            Debug.Log(currentMercuryLampMaterial);
+          
+            if(currentMercuryLampMaterial == redLampMaterial)
+            {
+                Debug.Log("In der Funktuon");
+                earthLampRenderer.material = redLampMaterial;
+                Debug.Log("Mercury physics");
+                Physics.gravity = new Vector3(0, mercuryGravity, 1);  // Merkur-Schwerkraft
+                    // Anwenden der spezifischen Physik für Objekte
+                MercuryBeansPhysics();
+                MercuryWaterPhysics();
+                mercuryLampRenderer.material = greenLampMaterial;
+            }
+            else{
+
+            }
+        }
     }
 
 
@@ -101,14 +120,7 @@ public class ScriptMercuryPhysics : MonoBehaviour
             }
         }
     }
- 
-    private void MercuryBalloonPhysics()
-    {
-        if (balloonRb != null)
-        {   
-            balloonRb.AddForce(Vector3.up * 0);
-        }
-    }
+
 }
 
   
