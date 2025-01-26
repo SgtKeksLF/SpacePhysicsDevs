@@ -386,9 +386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966b8956672fec4490c16af0b57434b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMaterial: {fileID: 2100000, guid: bca4c1116b5d0e342beda57b54c5b81a, type: 2}
-  planetSample: {fileID: 1985759320}
-  materialCorrect: 0
+  greenLampMaterial: {fileID: 2100000, guid: aa9e2ba43c7df10429242a2134e8d342, type: 2}
+  mercuryLampObject: {fileID: 1965542148}
+  planetCorrect: 0
   drillingParticleSystem: {fileID: 7589101471446346717, guid: 41c6e5f914bb7bf488838a99b429fc0b, type: 3}
   newParticleRotation: {x: 0.95371693, y: 0, z: 0, w: -0.3007058}
   particleSpawnTargetObject: {fileID: 97940087}

@@ -17,7 +17,7 @@ public class ScriptDrilling : MonoBehaviour
     {
         materialCheck();
         
-        if (drillInZone && materialCorrect)
+        if (drillInZone && planetCorrect)
         {
             
             StartCoroutine(StartDrilling());
@@ -29,21 +29,23 @@ public class ScriptDrilling : MonoBehaviour
        // spawnPoint = targetSpawnObject.position;
     }
 
-    public Material targetMaterial;
-    public GameObject planetSample;
-    public bool materialCorrect = false;
+    public Material greenLampMaterial;
+    public GameObject mercuryLampObject;
+  
+
+    public bool planetCorrect = false;
     public void materialCheck()
     {
 
-        Renderer objectRenderer = planetSample.GetComponent<Renderer>();
-        if (objectRenderer != null && objectRenderer.material.name == targetMaterial.name + " (Instance)")
+        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>();
+        Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+        if(currentMercuryLampMaterial == greenLampMaterial)
         {
             
-           
-            materialCorrect = true;
+            planetCorrect = true;
         }
         else {
-            materialCorrect = false;
+            planetCorrect = false;
         }
      
     }
@@ -51,9 +53,11 @@ public class ScriptDrilling : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Drill"))
-        {
-          drillInZone = true;
-        }
+
+            {
+            
+            drillInZone = true;
+            }
       
        
     }
