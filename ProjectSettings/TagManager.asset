@@ -18,6 +18,7 @@ TagManager:
   - XRRig
   - InstructionPanels
   - Drill
+  - PushButton
   layers:
   - Default
   - TransparentFX
