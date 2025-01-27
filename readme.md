@@ -1,6 +1,6 @@
 ```mermaid
 graph TD;
-  Diagram Test-->B;
+  A-->B;
   A-->C;
   B-->D;
   C-->D;
