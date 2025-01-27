@@ -1,3 +1,25 @@
+## Projektziel
+- Spielerische Vermittlung von physikalischen Grundverhältnissen auf Planeten des Sonnensystems. 
+
+## Credits
+- Lisa Landgraf
+- Leandra Freese
+
+## Installation & Voraussetzungen
+- GitHub Link: https://github.com/SgtKeksLF/SpacePhysicsDevs 
+- Installation mit GitLFS: 
+    - 
+- Vorraussetzungen: 
+    - SpacePhysics wurde mit der Oculus Quest 2 entwickelt und getestet, für andere Headsets wird perfekte funktion nicht garantiert
+    - Für die Nutzung wird Oculus Software benötigt
+
+
+## Benutzung
+
+## Contribution / Entwicklung
+
+
+## Dokumentation der Software
 ```mermaid
 graph TD;
   A-->B;
@@ -7,6 +29,7 @@ graph TD;
 ```
 
 
+## Ordner Struktur des Assets Ordner
 📂 Assets  
 ├── 📁 Assets_Mercury_Room  
 ├── 📁 AssetsMainStation  
@@ -23,7 +46,7 @@ graph TD;
 └── Diverse Meta-Dateien  
 
 
-
+## Eigenleistung
 
 | Selfmade Assets | Imported Assets |
 | ---      | ---      |
