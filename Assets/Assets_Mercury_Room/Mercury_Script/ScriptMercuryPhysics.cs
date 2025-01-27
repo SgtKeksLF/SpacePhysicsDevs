@@ -92,7 +92,16 @@ public class ScriptMercuryPhysics : MonoBehaviour
     
     public void MercuryBeansPhysics()
     {
-        canOfBeans.transform.localScale += mercuryCanScale;
+       if (canOfBeans != null)
+        {
+            Debug.Log($"Current Scale: {canOfBeans.transform.localScale}");
+            canOfBeans.transform.localScale += mercuryCanScale;
+            Debug.Log($"New Scale: {canOfBeans.transform.localScale}");
+        }
+      
+
+
+
         
         if (canOfBeansAudio != null)
         {
