@@ -14,13 +14,11 @@ public class ScriptEarthPhysics : MonoBehaviour
 
     // Can of Beans Variablen
     public GameObject canOfBeans;
-    private Vector3 mercuryCanScale = new Vector3(+2.0f, 0.0f, 0.0f);
-    public AudioSource pickupBeanCanAudio;     
+    private Vector3 mercuryCanScale = new Vector3(+2.0f, 0.0f, 0.0f);  
     public AudioSource canOfBeansAudio; 
 
     // Water Can Variablen
     public GameObject canOfWater;
-    public AudioSource pickupWaterCanAudio;   
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;
     public Material defaultWaterMaterial;
