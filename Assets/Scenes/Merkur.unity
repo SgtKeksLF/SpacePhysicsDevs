@@ -2002,6 +2002,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e1446f40f723e47b192200f8b69b8af9, type: 3}
+    - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef80cc4b16baa4f1fa584716dfd09731, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2098,6 +2106,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fa9a2fbaa674420fb987b0632df4ca4, type: 3}
+    - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fca4927849c44b76b9cbba15db2f645, type: 3}
     - target: {fileID: 5195562859693150635, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3933,9 +3949,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce0ebe27f9fb847adac28140aad05b26, type: 3}
+    - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 77765c70c00bd47d38eda0e8e2deebba, type: 3}
     - target: {fileID: 2225004354571061830, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2477160689771407691, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.w
