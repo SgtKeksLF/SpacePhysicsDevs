@@ -74,8 +74,6 @@ public class ScriptEarthPhysics : MonoBehaviour
                 mercuryLampRenderer.material = redLampMaterial;
                 Debug.Log("Earth physics");
                 Physics.gravity = new Vector3(0, earthGravity, 0);  // Erde-Schwerkraft
-                EarthBeansPhysics();
-                EarthWaterPhysics();
                 earthLampRenderer.material = greenLampMaterial;
             }
             else{
@@ -85,28 +83,7 @@ public class ScriptEarthPhysics : MonoBehaviour
       
     }
 
-     public void EarthBeansPhysics()
-    {
-        canOfBeans.transform.localScale -= mercuryCanScale;
-        if (canOfBeansAudio != null)
-            {
-                Debug.Log("Sound is playing");
-                canOfBeansAudio.Play();
-            }
-    }
-     public void EarthWaterPhysics()
-    {    
-        if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
-        {
-            Renderer waterRenderer = canOfWater.GetComponent<Renderer>();
-
-            if (waterRenderer != null)
-            {
-                    waterRenderer.material = defaultWaterMaterial;
-                    canOfWaterAudio.Stop();
-            }
-        }
-    }
+    
 
    private void ApplyBalloonBuoyancy()
     {

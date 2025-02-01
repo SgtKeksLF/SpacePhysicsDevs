@@ -19,6 +19,7 @@ TagManager:
   - InstructionPanels
   - Drill
   - PushButton
+  - PhysicsZone
   layers:
   - Default
   - TransparentFX
