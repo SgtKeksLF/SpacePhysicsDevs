@@ -7,23 +7,21 @@ public class Script_GrabPhysics : MonoBehaviour
     public GameObject mercuryLampObject;
     public GameObject earthLampObject;   
     public Material greenLampMaterial;
+    //
     public GameObject balloon;
     public GameObject canOfBeans;
     public GameObject cube;
     public GameObject ball;
+    public GameObject canOfWater;
+    //
     private Vector3 mercuryCanScale = new Vector3(+2.0f, 0.0f, 0.0f);
     public AudioSource canOfBeansAudio; 
 
-    public GameObject canOfWater;
+   
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;
     public Material defaultWaterMaterial;
 
-    private Rigidbody balloonRb;
-    private Rigidbody beansRb;
-    private Rigidbody cubeRb;
-    private Rigidbody waterRb;
-    private Rigidbody ballRb;
     
     // Start is called before the first frame update
     void Start()
@@ -35,7 +33,7 @@ public class Script_GrabPhysics : MonoBehaviour
             canOfWaterAudio = audioSources[1]; 
         }
 
-        // Initialisiere die Rigidbody-Objekte
+      
      
     }
 
@@ -44,7 +42,7 @@ public class Script_GrabPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Hier kannst du weiterhin Eingaben oder andere Logik verarbeiten, falls nötig
+        
     }
 
 
@@ -72,6 +70,8 @@ public class Script_GrabPhysics : MonoBehaviour
                         // Aktionen für canOfBeans
                         MercuryBeansPhysics();
                     }
+
+                    //Hier Kann deine Logik für die Screens rein @Lisa
             }
 
          }
@@ -98,6 +98,8 @@ public class Script_GrabPhysics : MonoBehaviour
                         // Aktionen für canOfBeans
                         MercuryBeansPhysicsRelease();
                     }
+
+                    //Hier ggf screenlogic? idk
 
             }
         }
