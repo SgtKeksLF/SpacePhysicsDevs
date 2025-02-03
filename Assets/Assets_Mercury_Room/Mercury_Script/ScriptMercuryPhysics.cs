@@ -12,7 +12,11 @@ public class ScriptMercuryPhysics : MonoBehaviour
     private float mercuryGravity = -3.9f;
 
 
-
+    // Canvas Logik
+    public GameObject canvasGravity;
+    public GameObject canvasAtmosphere;
+    public GameObject canvasPressure;
+    public GameObject canvasTemperature;
 
 
     void Start()
@@ -44,12 +48,38 @@ public class ScriptMercuryPhysics : MonoBehaviour
                 Physics.gravity = new Vector3(0, mercuryGravity, 1);  // Merkur-Schwerkraft
                     // Anwenden der spezifischen Physik für Objekte
                 mercuryLampRenderer.material = greenLampMaterial;
+
+                // **DisplayEarth -> Display0 auf allen relevanten Canvases**
+                UpdateCanvasDisplay(canvasGravity);
+                UpdateCanvasDisplay(canvasAtmosphere);
+                UpdateCanvasDisplay(canvasPressure);
+                UpdateCanvasDisplay(canvasTemperature);
             }
             else{
 
             }
         }
     }
+
+    private void UpdateCanvasDisplay(GameObject canvas)
+{
+    if (canvas != null)
+    {
+        Transform displayParent = canvas.transform.Find("Canvas");
+        if (displayParent != null)
+        {
+            GameObject displayEarth = displayParent.Find("Displays/DisplayEarth")?.gameObject;
+            GameObject display0 = displayParent.Find("Displays/Display0")?.gameObject;
+            GameObject display1 = displayParent.Find("Displays/Display1")?.gameObject;
+
+            if (displayEarth != null) displayEarth.SetActive(false);
+            if (display0 != null) display0.SetActive(true);
+            if (display1 != null) display1.SetActive(false);
+
+            Debug.Log("Displays gefunden");
+        }
+    }
+}
 
 
  

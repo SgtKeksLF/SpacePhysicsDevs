@@ -12,7 +12,7 @@ public class ScriptButton : MonoBehaviour
     public Material defaultPlanetMaterial;
     private AudioSource audioSource;
 
-
+    
  
 
     // Start is called before the first frame update
@@ -54,12 +54,16 @@ public class ScriptButton : MonoBehaviour
                 // Material auf das neue Material setzen (Merkur)
                 planetRenderer.material = newPlanetMaterial;
                 wallRenderer.material = newPlanetMaterial;
+
+                
             }
             else
             {
                 // Material auf das Standardmaterial zurücksetzen (Erde)
                 planetRenderer.material = defaultPlanetMaterial;
                 wallRenderer.material = defaultPlanetMaterial;
+
+                // DisplayEarth auf kleinen Display ändert sich jeweils zu Display0
             }
         }
     }
@@ -72,4 +76,6 @@ public class ScriptButton : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    
     }

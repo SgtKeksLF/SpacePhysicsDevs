@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Script_GrabPhysics : MonoBehaviour
@@ -16,12 +17,14 @@ public class Script_GrabPhysics : MonoBehaviour
     //
     private Vector3 mercuryCanScale = new Vector3(+2.0f, 0.0f, 0.0f);
     public AudioSource canOfBeansAudio; 
-
-   
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;
     public Material defaultWaterMaterial;
-
+    // 
+    public GameObject canvasGravity;
+    public GameObject canvasPressure;
+    public GameObject canvasAtmosphere;
+    public GameObject canvasTemperature;
     
     // Start is called before the first frame update
     void Start()
@@ -64,14 +67,57 @@ public class Script_GrabPhysics : MonoBehaviour
                     {
                         // Aktionen für canOfWater
                         MercuryWaterPhysics();
+
+                        GameObject display0 = canvasTemperature.transform.Find("Canvas/Displays/Display0")?.gameObject;
+                        GameObject display1 = canvasTemperature.transform.Find("Canvas/Displays/Display1")?.gameObject;
+
+                        if (display0 != null && display1 != null)
+                        {
+                            display0.SetActive(false); // Display0 deaktivieren
+                            display1.SetActive(true);  // Display1 aktivieren
+                        }
                     }
                     else if (grabbedObject == canOfBeans)
                     {
                         // Aktionen für canOfBeans
                         MercuryBeansPhysics();
+
+                        GameObject display0 = canvasPressure.transform.Find("Canvas/Displays/Display0")?.gameObject;
+                        GameObject display1 = canvasPressure.transform.Find("Canvas/Displays/Display1")?.gameObject;
+
+                        if (display0 != null && display1 != null)
+                        {
+                            display0.SetActive(false); // Display0 deaktivieren
+                            display1.SetActive(true);  // Display1 aktivieren
+                        }
                     }
 
                     //Hier Kann deine Logik für die Screens rein @Lisa
+
+                    else if (grabbedObject == ball)
+                    {                
+                        // Zugriff auf das Display innerhalb des Canvas
+                        GameObject display0 = canvasGravity.transform.Find("Canvas/Displays/Display0")?.gameObject;
+                        GameObject display1 = canvasGravity.transform.Find("Canvas/Displays/Display1")?.gameObject;
+
+                        if (display0 != null && display1 != null)
+                        {
+                            display0.SetActive(false); // Display0 deaktivieren
+                            display1.SetActive(true);  // Display1 aktivieren
+                        }
+                    }
+                    else if (grabbedObject == balloon)
+                    {                
+                        // Zugriff auf das Display innerhalb des Canvas
+                        GameObject display0 = canvasAtmosphere.transform.Find("Canvas/Displays/Display0")?.gameObject;
+                        GameObject display1 = canvasAtmosphere.transform.Find("Canvas/Displays/Display1")?.gameObject;
+
+                        if (display0 != null && display1 != null)
+                        {
+                            display0.SetActive(false); // Display0 deaktivieren
+                            display1.SetActive(true);  // Display1 aktivieren
+                        }
+                    }
             }
 
          }
