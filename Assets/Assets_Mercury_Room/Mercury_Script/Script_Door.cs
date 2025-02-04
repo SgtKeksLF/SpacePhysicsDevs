@@ -1,16 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Script_Door : MonoBehaviour
 {
-    
-    public GameObject door; // Tür als zuweisbares GameObject
-    public float moveDistance = 3f; // Wie weit sich die Tür bewegt
-    public float moveSpeed = 2f; // Geschwindigkeit der Bewegung
+    public GameObject door;
+    public float moveDistance = 3f;
+    public float moveSpeed = 2f;
+    public float autoCloseDelay = 5f; // Zeit bis zum automatischen Schließen
 
     private bool isMoving = false;
-    private bool isOpen = false; // Speichert, ob die Tür offen oder geschlossen ist
+    private bool isOpen = false;
     private Vector3 startPos;
     private Vector3 targetPos;
 
@@ -34,10 +33,15 @@ public class Script_Door : MonoBehaviour
             isMoving = true;
             StartCoroutine(isOpen ? MoveDoorCoroutine(startPos) : MoveDoorCoroutine(targetPos));
             isOpen = !isOpen;
+            
+            if (isOpen)
+            {
+                StartCoroutine(AutoCloseDoor());
+            }
         }
     }
 
-    private System.Collections.IEnumerator MoveDoorCoroutine(Vector3 endPos)
+    private IEnumerator MoveDoorCoroutine(Vector3 endPos)
     {
         Vector3 start = door.transform.position;
         float elapsedTime = 0f;
@@ -51,5 +55,14 @@ public class Script_Door : MonoBehaviour
 
         door.transform.position = endPos;
         isMoving = false;
+    }
+
+    private IEnumerator AutoCloseDoor()
+    {
+        yield return new WaitForSeconds(autoCloseDelay);
+        if (isOpen)
+        {
+            ToggleDoor();
+        }
     }
 }

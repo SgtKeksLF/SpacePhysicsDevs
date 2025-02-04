@@ -2818,7 +2818,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleportAnchorBlackboard (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2592780854883644962, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3056,7 +3057,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleportAnchorBlackboard (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2592780854883644962, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4928,7 +4930,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleportAnchorBlackboard (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2592780854883644962, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5441,7 +5444,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleportAnchorBlackboard (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2592780854883644962, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6441,7 +6445,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleportAnchorBlackboard
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2592780854883644962, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
