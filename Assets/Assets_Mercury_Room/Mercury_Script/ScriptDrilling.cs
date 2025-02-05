@@ -26,7 +26,7 @@ public class ScriptDrilling : MonoBehaviour
     }
 
     void Awake(){
-       // spawnPoint = targetSpawnObject.position;
+     
     }
 
     public Material greenLampMaterial;
@@ -78,9 +78,8 @@ public class ScriptDrilling : MonoBehaviour
     public Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
     public GameObject particleSpawnTargetObject;
 
-    public GameObject probePrefab;
+    public GameObject sample;
     public GameObject spawnPointObject;
-    public Transform targetSpawnObject;
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource audioSource;
 
@@ -90,8 +89,8 @@ public class ScriptDrilling : MonoBehaviour
         particleTrigger();
         playDrillingSound();
         yield return new WaitForSeconds(1.0f); 
-        Vector3 sampleSpawnPoint = spawnPointObject.transform.position;
-        GameObject spawnedSample = Instantiate(probePrefab, sampleSpawnPoint, spawnRotation);
+        Vector3 targetPosition = spawnPointObject.transform.position;
+        sample.transform.position = targetPosition;
     }
 
 
