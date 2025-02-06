@@ -15,7 +15,7 @@ public class Script_GrabPhysics : MonoBehaviour
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 mercuryCanScale = new Vector3(+2.0f, 0.0f, 0.0f);
+    private Vector3 mercuryCanScale = new Vector3(+10.0f, 0.0f, 0.0f);
     public AudioSource canOfBeansAudio; 
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;
@@ -155,7 +155,10 @@ public class Script_GrabPhysics : MonoBehaviour
     {
         if (canOfBeans != null)
         {
-            canOfBeans.transform.localScale += mercuryCanScale;
+
+             Debug.Log($"Current Scale: {canOfBeans.transform.localScale}");
+    canOfBeans.transform.localScale += mercuryCanScale;
+    Debug.Log($"New Scale: {canOfBeans.transform.localScale}");
 
             if (canOfBeansAudio != null)
             {

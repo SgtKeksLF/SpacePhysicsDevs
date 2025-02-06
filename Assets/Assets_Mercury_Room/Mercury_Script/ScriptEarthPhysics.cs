@@ -60,6 +60,7 @@ public class ScriptEarthPhysics : MonoBehaviour
     
     void FixedUpdate()
     {
+        
         ApplyBalloonBuoyancy();
     }
     public void OnButtonPressed()
@@ -119,7 +120,7 @@ public class ScriptEarthPhysics : MonoBehaviour
         // Wenn Auftriebskraft vorhanden, den Ballon anheben
         if (buoyancyForce > 0f)
         {
-           
+           Debug.Log("Balloon should fly");
             balloonRb.AddForce(Vector3.up * buoyancyForce);
         }
     }
