@@ -106,7 +106,7 @@ void Awake()
 }
 
 private void ApplyBalloonBuoyancy()
-{ Debug.Log("Balloon Venus");
+{ 
     if (balloonRb != null)
     {   
         float buoyancyForce = 0f;
@@ -122,13 +122,7 @@ private void ApplyBalloonBuoyancy()
         // Wenn Auftriebskraft vorhanden, den Ballon anheben
         if (buoyancyForce > 0f)
         {
-            Debug.Log($"Venus - airDensityVenus: {airDensityVenus}");
-Debug.Log($"Venus - balloonVolume: {balloonVolume}");
-Debug.Log($"Venus - venusGravity: {venusGravity}");
-Debug.Log($"Venus - buoyancyForce: {buoyancyForce}");
-Debug.Log($"Venus - balloonRb.mass: {balloonRb.mass}");
-Debug.Log($"Venus - useGravity: {balloonRb.useGravity}");
-Debug.Log($"Venus - constraints: {balloonRb.constraints}");
+            
 
 
             balloonRb.AddForce(Vector3.up * buoyancyForce);
