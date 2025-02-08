@@ -24,6 +24,10 @@ public class VenusPhysics : MonoBehaviour
     public GameObject canvasPressure;
     public GameObject canvasTemperature;
 
+void Awake()
+{
+    balloonRb = balloon.GetComponent<Rigidbody>();
+}
 
     void Start()
     {
@@ -118,10 +122,14 @@ private void ApplyBalloonBuoyancy()
         // Wenn Auftriebskraft vorhanden, den Ballon anheben
         if (buoyancyForce > 0f)
         {
-            Debug.Log("Balloon should fly on Venus");
-            Debug.Log($"Buoyancy Force: {buoyancyForce}");
-            Debug.Log($"airDensityVenus: {airDensityVenus}, balloonVolume: {balloonVolume}, venusGravity: {venusGravity}"); 
-            Debug.Log($"Balloon Mass: {balloonRb.mass}");
+            Debug.Log($"Venus - airDensityVenus: {airDensityVenus}");
+Debug.Log($"Venus - balloonVolume: {balloonVolume}");
+Debug.Log($"Venus - venusGravity: {venusGravity}");
+Debug.Log($"Venus - buoyancyForce: {buoyancyForce}");
+Debug.Log($"Venus - balloonRb.mass: {balloonRb.mass}");
+Debug.Log($"Venus - useGravity: {balloonRb.useGravity}");
+Debug.Log($"Venus - constraints: {balloonRb.constraints}");
+
 
             balloonRb.AddForce(Vector3.up * buoyancyForce);
         }
