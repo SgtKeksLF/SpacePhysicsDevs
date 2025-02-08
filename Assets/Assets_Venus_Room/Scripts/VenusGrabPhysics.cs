@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Script_GrabPhysics : MonoBehaviour
+public class VenusGrabPhysics : MonoBehaviour
 {
-    public GameObject mercuryLampObject;
+    public GameObject venusLampObject;
     public GameObject earthLampObject;   
     public Material greenLampMaterial;
     //
     public GameObject balloon;
     public GameObject canOfBeans;
-    public GameObject cube;
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 mercuryCanScale = new Vector3(+10.0f, 0.0f, 0.0f);
+    private Vector3 venusCanScale = new Vector3(-30.0f, -30.0f, -30.0f);
     public AudioSource canOfBeansAudio; 
     private AudioSource canOfWaterAudio;
-    public Material newWaterMaterial;
+    public Material evaporateWaterMaterial;
     public Material defaultWaterMaterial;
     // 
     public GameObject canvasGravity;
@@ -35,9 +33,6 @@ public class Script_GrabPhysics : MonoBehaviour
         {
             canOfWaterAudio = audioSources[1]; 
         }
-
-      
-     
     }
 
   
@@ -54,19 +49,19 @@ public class Script_GrabPhysics : MonoBehaviour
 
     public void OnGrab(GameObject grabbedObject)
     {
-        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
-        if(mercuryLampRenderer != null)
+        Renderer venusLampRenderer = venusLampObject.GetComponent<Renderer>(); 
+        if(venusLampRenderer != null)
         { 
-            Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+            Material currentvenusLampMaterial = venusLampRenderer.sharedMaterial;
             
-            if(currentMercuryLampMaterial == greenLampMaterial)
+            if(currentvenusLampMaterial == greenLampMaterial)
             {
                 
                     // Unterscheiden zwischen den verschiedenen Objekten
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        MercuryWaterPhysics();
+                        venusWaterPhysics();
 
                         GameObject display0 = canvasTemperature.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasTemperature.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -80,7 +75,7 @@ public class Script_GrabPhysics : MonoBehaviour
                     else if (grabbedObject == canOfBeans)
                     {
                         // Aktionen für canOfBeans
-                        MercuryBeansPhysics();
+                        venusBeansPhysics();
 
                         GameObject display0 = canvasPressure.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasPressure.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -127,22 +122,22 @@ public class Script_GrabPhysics : MonoBehaviour
     public void onRelease(GameObject grabbedObject){
   // Unterscheiden zwischen den verschiedenen Objekten
 
-   Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
-        if(mercuryLampRenderer != null)
+   Renderer venusLampRenderer = venusLampObject.GetComponent<Renderer>(); 
+        if(venusLampRenderer != null)
         { 
-            Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+            Material currentvenusLampMaterial = venusLampRenderer.sharedMaterial;
             
-            if(currentMercuryLampMaterial == greenLampMaterial)
+            if(currentvenusLampMaterial == greenLampMaterial)
             {
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        MercuryWaterPhysicsRelease();
+                        venusWaterPhysicsRelease();
                     }
                     else if (grabbedObject == canOfBeans)
                     {
                         // Aktionen für canOfBeans
-                        MercuryBeansPhysicsRelease();
+                        venusBeansPhysicsRelease();
                     }
 
                     //Hier ggf screenlogic? idk
@@ -151,32 +146,41 @@ public class Script_GrabPhysics : MonoBehaviour
         }
     }
 
-    public void MercuryBeansPhysics()
+    public void venusBeansPhysics()
     {
         if (canOfBeans != null)
         {
-
-             Debug.Log($"Current Scale: {canOfBeans.transform.localScale}");
-    canOfBeans.transform.localScale += mercuryCanScale;
-    Debug.Log($"New Scale: {canOfBeans.transform.localScale}");
-
+            canOfBeans.transform.localScale += venusCanScale;
+   
             if (canOfBeansAudio != null)
             {
-                Debug.Log("Sound is playing");
                 canOfBeansAudio.Play();
             }
         }
     }
 
-    public void MercuryWaterPhysics()
+    public void VenusBeansPhysics()
+    {
+        if (canOfBeans != null)
+        {
+            canOfBeans.transform.localScale += venusCanScale;
+   
+            if (canOfBeansAudio != null)
+            {
+                canOfBeansAudio.Play();
+            }
+        }
+    }
+
+    public void venusWaterPhysics()
     {    
-        if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
+        if (canOfWater != null && evaporateWaterMaterial != null && defaultWaterMaterial != null)
         {
             Renderer waterRenderer = canOfWater.GetComponent<Renderer>();
 
             if (waterRenderer != null)
             {
-                waterRenderer.material = newWaterMaterial;
+                waterRenderer.material = evaporateWaterMaterial;
                 if (canOfWaterAudio != null)
                 {
                     Debug.Log("Sound is playing");
@@ -186,18 +190,27 @@ public class Script_GrabPhysics : MonoBehaviour
         }
     }
 
-     public void MercuryBeansPhysicsRelease()
+     public void venusBeansPhysicsRelease()
     {
-        canOfBeans.transform.localScale -= mercuryCanScale;
+        canOfBeans.transform.localScale -= venusCanScale;
         if (canOfBeansAudio != null)
             {
-                Debug.Log("Sound is playing");
-                canOfBeansAudio.Play();
+               canOfBeansAudio.Play();
             }
     }
-     public void MercuryWaterPhysicsRelease()
+
+     public void VenusBeansPhysicsRelease()
+    {
+        canOfBeans.transform.localScale -= venusCanScale;
+        if (canOfBeansAudio != null)
+            {
+               canOfBeansAudio.Play();
+            }
+    }
+
+     public void venusWaterPhysicsRelease()
     {    
-        if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
+        if (canOfWater != null && evaporateWaterMaterial != null && defaultWaterMaterial != null)
         {
             Renderer waterRenderer = canOfWater.GetComponent<Renderer>();
 
@@ -208,8 +221,4 @@ public class Script_GrabPhysics : MonoBehaviour
             }
         }
     }
-
-    
-            
-
 }
