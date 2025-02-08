@@ -102,7 +102,7 @@ public class VenusPhysics : MonoBehaviour
 }
 
 private void ApplyBalloonBuoyancy()
-{
+{ Debug.Log("Balloon Venus");
     if (balloonRb != null)
     {   
         float buoyancyForce = 0f;
@@ -119,8 +119,15 @@ private void ApplyBalloonBuoyancy()
         if (buoyancyForce > 0f)
         {
             Debug.Log("Balloon should fly on Venus");
+            Debug.Log($"Buoyancy Force: {buoyancyForce}");
+            Debug.Log($"airDensityVenus: {airDensityVenus}, balloonVolume: {balloonVolume}, venusGravity: {venusGravity}"); 
+            Debug.Log($"Balloon Mass: {balloonRb.mass}");
+
             balloonRb.AddForce(Vector3.up * buoyancyForce);
         }
+    }
+    else{
+        Debug.Log("Ballon hat kein RB");
     }
 }
 

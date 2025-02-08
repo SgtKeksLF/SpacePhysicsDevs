@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Script_GrabPhysics : MonoBehaviour
 {
-    public GameObject nonEarthPlanetLampObject;
+    public GameObject mercuryLampObject;
     public GameObject earthLampObject;   
     public Material greenLampMaterial;
     //
@@ -15,7 +15,6 @@ public class Script_GrabPhysics : MonoBehaviour
     public GameObject canOfWater;
     //
     private Vector3 mercuryCanScale = new Vector3(+10.0f, +10.0f, +10.0f);
-    private Vector3 venusCanScale = new Vector3(-30.0f, -30.0f, -30.0f);
     public AudioSource canOfBeansAudio; 
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;
@@ -54,7 +53,7 @@ public class Script_GrabPhysics : MonoBehaviour
 
     public void OnGrab(GameObject grabbedObject)
     {
-        Renderer mercuryLampRenderer = nonEarthPlanetLampObject.GetComponent<Renderer>(); 
+        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
         if(mercuryLampRenderer != null)
         { 
             Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
@@ -127,7 +126,7 @@ public class Script_GrabPhysics : MonoBehaviour
     public void onRelease(GameObject grabbedObject){
   // Unterscheiden zwischen den verschiedenen Objekten
 
-   Renderer mercuryLampRenderer = nonEarthPlanetLampObject.GetComponent<Renderer>(); 
+   Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
         if(mercuryLampRenderer != null)
         { 
             Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
@@ -164,19 +163,7 @@ public class Script_GrabPhysics : MonoBehaviour
         }
     }
 
-    public void VenusBeansPhysics()
-    {
-        if (canOfBeans != null)
-        {
-            canOfBeans.transform.localScale += venusCanScale;
    
-            if (canOfBeansAudio != null)
-            {
-                canOfBeansAudio.Play();
-            }
-        }
-    }
-
     public void MercuryWaterPhysics()
     {    
         if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
@@ -198,15 +185,6 @@ public class Script_GrabPhysics : MonoBehaviour
      public void MercuryBeansPhysicsRelease()
     {
         canOfBeans.transform.localScale -= mercuryCanScale;
-        if (canOfBeansAudio != null)
-            {
-               canOfBeansAudio.Play();
-            }
-    }
-
-     public void VenusBeansPhysicsRelease()
-    {
-        canOfBeans.transform.localScale -= venusCanScale;
         if (canOfBeansAudio != null)
             {
                canOfBeansAudio.Play();

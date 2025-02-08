@@ -61,7 +61,7 @@ public class VenusGrabPhysics : MonoBehaviour
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        venusWaterPhysics();
+                        VenusWaterPhysics();
 
                         GameObject display0 = canvasTemperature.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasTemperature.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -75,7 +75,7 @@ public class VenusGrabPhysics : MonoBehaviour
                     else if (grabbedObject == canOfBeans)
                     {
                         // Aktionen für canOfBeans
-                        venusBeansPhysics();
+                        VenusBeansPhysics();
 
                         GameObject display0 = canvasPressure.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasPressure.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -132,12 +132,12 @@ public class VenusGrabPhysics : MonoBehaviour
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        venusWaterPhysicsRelease();
+                        VenusWaterPhysicsRelease();
                     }
                     else if (grabbedObject == canOfBeans)
                     {
                         // Aktionen für canOfBeans
-                        venusBeansPhysicsRelease();
+                        VenusBeansPhysicsRelease();
                     }
 
                     //Hier ggf screenlogic? idk
@@ -146,7 +146,8 @@ public class VenusGrabPhysics : MonoBehaviour
         }
     }
 
-    public void venusBeansPhysics()
+
+    private void VenusBeansPhysics()
     {
         if (canOfBeans != null)
         {
@@ -159,20 +160,7 @@ public class VenusGrabPhysics : MonoBehaviour
         }
     }
 
-    public void VenusBeansPhysics()
-    {
-        if (canOfBeans != null)
-        {
-            canOfBeans.transform.localScale += venusCanScale;
-   
-            if (canOfBeansAudio != null)
-            {
-                canOfBeansAudio.Play();
-            }
-        }
-    }
-
-    public void venusWaterPhysics()
+    private void VenusWaterPhysics()
     {    
         if (canOfWater != null && evaporateWaterMaterial != null && defaultWaterMaterial != null)
         {
@@ -190,7 +178,7 @@ public class VenusGrabPhysics : MonoBehaviour
         }
     }
 
-     public void venusBeansPhysicsRelease()
+     private void VenusBeansPhysicsRelease()
     {
         canOfBeans.transform.localScale -= venusCanScale;
         if (canOfBeansAudio != null)
@@ -199,16 +187,9 @@ public class VenusGrabPhysics : MonoBehaviour
             }
     }
 
-     public void VenusBeansPhysicsRelease()
-    {
-        canOfBeans.transform.localScale -= venusCanScale;
-        if (canOfBeansAudio != null)
-            {
-               canOfBeansAudio.Play();
-            }
-    }
+  
 
-     public void venusWaterPhysicsRelease()
+     public void VenusWaterPhysicsRelease()
     {    
         if (canOfWater != null && evaporateWaterMaterial != null && defaultWaterMaterial != null)
         {

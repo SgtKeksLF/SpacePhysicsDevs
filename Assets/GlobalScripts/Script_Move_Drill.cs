@@ -15,7 +15,7 @@ public class Script_Move_Drill : MonoBehaviour
     {
         if (objectToMove != null)
         {
-            targetPosition = objectToMove.transform.position + Vector3.right * distance;
+            targetPosition = objectToMove.transform.position + Vector3.forward * distance;
         }
     }
 
