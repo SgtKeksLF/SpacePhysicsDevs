@@ -42,6 +42,7 @@ public class ScriptEarthPhysics : MonoBehaviour
     {
         
         ApplyBalloonBuoyancy();
+        
     }
     public void OnButtonPressed()
     {

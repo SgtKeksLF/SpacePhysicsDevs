@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarsPhysics : MonoBehaviour
+public class PhysicsSaturn : MonoBehaviour
 {
     public Material redLampMaterial;
     public Material greenLampMaterial;
-    public GameObject marsLampObject;
+    public GameObject saturnLampObject;
     public GameObject earthLampObject;   
 
     private float balloonVolume = 0.5f; 
@@ -14,9 +14,8 @@ public class MarsPhysics : MonoBehaviour
     private Rigidbody balloonRb;
 
     // Die folgenden Variablen sind für die Physik selbst
-    private float marsGravity = -3.72f;  // Schwerkraft in m/s²  
-    private float airDensityMars = 0.02f;  // Luftdichte in kg/m³ 
-    private float atmosphereAddition = 0.8f; 
+    private float saturnGravity = -10.44f;
+    private float airDensitySaturn = 0.006f; 
 
 
 
@@ -53,27 +52,27 @@ void Awake()
 
       public void OnButtonPressed()
     {
-       marsPhysicsChange();
+       saturnPhysicsChange();
         
     }
 
-    public void marsPhysicsChange()
+    public void saturnPhysicsChange()
     {
-        Renderer marsLampRenderer = marsLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
+        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
         Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();     // Renderer des Erde-Objekts
-        if(marsLampRenderer != null && earthLampRenderer != null)
+        if(saturnLampRenderer != null && earthLampRenderer != null)
         { 
             Debug.Log("Render not null");
-            Material currentmarsLampMaterial = marsLampRenderer.sharedMaterial;
+            Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
             
           
-            if(currentmarsLampMaterial == redLampMaterial)
+            if(currentsaturnLampMaterial == redLampMaterial)
             {
                 earthLampRenderer.material = redLampMaterial;
-                Debug.Log("mars physics");
-                Physics.gravity = new Vector3(0, marsGravity, 1);  // Merkur-Schwerkraft
+                Debug.Log("saturn physics");
+                Physics.gravity = new Vector3(0, saturnGravity, 1);  // Merkur-Schwerkraft
                     // Anwenden der spezifischen Physik für Objekte
-                marsLampRenderer.material = greenLampMaterial;
+                saturnLampRenderer.material = greenLampMaterial;
 
                 // **DisplayEarth -> Display0 auf allen relevanten Canvases**
                 UpdateCanvasDisplay(canvasGravity);
@@ -112,22 +111,18 @@ private void ApplyBalloonBuoyancy()
     if (balloonRb != null)
     {   
         float buoyancyForce = 0f;
-        Renderer marsLampRenderer = marsLampObject.GetComponent<Renderer>();   
-        Material currentmarsLampMaterial = marsLampRenderer.sharedMaterial;
+        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>();   
+        Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
         
-        // Auftrieb nur auf der mars anwenden
-        if (currentmarsLampMaterial == greenLampMaterial)  // mars
+        // Auftrieb nur auf der saturn anwenden
+        if (currentsaturnLampMaterial == greenLampMaterial)  // saturn
         {
-            buoyancyForce = airDensityMars * balloonVolume * Mathf.Abs(marsGravity);
-            buoyancyForce = buoyancyForce + atmosphereAddition;
+            buoyancyForce = airDensitySaturn * balloonVolume * Mathf.Abs(saturnGravity);
         }
 
         // Wenn Auftriebskraft vorhanden, den Ballon anheben
         if (buoyancyForce > 0f)
         {
-            
-
-
             balloonRb.AddForce(Vector3.up * buoyancyForce);
         }
     }

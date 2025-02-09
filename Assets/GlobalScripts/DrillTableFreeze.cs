@@ -9,10 +9,8 @@ public class DrillTableFreeze : MonoBehaviour
 {
     // Überprüfe, ob das kollidierende Objekt den Tag "Drill" hat
     if (other.CompareTag("Drill"))
-    {
-        // Überprüfe, ob currentProbe im Collider ist
-        if (drill != null && other.bounds.Contains(drill.transform.position))
-        {
+    {Debug.Log("Drill im Ding");
+       
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -20,6 +18,20 @@ public class DrillTableFreeze : MonoBehaviour
             }
 
             drill.transform.position = transform.position;
+       
+    }
+}
+private void OnTriggerExit(Collider other)
+{
+    // Überprüfe, ob das kollidierende Objekt den Tag "Drill" hat
+    if (other.CompareTag("Drill"))
+    {
+        Debug.Log("Drill hat das Ding verlassen");
+
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.None; // Hebt alle Einschränkungen auf
         }
     }
 }

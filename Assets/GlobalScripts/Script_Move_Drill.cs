@@ -11,8 +11,10 @@ public class Script_Move_Drill : MonoBehaviour
 
     private Vector3 startPosition;
     private Vector3 targetPosition;
+    private Vector3 teleportStartPosition;
+    private Quaternion teleportStartRotation;
     private bool moving = false;
-    private bool isAtTarget = false;
+    private Rigidbody objectRigidbody;
 
     void Start()
     {
@@ -21,18 +23,20 @@ public class Script_Move_Drill : MonoBehaviour
             startPosition = objectToMove.transform.position;
             targetPosition = startPosition + Vector3.forward * distance;
         }
+
+        if (objectToTeleport != null)
+        {
+           
+            teleportStartRotation = objectToTeleport.transform.rotation;
+        }
     }
 
     public void MoveToTarget()
     {
         if (!moving && objectToMove != null)
         {
-            if (objectToTeleport != null)
-            {
-                objectToTeleport.transform.position = objectToTeleportTo.transform.position;
-            }
+            TeleportObject();
             StartCoroutine(MoveCoroutine(targetPosition));
-            isAtTarget = true;
         }
     }
 
@@ -40,12 +44,21 @@ public class Script_Move_Drill : MonoBehaviour
     {
         if (!moving && objectToMove != null)
         {
-            if (objectToTeleport != null)
-            {
-                objectToTeleport.transform.position = objectToTeleportTo.transform.position;
-            }
+            TeleportObject();
             StartCoroutine(MoveCoroutine(startPosition));
-            isAtTarget = false;
+        }
+    }
+
+    private void TeleportObject()
+    {
+        if (objectToTeleport != null)
+        {
+            objectToTeleport.transform.position = objectToTeleportTo.transform.position;
+            objectToTeleport.transform.rotation = teleportStartRotation;
+        }
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.detectCollisions = false;
         }
     }
 
@@ -65,5 +78,10 @@ public class Script_Move_Drill : MonoBehaviour
 
         objectToMove.transform.position = destination;
         moving = false;
+
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.detectCollisions = true;
+        }
     }
 }

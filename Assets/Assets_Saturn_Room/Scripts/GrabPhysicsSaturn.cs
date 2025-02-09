@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GrabPhysicsMercury : MonoBehaviour
+public class GrabPhysicsSaturn : MonoBehaviour
 {
-    public GameObject mercuryLampObject;
+    public GameObject saturnLampObject;
     public GameObject earthLampObject;   
     public Material greenLampMaterial;
     //
@@ -14,10 +14,9 @@ public class GrabPhysicsMercury : MonoBehaviour
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 mercuryCanScale = new Vector3(+10.0f, +10.0f, +10.0f);
-    public AudioSource canOfBeansAudio; 
-    private AudioSource canOfWaterAudio;
-    public Material newWaterMaterial;
+
+    public AudioSource freezeOfWaterAudio;
+    public Material freezingWaterMaterial;
     public Material defaultWaterMaterial;
     // 
     public GameObject canvasGravity;
@@ -28,44 +27,27 @@ public class GrabPhysicsMercury : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource[] audioSources = canOfWater.GetComponents<AudioSource>();
-
-        if (audioSources.Length > 1)
-        {
-            canOfWaterAudio = audioSources[1]; 
-        }
+      
 
       
      
     }
 
-  
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
-
-
     public void OnGrab(GameObject grabbedObject)
     {
-        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
-        if(mercuryLampRenderer != null)
+        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>(); 
+        if(saturnLampRenderer != null)
         { 
-            Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+            Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
             
-            if(currentMercuryLampMaterial == greenLampMaterial)
+            if(currentsaturnLampMaterial == greenLampMaterial)
             {
                 
                     // Unterscheiden zwischen den verschiedenen Objekten
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        MercuryWaterPhysics();
+                        SaturnWaterPhysics();
 
                         GameObject display0 = canvasTemperature.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasTemperature.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -78,8 +60,7 @@ public class GrabPhysicsMercury : MonoBehaviour
                     }
                     else if (grabbedObject == canOfBeans)
                     {
-                        // Aktionen für canOfBeans
-                        MercuryBeansPhysics();
+                        
 
                         GameObject display0 = canvasPressure.transform.Find("Canvas/Displays/Display0")?.gameObject;
                         GameObject display1 = canvasPressure.transform.Find("Canvas/Displays/Display1")?.gameObject;
@@ -126,81 +107,50 @@ public class GrabPhysicsMercury : MonoBehaviour
     public void onRelease(GameObject grabbedObject){
   // Unterscheiden zwischen den verschiedenen Objekten
 
-   Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
-        if(mercuryLampRenderer != null)
+   Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>(); 
+        if(saturnLampRenderer != null)
         { 
-            Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+            Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
             
-            if(currentMercuryLampMaterial == greenLampMaterial)
+            if(currentsaturnLampMaterial == greenLampMaterial)
             {
                     if (grabbedObject == canOfWater)
                     {
                         // Aktionen für canOfWater
-                        MercuryWaterPhysicsRelease();
+                        SaturnWaterPhysicsRelease();
                     }
-                    else if (grabbedObject == canOfBeans)
-                    {
-                        // Aktionen für canOfBeans
-                        MercuryBeansPhysicsRelease();
-                    }
-
-                    //Hier ggf screenlogic? idk
-
             }
         }
     }
-
-    public void MercuryBeansPhysics()
-    {
-        if (canOfBeans != null)
-        {
-            canOfBeans.transform.localScale += mercuryCanScale;
    
-            if (canOfBeansAudio != null)
-            {
-                canOfBeansAudio.Play();
-            }
-        }
-    }
-
-   
-    public void MercuryWaterPhysics()
+    public void SaturnWaterPhysics()
     {    
-        if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
+        if (canOfWater != null &freezingWaterMaterial != null && defaultWaterMaterial != null)
         {
             Renderer waterRenderer = canOfWater.GetComponent<Renderer>();
 
             if (waterRenderer != null)
             {
-                waterRenderer.material = newWaterMaterial;
-                if (canOfWaterAudio != null)
+                waterRenderer.material = freezingWaterMaterial;
+                if (freezeOfWaterAudio != null)
                 {
                     Debug.Log("Sound is playing");
-                    canOfWaterAudio.Play();
+                    freezeOfWaterAudio.Play();
                 }
             }
         }
     }
 
-     public void MercuryBeansPhysicsRelease()
-    {
-        canOfBeans.transform.localScale -= mercuryCanScale;
-        if (canOfBeansAudio != null)
-            {
-               canOfBeansAudio.Play();
-            }
-    }
-
-     public void MercuryWaterPhysicsRelease()
+     public void SaturnWaterPhysicsRelease()
     {    
-        if (canOfWater != null && newWaterMaterial != null && defaultWaterMaterial != null)
+        if (canOfWater != null &freezingWaterMaterial != null && defaultWaterMaterial != null)
         {
             Renderer waterRenderer = canOfWater.GetComponent<Renderer>();
 
             if (waterRenderer != null)
             {
                     waterRenderer.material = defaultWaterMaterial;
-                    canOfWaterAudio.Stop();
+                    freezeOfWaterAudio.Stop();
             }
         }
     }
