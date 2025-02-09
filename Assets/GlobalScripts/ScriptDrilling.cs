@@ -80,8 +80,10 @@ public class ScriptDrilling : MonoBehaviour
 
     public GameObject sample;
     public GameObject spawnPointObject;
+
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource audioSource;
+ 
 
     private IEnumerator StartDrilling()
     {
@@ -95,8 +97,8 @@ public class ScriptDrilling : MonoBehaviour
 
 
     private void particleTrigger(){
-        Vector3 particleSpawnPoint = new Vector3(-0.708f, 1.165f, 12.759f);
-        ParticleSystem particlePlay = Instantiate(drillingParticleSystem, particleSpawnPoint, newParticleRotation);
+        Vector3 targetPosition = particleSpawnTargetObject.transform.position;
+        ParticleSystem particlePlay = Instantiate(drillingParticleSystem, targetPosition, newParticleRotation);
         particlePlay.gameObject.SetActive(true);
         particlePlay.Play();
         

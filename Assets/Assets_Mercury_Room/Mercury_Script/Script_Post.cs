@@ -5,7 +5,7 @@ using UnityEngine;
 public class Script_Post : MonoBehaviour
 {
 
-     public GameObject currentProbe; // Wird im Inspector zugewiesen
+    public GameObject currentProbe; // Wird im Inspector zugewiesen
     public GameObject targetObject;
     public float moveSpeed = 0.5f;
 
