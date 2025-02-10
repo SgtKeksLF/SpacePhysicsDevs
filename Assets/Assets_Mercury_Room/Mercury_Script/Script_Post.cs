@@ -1,13 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Script_Post : MonoBehaviour
 {
-
     public GameObject currentProbe; // Wird im Inspector zugewiesen
     public GameObject targetObject;
+    public GameObject quiz5; // Referenz zu "Quiz5"
     public float moveSpeed = 0.5f;
+    private bool hasTriggered = false; // Stellt sicher, dass die Methode nur einmal ausgelöst wird
+
+    private void Update()
+    {
+        // Prüft, ob Quiz5 aktiviert wurde und ob OnSolutionCorrect noch nicht ausgelöst wurde
+        if (quiz5 != null && quiz5.activeInHierarchy && !hasTriggered)
+        {
+            hasTriggered = true; // Verhindert mehrfaches Auslösen
+            OnSolutionCorrect();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,9 +34,8 @@ public class Script_Post : MonoBehaviour
         }
     }
 
-    public void OnSolutionCorrect()
+    private void OnSolutionCorrect()
     {
-        // Hier wird nicht mehr nach currentProbe gesucht, da es im Inspector zugewiesen wird.
         if (currentProbe != null && targetObject != null)
         {
             StartCoroutine(MoveProbeCoroutine(targetObject.transform.position));
@@ -60,7 +69,9 @@ public class Script_Post : MonoBehaviour
 
         currentProbe.transform.position = endPos; // Endgültige Position setzen
         Rigidbody rb = currentProbe.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.None;
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
     }
 }
-    

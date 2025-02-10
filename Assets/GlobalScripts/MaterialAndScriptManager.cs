@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class MaterialAndScriptManager : MonoBehaviour
 {
-    public Material newMaterial; // Das Material, auf das gewechselt wird
-    public MonoBehaviour targetScript; // Das Script, das deaktiviert/aktiviert werden soll
+    public Material newMaterial; // Neues Material (wird direkt gesetzt)
+    public MonoBehaviour targetScript; // Skript, das deaktiviert werden soll
+    public GameObject quiz5; // Referenz zum GameObject "Quiz5"
 
     private Material originalMaterial;
     private Renderer objectRenderer;
@@ -11,13 +12,26 @@ public class MaterialAndScriptManager : MonoBehaviour
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
+
         if (objectRenderer != null)
         {
             originalMaterial = objectRenderer.material;
         }
+
+        // Direkt beim Start das Material wechseln und das Skript deaktivieren
+        ChangeMaterialAndDisableScript();
     }
 
-    public void ChangeMaterialAndDisableScript()
+    void Update()
+    {
+        // Sobald "Quiz5" aktiv wird, wird das Material und das Skript wiederhergestellt
+        if (quiz5 != null && quiz5.activeInHierarchy)
+        {
+            RestoreMaterialAndEnableScript();
+        }
+    }
+
+    private void ChangeMaterialAndDisableScript()
     {
         if (objectRenderer != null && newMaterial != null)
         {
@@ -30,7 +44,7 @@ public class MaterialAndScriptManager : MonoBehaviour
         }
     }
 
-    public void RestoreMaterialAndEnableScript()
+    private void RestoreMaterialAndEnableScript()
     {
         if (objectRenderer != null && originalMaterial != null)
         {
@@ -41,5 +55,8 @@ public class MaterialAndScriptManager : MonoBehaviour
         {
             targetScript.enabled = true;
         }
+
+        // Da sich der Zustand nicht mehr ändern muss, deaktivieren wir dieses Skript
+        enabled = false;
     }
 }
