@@ -133,11 +133,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 65eb6502f71b54cf5b4313eb33f5d1b9, type: 3}
+      objectReference: {fileID: 21300000, guid: 3ce33f18bc0be49d2a9ddb8d838d95e6, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8c0d543c176e74f69be9cc2865d6ae91, type: 3}
+      objectReference: {fileID: 21300000, guid: e9fc21b921e734924932e0d4a427b645, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 24125241dc88345a5a3168b344281179, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Druck Saturn
+      value: CanvasPressureSaturn
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -203,6 +203,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &558134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 558133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9733574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8458383524747440796, guid: f39a9c1ce5eca469b94778b37614569a, type: 3}
@@ -497,18 +502,18 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2fa9a2fbaa674420fb987b0632df4ca4, type: 3}
+      objectReference: {fileID: 21300000, guid: b6908b0a2222944a88c23588702a6151, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3fca4927849c44b76b9cbba15db2f645, type: 3}
+      objectReference: {fileID: 21300000, guid: 9da09cbd6e4944276bf3cd699ec5e963, type: 3}
     - target: {fileID: 5195562859693150635, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4353ba9d58f3d4e3ebdb218a6dbdf2cc, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Temp Saturn
+      value: CanvasTemperatureSaturn
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -563,6 +568,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &43227834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 43227833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &48007000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8458383524747440796, guid: 799db6237182b4eff842557299cc6924, type: 3}
@@ -1062,10 +1072,10 @@ MonoBehaviour:
   canOfBeansAudio: {fileID: 0}
   evaporateWaterMaterial: {fileID: 2100000, guid: 4fca17a2d7318c2468b3bf4faf2b7e25, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 593182041}
+  canvasPressure: {fileID: 770343225}
+  canvasAtmosphere: {fileID: 127517145}
+  canvasTemperature: {fileID: 1514243178}
 --- !u!4 &119770152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -1077,16 +1087,16 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 620758140}
+    m_TransformParent: {fileID: 705804602}
     m_Modifications:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1446f40f723e47b192200f8b69b8af9, type: 3}
+      objectReference: {fileID: 21300000, guid: 5a1e9104368b04ebab9d1c17070cb864, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ef80cc4b16baa4f1fa584716dfd09731, type: 3}
+      objectReference: {fileID: 21300000, guid: 94358c6d4ca254ea8913d9bcd768fb6e, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1097,27 +1107,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e9016b81b9dde4d5c9501d855f7b7e67, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Atmos V
+      value: CanvasAtmosphereVenus
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.72006226
+      value: 0.7200622
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.019542212
+      value: 0.01954221
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.338259
+      value: 0.1385374
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0.35789287
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.855
+      value: -1.1114597
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1125,7 +1135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1133,7 +1143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1152,6 +1162,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &127517145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 127517144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &129358979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2805,10 +2820,10 @@ MonoBehaviour:
   ball: {fileID: 287163237}
   canOfWater: {fileID: 1624176001}
   canOfBeansAudio: {fileID: 0}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 1961408678}
+  canvasPressure: {fileID: 1707209888}
+  canvasAtmosphere: {fileID: 1919358944}
+  canvasTemperature: {fileID: 518505195}
 --- !u!1001 &298876328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3327,11 +3342,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1446f40f723e47b192200f8b69b8af9, type: 3}
+      objectReference: {fileID: 21300000, guid: 6adc4c01d8cf648e8b395b34a685ad5d, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ef80cc4b16baa4f1fa584716dfd09731, type: 3}
+      objectReference: {fileID: 21300000, guid: a719a16ca846246b0ba581192352f3c0, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3342,7 +3357,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e9016b81b9dde4d5c9501d855f7b7e67, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Atmos Saturn
+      value: CanvasAtmosphereSaturn
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -3397,6 +3412,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &369951962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 369951961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &387356726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4344,18 +4364,18 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2fa9a2fbaa674420fb987b0632df4ca4, type: 3}
+      objectReference: {fileID: 21300000, guid: cdbacae8d8c224f72bf4827ff18ab71e, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3fca4927849c44b76b9cbba15db2f645, type: 3}
+      objectReference: {fileID: 21300000, guid: 18bf8343bd34d4d6596b76a5f882cd74, type: 3}
     - target: {fileID: 5195562859693150635, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4353ba9d58f3d4e3ebdb218a6dbdf2cc, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Temp V Mars
+      value: CanvasTemperatureMars
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -4410,6 +4430,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &518505195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 518505194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &527982478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5228,16 +5253,16 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 620758140}
+    m_TransformParent: {fileID: 705804602}
     m_Modifications:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ce0ebe27f9fb847adac28140aad05b26, type: 3}
+      objectReference: {fileID: 21300000, guid: 5febf5574face4e8893e731076192d7f, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 77765c70c00bd47d38eda0e8e2deebba, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b99efce1c0cf4baaafa3a673a7db476, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5272,27 +5297,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fe73e67a11a814f92af43e1e1e6a8533, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Grav V
+      value: CanvasGravityVenus
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.72006226
+      value: 0.7200622
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.019542212
+      value: 0.01954221
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.305904
+      value: 0.1061821
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0.35789287
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.573
+      value: -3.3934593
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5300,7 +5325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5308,7 +5333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5327,6 +5352,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &593182041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 593182040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &593699411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8800686367561646715, guid: e463c35d204b5d649901eaa52da4387a, type: 3}
@@ -5697,22 +5727,19 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 865808166}
-  - {fileID: 1911921688}
-  - {fileID: 391760421}
-  - {fileID: 508479877}
   - {fileID: 48007000}
-  - {fileID: 1329343425}
   - {fileID: 1129416854}
   - {fileID: 948147296}
   - {fileID: 38123921}
   - {fileID: 810939051}
+  - {fileID: 705804602}
+  - {fileID: 2100279524}
   - {fileID: 1206970472}
   - {fileID: 1931870061}
   - {fileID: 257348517}
   - {fileID: 1890090575}
   - {fileID: 1880746213}
   - {fileID: 748399752}
-  - {fileID: 2100279524}
   - {fileID: 1930143003}
   - {fileID: 857727534}
   - {fileID: 147297038}
@@ -5729,11 +5756,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ce0ebe27f9fb847adac28140aad05b26, type: 3}
+      objectReference: {fileID: 21300000, guid: 059aa7c0335354c618cc32a2201d41d6, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 77765c70c00bd47d38eda0e8e2deebba, type: 3}
+      objectReference: {fileID: 21300000, guid: bd4ea77370f47442d9051445b12f62e0, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5768,7 +5795,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fe73e67a11a814f92af43e1e1e6a8533, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Grav Saturn
+      value: CanvasGravitySaturn
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -5823,6 +5850,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &624783011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 624783010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641641234
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,6 +6280,41 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8508483833005123177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &705804601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705804602}
+  m_Layer: 0
+  m_Name: ExperimentCanvasesVenus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705804602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705804601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.199722, y: 0.8921071, z: 12.966459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1911921688}
+  - {fileID: 391760421}
+  - {fileID: 508479877}
+  - {fileID: 1329343425}
+  m_Father: {fileID: 620758140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &706159282
 GameObject:
@@ -6811,16 +6878,16 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 620758140}
+    m_TransformParent: {fileID: 705804602}
     m_Modifications:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 65eb6502f71b54cf5b4313eb33f5d1b9, type: 3}
+      objectReference: {fileID: 21300000, guid: 1a5292c66577542f083fd0298c0cab9f, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8c0d543c176e74f69be9cc2865d6ae91, type: 3}
+      objectReference: {fileID: 21300000, guid: 77a74843e5bcb494db2e4e1a24a7c0a5, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6831,27 +6898,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 24125241dc88345a5a3168b344281179, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Druck V
+      value: CanvasPressureVenus
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.72006226
+      value: 0.7200622
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.019542212
+      value: 0.01954221
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3539414
+      value: 0.15421963
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0.35789287
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.976
+      value: 0.009540558
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6859,7 +6926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6867,7 +6934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6886,6 +6953,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &770343225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 770343224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &772251947 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6457461629732622366, guid: d5ff1c580841aae4b862d2735fc4c7e7, type: 3}
@@ -7808,10 +7880,10 @@ MonoBehaviour:
   freezeOfWaterAudio: {fileID: 0}
   freezingWaterMaterial: {fileID: 2100000, guid: de7595dcda7da9a49a7f35d62cdaea93, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 624783011}
+  canvasPressure: {fileID: 558134}
+  canvasAtmosphere: {fileID: 369951962}
+  canvasTemperature: {fileID: 43227834}
 --- !u!1 &893622476
 GameObject:
   m_ObjectHideFlags: 0
@@ -8441,10 +8513,10 @@ MonoBehaviour:
   freezeOfWaterAudio: {fileID: 0}
   freezingWaterMaterial: {fileID: 2100000, guid: de7595dcda7da9a49a7f35d62cdaea93, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 624783011}
+  canvasPressure: {fileID: 558134}
+  canvasAtmosphere: {fileID: 369951962}
+  canvasTemperature: {fileID: 43227834}
 --- !u!1 &970166317
 GameObject:
   m_ObjectHideFlags: 0
@@ -11523,10 +11595,10 @@ MonoBehaviour:
   canOfBeansAudio: {fileID: 0}
   evaporateWaterMaterial: {fileID: 2100000, guid: 4fca17a2d7318c2468b3bf4faf2b7e25, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 593182041}
+  canvasPressure: {fileID: 770343225}
+  canvasAtmosphere: {fileID: 127517145}
+  canvasTemperature: {fileID: 1514243178}
 --- !u!4 &1274648593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6582402269808211977, guid: 4184b12d7ec32264d9e4c07f72a1ec61, type: 3}
@@ -12606,10 +12678,10 @@ MonoBehaviour:
   canOfBeansAudio: {fileID: 0}
   evaporateWaterMaterial: {fileID: 2100000, guid: 4fca17a2d7318c2468b3bf4faf2b7e25, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 593182041}
+  canvasPressure: {fileID: 770343225}
+  canvasAtmosphere: {fileID: 127517145}
+  canvasTemperature: {fileID: 1514243178}
 --- !u!4 &1377572842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8420605793309649008, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
@@ -13353,43 +13425,43 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 620758140}
+    m_TransformParent: {fileID: 705804602}
     m_Modifications:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2fa9a2fbaa674420fb987b0632df4ca4, type: 3}
+      objectReference: {fileID: 21300000, guid: fabfb5393b420456d82deddcbf6b9557, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3fca4927849c44b76b9cbba15db2f645, type: 3}
+      objectReference: {fileID: 21300000, guid: a7e9e06ac361943a7a8c396f3b3d9d7d, type: 3}
     - target: {fileID: 5195562859693150635, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4353ba9d58f3d4e3ebdb218a6dbdf2cc, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Temp V
+      value: CanvasTemperatureVenus
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.72006226
+      value: 0.7200622
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.019542212
+      value: 0.01954221
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.322429
+      value: 0.12270737
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0.35789287
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.81
+      value: -2.1564589
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13397,7 +13469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13405,7 +13477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13424,6 +13496,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &1514243178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 1514243177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521678957
 GameObject:
   m_ObjectHideFlags: 0
@@ -13766,10 +13843,10 @@ MonoBehaviour:
   canOfBeansAudio: {fileID: 0}
   evaporateWaterMaterial: {fileID: 2100000, guid: 4fca17a2d7318c2468b3bf4faf2b7e25, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 593182041}
+  canvasPressure: {fileID: 770343225}
+  canvasAtmosphere: {fileID: 127517145}
+  canvasTemperature: {fileID: 1514243178}
 --- !u!4 &1535586157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8578528925417329752, guid: 68e58c79cad8c2a4f98090ba8a461142, type: 3}
@@ -14323,10 +14400,10 @@ MonoBehaviour:
   ball: {fileID: 287163237}
   canOfWater: {fileID: 1624176001}
   canOfBeansAudio: {fileID: 0}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 1961408678}
+  canvasPressure: {fileID: 1707209888}
+  canvasAtmosphere: {fileID: 1919358944}
+  canvasTemperature: {fileID: 518505195}
 --- !u!4 &1624729398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
@@ -14865,10 +14942,10 @@ MonoBehaviour:
   freezeOfWaterAudio: {fileID: 0}
   freezingWaterMaterial: {fileID: 2100000, guid: de7595dcda7da9a49a7f35d62cdaea93, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 624783011}
+  canvasPressure: {fileID: 558134}
+  canvasAtmosphere: {fileID: 369951962}
+  canvasTemperature: {fileID: 43227834}
 --- !u!1001 &1707209887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14880,11 +14957,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 65eb6502f71b54cf5b4313eb33f5d1b9, type: 3}
+      objectReference: {fileID: 21300000, guid: daae532abeb10414c9483af519c59b2a, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8c0d543c176e74f69be9cc2865d6ae91, type: 3}
+      objectReference: {fileID: 21300000, guid: 549ed36f3034f49bfb42df9f14643b64, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -14895,7 +14972,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 24125241dc88345a5a3168b344281179, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Druck V Mars
+      value: CanvasPressureMars
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -14950,6 +15027,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &1707209888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 1707209887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1729835037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16559,11 +16641,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1446f40f723e47b192200f8b69b8af9, type: 3}
+      objectReference: {fileID: 21300000, guid: a63f292062d494329bc13057a35f18e4, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ef80cc4b16baa4f1fa584716dfd09731, type: 3}
+      objectReference: {fileID: 21300000, guid: c0bf881aa337d4ae5b7a096764448e15, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16574,7 +16656,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e9016b81b9dde4d5c9501d855f7b7e67, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Atmos V Mars
+      value: CanvasAtmosphereMars
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -16629,6 +16711,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &1919358944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 1919358943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1930143002 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4580464123721393542, guid: e463c35d204b5d649901eaa52da4387a, type: 3}
@@ -16676,10 +16763,10 @@ MonoBehaviour:
   freezeOfWaterAudio: {fileID: 0}
   freezingWaterMaterial: {fileID: 2100000, guid: de7595dcda7da9a49a7f35d62cdaea93, type: 2}
   defaultWaterMaterial: {fileID: 2100000, guid: d0a21739cf3e77b41a5be7323411d822, type: 2}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 624783011}
+  canvasPressure: {fileID: 558134}
+  canvasAtmosphere: {fileID: 369951962}
+  canvasTemperature: {fileID: 43227834}
 --- !u!1 &1944987997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6457461629732622366, guid: d5ff1c580841aae4b862d2735fc4c7e7, type: 3}
@@ -16999,11 +17086,11 @@ PrefabInstance:
     - target: {fileID: 108893574626065137, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ce0ebe27f9fb847adac28140aad05b26, type: 3}
+      objectReference: {fileID: 21300000, guid: ec855c3a8d238431ab39663a3a672f91, type: 3}
     - target: {fileID: 756665780639900396, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 77765c70c00bd47d38eda0e8e2deebba, type: 3}
+      objectReference: {fileID: 21300000, guid: 529834b804b8d46fdb645f017be59514, type: 3}
     - target: {fileID: 2179195184874674043, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17038,7 +17125,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fe73e67a11a814f92af43e1e1e6a8533, type: 3}
     - target: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_Name
-      value: PrefabSmallCanvas_Grav V Mars
+      value: CanvasGravityMars
       objectReference: {fileID: 0}
     - target: {fileID: 8458383524747440796, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
       propertyPath: m_LocalScale.x
@@ -17093,6 +17180,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+--- !u!1 &1961408678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707899195711258036, guid: 6ca346da129534319accf2ebb4fa8842, type: 3}
+  m_PrefabInstance: {fileID: 1961408677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1985872937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 504305200185275792, guid: 3eb9aec9293f57c41a208e73ebfa41a1, type: 3}
@@ -17358,10 +17450,10 @@ MonoBehaviour:
   ball: {fileID: 287163237}
   canOfWater: {fileID: 1624176001}
   canOfBeansAudio: {fileID: 0}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 1961408678}
+  canvasPressure: {fileID: 1707209888}
+  canvasAtmosphere: {fileID: 1919358944}
+  canvasTemperature: {fileID: 518505195}
 --- !u!1001 &2057409546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17639,10 +17731,10 @@ MonoBehaviour:
   ball: {fileID: 287163237}
   canOfWater: {fileID: 1624176001}
   canOfBeansAudio: {fileID: 0}
-  canvasGravity: {fileID: 0}
-  canvasPressure: {fileID: 0}
-  canvasAtmosphere: {fileID: 0}
-  canvasTemperature: {fileID: 0}
+  canvasGravity: {fileID: 1961408678}
+  canvasPressure: {fileID: 1707209888}
+  canvasAtmosphere: {fileID: 1919358944}
+  canvasTemperature: {fileID: 518505195}
 --- !u!1 &2146742054 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 871699c44ddcdfd429737a9289a09448, type: 3}
