@@ -45,7 +45,7 @@ public class Script_ObjectInShelf : MonoBehaviour
         {
             if (isInShelf)  // Nur ändern, wenn es im Regal war
             {
-                 UnfreezeObject();  // Position und Rotation freigeben
+                UnfreezeObject();  // Position und Rotation freigeben
                 rb.useGravity = true;  // Schwerkraft aktivieren
                 isInShelf = false;
                 Debug.Log(gameObject.name + " ist jetzt nicht mehr im Regal.");
