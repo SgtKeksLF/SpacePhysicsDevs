@@ -5,38 +5,42 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class SlotChecker : MonoBehaviour
 {
-    [SerializeField] private string correctTag; // Tag für die Kugel, die zu diesem Slot gehört
-    [SerializeField] private Color greenColor = Color.green; // Farbe für richtig
-    [SerializeField] private Color redColor = Color.red; // Farbe für falsch
+    [SerializeField] private string correctTag; 
+    [SerializeField] private Material greenMaterial; // Material für die grüne Lampe
+    [SerializeField] private Material redMaterial;   // Material für die rote Lampe
+    [SerializeField] private Renderer lampRenderer; // Lampe wird jetzt im Inspector zugewiesen
 
-    private Renderer lampRenderer; // Renderer der kleinen Lampe
-    private bool isCorrect = false; // Status, ob die Kugel richtig ist
+    private bool isCorrect = false; 
 
     private void Awake()
     {
-        // Sucht den Renderer der kleinen Lampe im Kind-Objekt
-        lampRenderer = GetComponentInChildren<Renderer>();
+        // Sicherstellen, dass eine Lampe zugewiesen wurde
         if (lampRenderer == null)
         {
-            Debug.LogError($"Kein Renderer für die Lampe gefunden in {gameObject.name}. Überprüfe, ob die Lampe ein Kind dieses Slots ist.");
+            Debug.LogError($"Kein Renderer für die Lampe zugewiesen in {gameObject.name}! Bitte im Inspector setzen.");
         }
 
-        // Setze die Standardfarbe der Lampe auf rot
-        lampRenderer.material.color = redColor;
+        // Standardmaterial der Lampe: rot
+        if (lampRenderer != null && redMaterial != null)
+        {
+            lampRenderer.material = redMaterial;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (lampRenderer == null) return;
+
         if (other.CompareTag(correctTag))
         {
-            // Richtige Kugel
-            lampRenderer.material.color = greenColor;
+            // Richtige Kugel -> grünes Material
+            lampRenderer.material = greenMaterial;
             isCorrect = true;
         }
         else
         {
-            // Falsche Kugel
-            lampRenderer.material.color = redColor;
+            // Falsche Kugel -> rotes Material
+            lampRenderer.material = redMaterial;
             isCorrect = false;
         }
         PuzzleManager.Instance.CheckWinCondition();
@@ -44,10 +48,12 @@ public class SlotChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (lampRenderer == null) return;
+
         if (other.CompareTag(correctTag))
         {
-            // Zurücksetzen auf rot, wenn die korrekte Kugel entfernt wird
-            lampRenderer.material.color = redColor;
+            // Wenn die richtige Kugel entfernt wird -> wieder rotes Material
+            lampRenderer.material = redMaterial;
             isCorrect = false;
         }
         PuzzleManager.Instance.CheckWinCondition();
