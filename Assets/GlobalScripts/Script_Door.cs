@@ -8,6 +8,10 @@ public class Script_Door : MonoBehaviour
     public float moveSpeed = 2f;
     public float autoCloseDelay = 5f; // Zeit bis zum automatischen Schließen
 
+    private AudioSource[] audioSources;
+    private AudioSource openSound;
+    private AudioSource closeSound;
+
     private bool isMoving = false;
     private bool isOpen = false;
     private Vector3 startPos;
@@ -19,6 +23,17 @@ public class Script_Door : MonoBehaviour
         {
             startPos = door.transform.position;
             targetPos = startPos + Vector3.up * moveDistance;
+            
+            audioSources = door.GetComponents<AudioSource>();
+            if (audioSources.Length >= 2)
+            {
+                openSound = audioSources[0];
+                closeSound = audioSources[1];
+            }
+            else
+            {
+                Debug.LogError("Nicht genügend AudioSources auf der Tür vorhanden!", this);
+            }
         }
         else
         {
@@ -32,6 +47,16 @@ public class Script_Door : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(isOpen ? MoveDoorCoroutine(startPos) : MoveDoorCoroutine(targetPos));
+            
+            if (isOpen && closeSound != null)
+            {
+                closeSound.Play();
+            }
+            else if (!isOpen && openSound != null)
+            {
+                openSound.Play();
+            }
+            
             isOpen = !isOpen;
             
             if (isOpen)

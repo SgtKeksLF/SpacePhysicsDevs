@@ -29,7 +29,13 @@ public class GrabPhysicsSaturn : MonoBehaviour
     {
       
 
-      
+       AudioSource[] audioSources = canOfWater.GetComponents<AudioSource>();
+
+        if (audioSources.Length > 1)
+        {
+            freezeOfWaterAudio = audioSources[1]; 
+        }
+
      
     }
 
