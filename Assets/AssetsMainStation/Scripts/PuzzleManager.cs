@@ -5,8 +5,10 @@ using UnityEngine;
 public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager Instance; // Singleton-Instanz
+
     [SerializeField] private Renderer bigLampRenderer; // Renderer der großen Lampe
-    [SerializeField] private Color winColor = Color.green; // Farbe für gewonnen
+    [SerializeField] private Material winMaterial; // Material für gewonnen (grün)
+    [SerializeField] private Material loseMaterial; // Material für verloren (rot)
 
     private SlotChecker[] slots; // Liste aller Slots
 
@@ -35,15 +37,21 @@ public class PuzzleManager : MonoBehaviour
         {
             if (!slot.IsCorrect())
             {
-                // Wenn ein Slot nicht korrekt ist, große Lampe zurücksetzen
-                bigLampRenderer.material.color = Color.red;
+                // Wenn ein Slot nicht korrekt ist, großes Lampen-Material auf "loseMaterial" setzen
+                if (bigLampRenderer != null && loseMaterial != null)
+                {
+                    bigLampRenderer.material = loseMaterial;
+                }
                 return;
             }
         }
 
-        // Wenn alle Slots korrekt sind
-        bigLampRenderer.material.color = winColor;
+        // Wenn alle Slots korrekt sind, Material auf "winMaterial" setzen
+        if (bigLampRenderer != null && winMaterial != null)
+        {
+            bigLampRenderer.material = winMaterial;
+        }
+
         Debug.Log("Puzzle gelöst!");
     }
 }
-
