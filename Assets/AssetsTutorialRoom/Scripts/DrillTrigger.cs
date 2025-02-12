@@ -12,7 +12,7 @@ public class DrillTrigger : MonoBehaviour
     public GameObject player; // Spieler-Referenz
     public GameObject displayVideo; // Display, das das Video zeigt (RawImage)
     public GameObject display5; // Das neue Display nach dem Video
-    public GameObject display4; // Das neue Display nach dem Video
+    public GameObject display4; // Das neue Display vor dem Video
 
 
     private bool hasTriggered = false; 
@@ -39,7 +39,7 @@ public class DrillTrigger : MonoBehaviour
                 FreezePlayerMovement();
 
                 // Starte die Verzögerung für das Video
-                StartCoroutine(PlayVideoWithDelay(10f)); 
+                StartCoroutine(PlayVideoWithDelay(3f)); 
             }
         }
     }

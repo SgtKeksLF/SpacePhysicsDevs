@@ -10,6 +10,7 @@ public class ScriptDrilling : MonoBehaviour
    
  
     private bool drillInZone = false;
+    public bool hasBeenDrilled = false;
 
  
 
@@ -57,6 +58,7 @@ public class ScriptDrilling : MonoBehaviour
             {
             
             drillInZone = true;
+            hasBeenDrilled = true;
             }
       
        

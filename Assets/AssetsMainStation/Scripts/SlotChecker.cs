@@ -2,61 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class SlotChecker : MonoBehaviour
 {
     [SerializeField] private string correctTag; 
-    [SerializeField] private Material greenMaterial; // Material für die grüne Lampe
-    [SerializeField] private Material redMaterial;   // Material für die rote Lampe
-    [SerializeField] private Renderer lampRenderer; // Lampe wird jetzt im Inspector zugewiesen
+    [SerializeField] private Material winMaterial; // Das grüne Material
+    [SerializeField] private Material loseMaterial; // Das rote Material
+    
+    [SerializeField] private Renderer mainLampRenderer; // Der Renderer für das einzelne Kindobjekt
+    [SerializeField] private Transform neonLightsParent; // Das leere Objekt, das die 3 anderen Objekte enthält
 
     private bool isCorrect = false; 
 
     private void Awake()
     {
-        // Sicherstellen, dass eine Lampe zugewiesen wurde
-        if (lampRenderer == null)
+        // Sicherstellen, dass die Referenzen im Inspector gesetzt wurden
+        if (mainLampRenderer == null)
         {
-            Debug.LogError($"Kein Renderer für die Lampe zugewiesen in {gameObject.name}! Bitte im Inspector setzen.");
+            Debug.LogError($"⚠️ Kein Haupt-Renderer für {gameObject.name} gesetzt!");
         }
 
-        // Standardmaterial der Lampe: rot
-        if (lampRenderer != null && redMaterial != null)
+        if (neonLightsParent == null)
         {
-            lampRenderer.material = redMaterial;
+            Debug.LogError($"⚠️ Kein Parent für zusätzliche Objekte gesetzt bei {gameObject.name}!");
         }
+
+        // Standardmaterial auf Rot setzen
+        SetMaterials(loseMaterial);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (lampRenderer == null) return;
+        Debug.Log($"🔍 Erkanntes Objekt: {other.gameObject.name}, Tag: {other.tag}, Collider: {other}");
 
         if (other.CompareTag(correctTag))
         {
-            // Richtige Kugel -> grünes Material
-            lampRenderer.material = greenMaterial;
+            Debug.Log($"✅ Richtiger Gegenstand erkannt für {gameObject.name}");
+            SetMaterials(winMaterial);
             isCorrect = true;
         }
         else
         {
-            // Falsche Kugel -> rotes Material
-            lampRenderer.material = redMaterial;
+            SetMaterials(loseMaterial);
             isCorrect = false;
         }
+
         PuzzleManager.Instance.CheckWinCondition();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (lampRenderer == null) return;
-
         if (other.CompareTag(correctTag))
         {
-            // Wenn die richtige Kugel entfernt wird -> wieder rotes Material
-            lampRenderer.material = redMaterial;
+            Debug.Log($"🔴 Richtiger Gegenstand entfernt von {gameObject.name}");
+            SetMaterials(loseMaterial);
             isCorrect = false;
         }
+
         PuzzleManager.Instance.CheckWinCondition();
+    }
+
+    private void SetMaterials(Material newMaterial)
+    {
+        // Das eine Kindobjekt ändern
+        if (mainLampRenderer != null)
+        {
+            mainLampRenderer.material = newMaterial;
+        }
+
+        // Die drei Kinder des "Empty"-Objekts ändern
+        if (neonLightsParent != null)
+        {
+            Renderer[] childRenderers = neonLightsParent.GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer rend in childRenderers)
+            {
+                rend.material = newMaterial;
+            }
+        }
     }
 
     public bool IsCorrect()

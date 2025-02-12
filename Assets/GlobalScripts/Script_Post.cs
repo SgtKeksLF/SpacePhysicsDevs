@@ -8,7 +8,7 @@ public class Script_Post : MonoBehaviour
     public GameObject quiz5; // Referenz zu "Quiz5"
     public float moveSpeed = 0.5f;
     private bool hasTriggered = false; // Stellt sicher, dass die Methode nur einmal ausgelöst wird
-
+    public bool probeInPost = false;
     private AudioSource[] audioSources;
     private AudioSource triggerSound;
     private AudioSource arrivalSound;
@@ -42,6 +42,8 @@ public class Script_Post : MonoBehaviour
         // Überprüfe, ob currentProbe im Collider ist
         if (currentProbe != null && other.bounds.Contains(currentProbe.transform.position))
         {
+            probeInPost = true;
+
             if (triggerSound != null)
             {
                 triggerSound.Play();

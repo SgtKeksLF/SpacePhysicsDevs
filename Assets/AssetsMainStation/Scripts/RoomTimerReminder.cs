@@ -15,6 +15,7 @@ public class RoomTimerReminder : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            Debug.Log("Spieler hat Raum betreten");
             // Reset, falls der Spieler erneut eintritt
             playerInRoom = true;
             hasReminderPlayed = false; 
@@ -26,6 +27,7 @@ public class RoomTimerReminder : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            Debug.Log("Spieler hat Raum verlassen");
             playerInRoom = false;
             timeSpentInRoom = 0f; 
         }

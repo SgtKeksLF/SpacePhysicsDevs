@@ -1,5 +1,3 @@
-
-
 using System.Collections;
 using UnityEngine;
 
@@ -12,8 +10,10 @@ public class DrillReminder : MonoBehaviour
     public AudioSource reminderAudio; // Die Audioquelle für die Erinnerung
 
     private bool countdownStarted = false;
-    private bool drillInTrigger = false;
-    private float reminderDelay = 30f; // Sekunden bis zur Erinnerung
+    private float reminderDelay = 20f; // Sekunden bis zur Erinnerung
+
+    // Referenz zu DrillTableFreeze
+    public ScriptDrilling scriptDrilling; // Hier referenzieren wir das SkriptDrilling
 
     void Update()
     {
@@ -22,22 +22,23 @@ public class DrillReminder : MonoBehaviour
         {
             countdownStarted = true;
             StartCoroutine(StartDrillCountdown());
+            Debug.Log("Bohr-Countdown Start");
+
         }
 
         // Falls der Button nicht mehr grün ist, den Countdown stoppen und den Zustand zurücksetzen
         if (countdownStarted && !IsButtonGreen())
         {
             countdownStarted = false;
-            drillInTrigger = false; // Rücksetzen, falls der Button wieder nicht grün ist
         }
     }
 
     private bool IsButtonGreen()
-{
-    // Überprüfen, ob das aktuelle Material des Buttons das grüne Material ist
-    Material currentMaterial = buttonRenderer.sharedMaterial; // Holen des aktuellen Materials
-    return currentMaterial.name == greenMaterial.name;
-}
+    {
+        // Überprüfen, ob das aktuelle Material des Buttons das grüne Material ist
+        Material currentMaterial = buttonRenderer.sharedMaterial; // Holen des aktuellen Materials
+        return currentMaterial.name == greenMaterial.name;
+    }
 
     private IEnumerator StartDrillCountdown()
     {
@@ -45,27 +46,22 @@ public class DrillReminder : MonoBehaviour
 
         while (timer < reminderDelay)
         {
-            // Falls der Bohrer in den Trigger eintritt, abbrechen
-            if (drillInTrigger) yield break;
+            // Statt drillInTrigger verwenden wir jetzt hasBeenDrilled von DrillTableFreeze
+            if (scriptDrilling.hasBeenDrilled) // Überprüfe, ob der Bohrer bereits gebohrt hat
+            {
+                Debug.Log("Bohrer hat den Trigger betreten, Countdown wird abgebrochen.");
+                yield break; // Abbrechen, wenn der Bohrer den Trigger betreten hat
+            }
 
             timer += Time.deltaTime;
-            yield return null;
+            yield return null; // Warten auf den nächsten Frame
         }
 
-        // Falls 30 Sekunden vergangen sind und nicht gebohrt wurde, Audio abspielen
-        if (!drillInTrigger && reminderAudio != null)
+        // Falls 20 Sekunden vergangen sind und der Bohrer nicht in den Trigger eingetreten ist, Audio abspielen
+        if (!scriptDrilling.hasBeenDrilled && reminderAudio != null) // Hier ebenfalls den bool verwenden
         {
             reminderAudio.Play();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Überprüfen, ob der Bohrer in den Collider eintritt
-        if (other.gameObject == drill)
-        {
-            drillInTrigger = true;
+            Debug.Log("Reminder-Audio wurde abgespielt");
         }
     }
 }
-
