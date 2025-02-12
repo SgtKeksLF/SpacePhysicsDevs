@@ -1111,6 +1111,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &57276304 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8998106131841574349, guid: 3eb9aec9293f57c41a208e73ebfa41a1, type: 3}
+  m_PrefabInstance: {fileID: 1940289502374945926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &58169313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1295,11 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.009999994
   m_Center: {x: 0, y: 0.0000000037252903, z: -0.000000007450581}
+--- !u!65 &66616821 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5476249738906555386, guid: e463c35d204b5d649901eaa52da4387a, type: 3}
+  m_PrefabInstance: {fileID: 8340792916328694230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &77158421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3261,59 +3271,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d309ace231a05847a3b2a6a88231f9b, type: 3}
---- !u!1 &285637593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 285637594}
-  - component: {fileID: 285637595}
-  m_Layer: 0
-  m_Name: ColliderMercuryRoom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &285637594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285637593}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.13, y: 0.76, z: 11.36}
-  m_LocalScale: {x: 5.4659, y: 2.828995, z: 5.3191}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 320648900}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &285637595
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285637593}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &287163237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8682735782555825595, guid: 68e58c79cad8c2a4f98090ba8a461142, type: 3}
@@ -3567,7 +3524,6 @@ Transform:
   - {fileID: 1514532397}
   - {fileID: 1372900705}
   - {fileID: 1038333848}
-  - {fileID: 285637594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &325805248 stripped
@@ -5915,7 +5871,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1727031222973166842, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1140488283}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
 --- !u!1 &568542444 stripped
@@ -12414,6 +12373,152 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 504305200185275792, guid: 3eb9aec9293f57c41a208e73ebfa41a1, type: 3}
   m_PrefabInstance: {fileID: 1940289502374945926}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140488282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140488283}
+  - component: {fileID: 1140488285}
+  - component: {fileID: 1140488284}
+  m_Layer: 0
+  m_Name: DrillReminderScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140488283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140488282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1959577751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1140488284
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140488282}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f65ab123759a54f3f8fdd7db6e73b5e6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1140488285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140488282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a94888369f342958d575ba70771111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonRenderer: {fileID: 1316085464}
+  greenMaterial: {fileID: 2100000, guid: aa9e2ba43c7df10429242a2134e8d342, type: 2}
+  drillingTrigger: {fileID: 66616821}
+  drill: {fileID: 1187192376}
+  reminderAudio: {fileID: 1140488284}
 --- !u!23 &1141498096 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1990968323811559735, guid: caf6aebd154a848d7a130631afd53982, type: 3}
@@ -14473,6 +14578,10 @@ PrefabInstance:
     - target: {fileID: 7331518064709222739, guid: d5ff1c580841aae4b862d2735fc4c7e7, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831896553328698522, guid: d5ff1c580841aae4b862d2735fc4c7e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24035,6 +24144,10 @@ PrefabInstance:
       propertyPath: sample
       value: 
       objectReference: {fileID: 1852802264}
+    - target: {fileID: 9219421373325142152, guid: e463c35d204b5d649901eaa52da4387a, type: 3}
+      propertyPath: targetCollider
+      value: 
+      objectReference: {fileID: 57276304}
     - target: {fileID: 9219421373325142152, guid: e463c35d204b5d649901eaa52da4387a, type: 3}
       propertyPath: mercuryLampObject
       value: 

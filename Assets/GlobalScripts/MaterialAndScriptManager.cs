@@ -42,6 +42,7 @@ public class MaterialAndScriptManager : MonoBehaviour
         {
             targetScript.enabled = false;
         }
+
     }
 
     private void RestoreMaterialAndEnableScript()
