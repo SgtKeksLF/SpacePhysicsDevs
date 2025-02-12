@@ -1,13 +1,16 @@
 using UnityEngine;
 
 public class MaterialAndScriptManager : MonoBehaviour
-{
-    public Material newMaterial; // Neues Material (wird direkt gesetzt)
-    public MonoBehaviour targetScript; // Skript, das deaktiviert werden soll
-    public GameObject quiz5; // Referenz zum GameObject "Quiz5"
+{  
+   
+    public Material newMaterial;
+    public GameObject quiz5;
 
     private Material originalMaterial;
     private Renderer objectRenderer;
+    private bool hasQuizActivated = false;
+    private MonoBehaviour targetScript1;
+    private MonoBehaviour targetScript2;
 
     void Start()
     {
@@ -18,46 +21,60 @@ public class MaterialAndScriptManager : MonoBehaviour
             originalMaterial = objectRenderer.material;
         }
 
-        // Direkt beim Start das Material wechseln und das Skript deaktivieren
-        ChangeMaterialAndDisableScript();
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        if (scripts.Length > 2)
+        {
+            targetScript1 = scripts[1];
+            targetScript2 = scripts[2];
+        }
+
+        ChangeMaterialAndDisableScripts();
     }
 
     void Update()
     {
-        // Sobald "Quiz5" aktiv wird, wird das Material und das Skript wiederhergestellt
-        if (quiz5 != null && quiz5.activeInHierarchy)
+        if (!hasQuizActivated && quiz5 != null && quiz5.activeInHierarchy)
         {
-            RestoreMaterialAndEnableScript();
+            hasQuizActivated = true;
+            RestoreMaterialAndEnableScripts();
         }
     }
 
-    private void ChangeMaterialAndDisableScript()
+    private void ChangeMaterialAndDisableScripts()
     {
         if (objectRenderer != null && newMaterial != null)
         {
             objectRenderer.material = newMaterial;
         }
 
-        if (targetScript != null)
+        if (targetScript1 != null)
         {
-            targetScript.enabled = false;
+            targetScript1.enabled = false;
         }
 
+        if (targetScript2 != null)
+        {
+            targetScript2.enabled = false;
+        }
     }
 
-    private void RestoreMaterialAndEnableScript()
+    private void RestoreMaterialAndEnableScripts()
     {
         if (objectRenderer != null && originalMaterial != null)
         {
             objectRenderer.material = originalMaterial;
         }
 
-        if (targetScript != null)
+        if (targetScript1 != null)
         {
-            targetScript.enabled = true;
+            targetScript1.enabled = true;
         }
 
-        // Da sich der Zustand nicht mehr ändern muss, deaktivieren wir dieses Skript
-        enabled = false;
+        if (targetScript2 != null)
+        {
+            targetScript2.enabled = true;
+        }
+
+        enabled = false; // Deaktiviert dieses Skript, um Update() zu stoppen
     }
 }

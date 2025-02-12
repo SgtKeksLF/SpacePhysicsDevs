@@ -18,8 +18,8 @@ public class Script_ObjectInShelf : MonoBehaviour
     }
 
     void Update()
-    { //dev note - I dont know why this is needed, feel free to try 
-       if(isInShelf == false)
+    { //dev note - Don't ask, I don't know
+       if(isInShelf == false && rb.useGravity == false)
        {
         rb.useGravity = true;
        }
@@ -34,7 +34,7 @@ public class Script_ObjectInShelf : MonoBehaviour
                 FreezeObject();  // Position und Rotation einfrieren
                 rb.useGravity = false;  // Schwerkraft deaktivieren
                 isInShelf = true;
-                Debug.Log(gameObject.name + " ist jetzt im Regal.");
+               
             }
         }
     }
@@ -48,7 +48,7 @@ public class Script_ObjectInShelf : MonoBehaviour
                 UnfreezeObject();  // Position und Rotation freigeben
                 rb.useGravity = true;  // Schwerkraft aktivieren
                 isInShelf = false;
-                Debug.Log(gameObject.name + " ist jetzt nicht mehr im Regal.");
+           
             }
         }
     }

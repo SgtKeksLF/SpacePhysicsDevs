@@ -8,6 +8,8 @@ public class Script_Move_Drill : MonoBehaviour
     public GameObject objectToTeleportTo;
     public float distance = 1.5f;
     public float speed = 0.5f;
+    public AudioClip moveSound;  // Hier den Sound einfügen
+    private AudioSource audioSource;  // AudioSource zum Abspielen des Sounds
 
     private Vector3 startPosition;
     private Vector3 targetPosition;
@@ -26,8 +28,14 @@ public class Script_Move_Drill : MonoBehaviour
 
         if (objectToTeleport != null)
         {
-           
             teleportStartRotation = objectToTeleport.transform.rotation;
+        }
+
+        // Initialisiere die AudioSource
+        audioSource = objectToMove.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = objectToMove.AddComponent<AudioSource>(); // Falls keine vorhanden ist, füge eine hinzu
         }
     }
 
@@ -68,6 +76,13 @@ public class Script_Move_Drill : MonoBehaviour
         Vector3 startPos = objectToMove.transform.position;
         float journey = 0f;
         float duration = Vector3.Distance(startPos, destination) / speed;
+
+        // Starte den Sound ab dem ersten Bewegungsschritt
+        if (moveSound != null && !audioSource.isPlaying)  // Überprüfen, ob der Sound nicht schon läuft
+        {
+            audioSource.clip = moveSound;
+            audioSource.Play();
+        }
 
         while (journey < duration)
         {
