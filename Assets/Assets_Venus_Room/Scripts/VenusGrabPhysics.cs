@@ -13,7 +13,7 @@ public class VenusGrabPhysics : MonoBehaviour
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 venusCanScale = new Vector3(-30.0f, -30.0f, -30.0f);
+    private Vector3 venusCanScale = new Vector3(-30.0f, 0f, -30.0f);
     public AudioSource canOfBeansAudio; 
     private AudioSource canOfWaterAudio;
     public Material evaporateWaterMaterial;

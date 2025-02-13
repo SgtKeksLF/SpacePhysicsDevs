@@ -13,7 +13,7 @@ public class MarsGrabPhysics : MonoBehaviour
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 marsCanScale = new Vector3(-25.0f, -25.0f, -25.0f);
+    private Vector3 marsCanScale = new Vector3(-25.0f, 0f, -25.0f);
     public AudioSource canOfBeansAudio; 
     // 
     public GameObject canvasGravity;

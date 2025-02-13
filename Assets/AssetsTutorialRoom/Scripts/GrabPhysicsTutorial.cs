@@ -6,9 +6,15 @@ public class GrabPhysicsTutorial : MonoBehaviour
 {
 
     public GameObject ball;
+    private Rigidbody rbBall;
     public GameObject canvasGravity;
- 
-    
+
+
+    public void Start()
+    {
+        rbBall = ball.GetComponent<Rigidbody>();
+    }
+
     public void OnGrab(GameObject grabbedObject)
     {
        
@@ -25,6 +31,14 @@ public class GrabPhysicsTutorial : MonoBehaviour
                 }
         }
                   
+    }
+
+    public void BallRelease()
+    {
+        if (rbBall != null)
+        {
+            rbBall.constraints = RigidbodyConstraints.None;
+        }
     }
 
 }

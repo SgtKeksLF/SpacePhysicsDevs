@@ -14,6 +14,10 @@ public class DrillTrigger : MonoBehaviour
     public GameObject display5; // Das neue Display nach dem Video
     public GameObject display4; // Das neue Display vor dem Video
 
+    public Light mainLight; // Das neue Display vor dem Video
+    public Light spotLightCanvas; // Das neue Display vor dem Video
+
+
 
     private bool hasTriggered = false; 
 
@@ -46,7 +50,14 @@ public class DrillTrigger : MonoBehaviour
 
     private IEnumerator PlayVideoWithDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // 10 Sekunden warten
+
+
+        mainLight.enabled = false;
+
+
+        spotLightCanvas.enabled = true;
+
+        yield return new WaitForSeconds(delay); 
 
         if (displayVideo != null)
         {

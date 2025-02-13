@@ -22,7 +22,7 @@ public class QuizManager : MonoBehaviour
     {
         isCountdownRunning = true;  // Countdown-Flag setzen, damit er nicht mehrfach startet
 
-        yield return new WaitForSeconds(5f);  // 5 Sekunden warten
+        yield return new WaitForSeconds(1f);  // 5 Sekunden warten
 
         if (quiz3 != null && quiz5 != null)  
         {

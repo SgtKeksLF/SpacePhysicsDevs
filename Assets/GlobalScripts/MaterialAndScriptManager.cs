@@ -63,6 +63,9 @@ public class MaterialAndScriptManager : MonoBehaviour
         if (objectRenderer != null && originalMaterial != null)
         {
             objectRenderer.material = originalMaterial;
+            // @Lisa Text über bUTTON AUF "tÜR ÖFFNEN ÄNDERN"
+            // text "tür öffnen" aktiv
+            // text quiz beantworten inaktiv
         }
 
         if (targetScript1 != null)

@@ -44,6 +44,8 @@ public class Script_Post : MonoBehaviour
         {
             probeInPost = true;
 
+            // @Lisa: interagierbares quiz display wird active gesetzt, uninteragierbares inactive
+
             if (triggerSound != null)
             {
                 triggerSound.Play();

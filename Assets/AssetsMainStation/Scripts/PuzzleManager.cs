@@ -14,12 +14,14 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private Vector3 targetTrophyPosition; // Zielposition für die Probe
     [SerializeField] private float trophyMoveSpeed = 1f; // Geschwindigkeit, mit der die Probe sich bewegt
     [SerializeField] private float delayBeforeMoving = 3f; // Verzögerung von 3 Sekunden
+    [SerializeField] private GameObject trophyObject;
 
     [SerializeField] private Light mainLight; // Das Hauptlicht
     [SerializeField] private Light spotLight; // Das Spotlight
 
     private SlotChecker[] slots; // Liste aller Slots
     private bool hasPlayedWinSound = false; // Damit der Sound nur einmal abgespielt wird
+    private Rigidbody trophyRB;
 
     private void Awake()
     {
@@ -38,6 +40,8 @@ public class PuzzleManager : MonoBehaviour
         {
             Debug.LogError("Keine Slots gefunden!");
         }
+
+        trophyRB = trophyObject.GetComponent<Rigidbody>();
     }
 
     public void CheckWinCondition()
@@ -101,6 +105,13 @@ public class PuzzleManager : MonoBehaviour
 
     private IEnumerator MoveTrophyUp()
     {
+        if (trophyRB != null)
+        {
+            Debug.Log("RB Not null");
+            Debug.Log("Rigidbody gefunden: " + trophyRB.name);
+            trophyRB.detectCollisions = false;
+            trophyRB.isKinematic = true;
+        }
         // Setzt die Anfangsposition des Parents (lokale Position)
         Vector3 startPosition = trophy.localPosition; // Nutze die lokale Position des Parent-Objekts
 
@@ -111,7 +122,7 @@ public class PuzzleManager : MonoBehaviour
         while (Mathf.Abs(trophy.localPosition.y - targetTrophyPosition.y) > 0.01f)
         {
             // Debug-Ausgabe, um die aktuelle Position während der Bewegung zu überwachen
-            Debug.Log("Aktuelle Y-Position der Probe (lokal): " + trophy.localPosition.y);
+           // Debug.Log("Aktuelle Y-Position der Probe (lokal): " + trophy.localPosition.y);
 
             // Bewege die Probe nur in der Y-Richtung (lokale Position des Parent-Objekts)
             trophy.localPosition = new Vector3(trophy.localPosition.x, Mathf.MoveTowards(trophy.localPosition.y, targetTrophyPosition.y, trophyMoveSpeed * Time.deltaTime), trophy.localPosition.z);
@@ -120,6 +131,11 @@ public class PuzzleManager : MonoBehaviour
 
         // Wenn die Zielposition erreicht ist, setze die Y-Position auf exakt die Zielposition (lokal)
         trophy.localPosition = new Vector3(trophy.localPosition.x, targetTrophyPosition.y, trophy.localPosition.z);
+        if (trophyRB != null)
+        {
+            trophyRB.detectCollisions = true;
+            trophyRB.isKinematic = false;
+        }
 
         // Debug-Ausgabe, wenn die Bewegung abgeschlossen ist
         Debug.Log("Ziel Y-Position erreicht (lokal): " + targetTrophyPosition.y);

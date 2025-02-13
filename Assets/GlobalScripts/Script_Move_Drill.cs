@@ -11,6 +11,11 @@ public class Script_Move_Drill : MonoBehaviour
     public AudioClip moveSound;  // Hier den Sound einfügen
     private AudioSource audioSource;  // AudioSource zum Abspielen des Sounds
 
+    public Material redLampMaterial;
+    public Material greenLampMaterial;
+    public GameObject mercuryLampObject;
+    public GameObject earthLampObject;
+
     private Vector3 startPosition;
     private Vector3 targetPosition;
     private Vector3 teleportStartPosition;
@@ -43,19 +48,59 @@ public class Script_Move_Drill : MonoBehaviour
     {
         if (!moving && objectToMove != null)
         {
-            TeleportObject();
-            StartCoroutine(MoveCoroutine(targetPosition));
+            Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
+
+
+            if (!moving && objectToMove != null)
+            {
+                TeleportObject();
+                if (mercuryLampRenderer != null)
+                {
+                    Debug.Log("Render not null");
+                    Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
+                    if (currentMercuryLampMaterial == redLampMaterial)
+                    {
+
+                        if (moveSound != null && !audioSource.isPlaying)
+                        {
+                            audioSource.clip = moveSound;
+                            audioSource.Play();
+                        }
+
+                    }
+                    TeleportObject();
+                    StartCoroutine(MoveCoroutine(targetPosition));
+                }
+            }
         }
     }
 
     public void MoveToStart()
     {
+        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
+
+
         if (!moving && objectToMove != null)
         {
             TeleportObject();
-            StartCoroutine(MoveCoroutine(startPosition));
+            if (earthLampRenderer != null)
+            {
+                Debug.Log("Render not null");
+                Material currentMercuryLampMaterial = earthLampRenderer.sharedMaterial;
+                if (currentMercuryLampMaterial == redLampMaterial)
+                {
+
+                    if (moveSound != null && !audioSource.isPlaying)
+                    {
+                        audioSource.clip = moveSound;
+                        audioSource.Play();
+                    }
+
+                }
+                StartCoroutine(MoveCoroutine(startPosition));
+            }
         }
-    }
+     }
 
     private void TeleportObject()
     {
@@ -77,13 +122,7 @@ public class Script_Move_Drill : MonoBehaviour
         float journey = 0f;
         float duration = Vector3.Distance(startPos, destination) / speed;
 
-        // Starte den Sound ab dem ersten Bewegungsschritt
-        if (moveSound != null && !audioSource.isPlaying)  // Überprüfen, ob der Sound nicht schon läuft
-        {
-            audioSource.clip = moveSound;
-            audioSource.Play();
-        }
-
+    
         while (journey < duration)
         {
             journey += Time.deltaTime;

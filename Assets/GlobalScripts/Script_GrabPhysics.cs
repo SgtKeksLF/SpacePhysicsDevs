@@ -14,7 +14,7 @@ public class GrabPhysicsMercury : MonoBehaviour
     public GameObject ball;
     public GameObject canOfWater;
     //
-    private Vector3 mercuryCanScale = new Vector3(+10.0f, +10.0f, +10.0f);
+    private Vector3 mercuryCanScale = new Vector3(+10.0f, 0f, +10.0f);
     public AudioSource canOfBeansAudio; 
     private AudioSource canOfWaterAudio;
     public Material newWaterMaterial;

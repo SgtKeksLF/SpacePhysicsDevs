@@ -8,6 +8,8 @@ public class Script_Door : MonoBehaviour
     public float moveSpeed = 2f;
     public float autoCloseDelay = 5f; // Zeit bis zum automatischen Schließen
 
+
+
     private AudioSource[] audioSources;
     private AudioSource openSound;
     private AudioSource closeSound;
