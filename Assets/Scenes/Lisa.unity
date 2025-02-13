@@ -1694,7 +1694,7 @@ Transform:
   m_GameObject: {fileID: 84110287}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7679805, z: -0, w: 0.6404733}
-  m_LocalPosition: {x: 5.15, y: 0.32000005, z: 1.01}
+  m_LocalPosition: {x: 4.11, y: 0.32000005, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3043,6 +3043,18 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: c68df46006c50614d94672e3bdb9960a, type: 3}
+    - target: {fileID: 6937226330525108003, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
+      propertyPath: fixedRotation.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937226330525108003, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
+      propertyPath: fixedRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937226330525108003, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
+      propertyPath: fixedRotation.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8420605793309649008, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.699372
@@ -3102,6 +3114,10 @@ PrefabInstance:
     - target: {fileID: 9194046920713122506, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
       propertyPath: m_Name
       value: Water_Dose
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194046920713122506, guid: f7e06021c13b6ad46ab6d3926b4bad73, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4367,7 +4383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.23
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5632,6 +5648,7 @@ MonoBehaviour:
   loseMaterial: {fileID: 2100000, guid: 3a40d352465cb4611bd3bc40327bed9f, type: 2}
   mainLampRenderer: {fileID: 1896218471}
   neonLightsParent: {fileID: 272298054}
+  fixedRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &369951961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7620,6 +7637,7 @@ MonoBehaviour:
   loseMaterial: {fileID: 2100000, guid: 3a40d352465cb4611bd3bc40327bed9f, type: 2}
   mainLampRenderer: {fileID: 1141498096}
   neonLightsParent: {fileID: 397272472}
+  fixedRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &491411072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6457461629732622366, guid: d5ff1c580841aae4b862d2735fc4c7e7, type: 3}
@@ -8515,7 +8533,7 @@ Transform:
   m_GameObject: {fileID: 554653595}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.76, y: 2.74, z: 11.77}
+  m_LocalPosition: {x: 2.76, y: 2.614, z: 11.77}
   m_LocalScale: {x: 30.020386, y: 1.1856, z: 32.560802}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16667,9 +16685,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 3098745946826226634, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: m_Size.x
+      value: 0.0020325852
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098745946826226634, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: m_Size.y
+      value: 0.002025309
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098745946826226634, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: m_Size.z
+      value: 0.0027805835
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098745946826226634, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098745946826226634, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: m_Center.z
+      value: -0.000020869365
+      objectReference: {fileID: 0}
     - target: {fileID: 3102397250488597251, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
       propertyPath: m_Name
       value: Beans_V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347223010224784068, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: fixedRotation.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347223010224784068, guid: 614322e75ea1b0846a629253bbfae462, type: 3}
+      propertyPath: fixedRotation.z
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25722,6 +25768,10 @@ PrefabInstance:
       propertyPath: targetObject
       value: 
       objectReference: {fileID: 1295292817}
+    - target: {fileID: 7011089283115466554, guid: 3eb9aec9293f57c41a208e73ebfa41a1, type: 3}
+      propertyPath: fixedRotation.x
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26314,6 +26364,7 @@ MonoBehaviour:
   loseMaterial: {fileID: 2100000, guid: 3a40d352465cb4611bd3bc40327bed9f, type: 2}
   mainLampRenderer: {fileID: 452907013}
   neonLightsParent: {fileID: 1809696212}
+  fixedRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1671977472
 GameObject:
   m_ObjectHideFlags: 0
@@ -26990,6 +27041,10 @@ PrefabInstance:
     - target: {fileID: 1402292320309121816, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402292320309121816, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
+      propertyPath: m_DistanceCalculationMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2373552027360152690, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
       propertyPath: m_Enabled
@@ -27809,6 +27864,7 @@ MonoBehaviour:
   loseMaterial: {fileID: 2100000, guid: 3a40d352465cb4611bd3bc40327bed9f, type: 2}
   mainLampRenderer: {fileID: 441267678}
   neonLightsParent: {fileID: 104060764}
+  fixedRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &1818755992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29531,6 +29587,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 748433801}
     m_Modifications:
+    - target: {fileID: 2220799469250745362, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220799469250745362, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
+      propertyPath: MaxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220799469250745362, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
+      propertyPath: MinDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6860037671544707233, guid: d68e6c934378a3b43bca03591d8abfbf, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20120499
@@ -34683,6 +34751,10 @@ PrefabInstance:
     - target: {fileID: 2651362517626506078, guid: 49ff9810e87fa4242aa1ffcf9e014dcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422063315866423624, guid: 49ff9810e87fa4242aa1ffcf9e014dcd, type: 3}
+      propertyPath: m_text
+      value: Spiel Beenden
       objectReference: {fileID: 0}
     - target: {fileID: 8212180040689227976, guid: 49ff9810e87fa4242aa1ffcf9e014dcd, type: 3}
       propertyPath: m_Name

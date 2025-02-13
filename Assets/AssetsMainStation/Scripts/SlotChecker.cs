@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class SlotChecker : MonoBehaviour
 {
-    [SerializeField] private string correctTag; 
+    [SerializeField] private string correctTag;
     [SerializeField] private Material winMaterial; // Das grüne Material
     [SerializeField] private Material loseMaterial; // Das rote Material
-    
+
     [SerializeField] private Renderer mainLampRenderer; // Der Renderer für das einzelne Kindobjekt
     [SerializeField] private Transform neonLightsParent; // Das leere Objekt, das die 3 anderen Objekte enthält
+    private Rigidbody rbObject;
+    private Collider lastCollider; // Speichert den letzten Collider für die Positionierung
 
-    private bool isCorrect = false; 
+    private bool isCorrect = false;
+
+    public Vector3 fixedRotation = new Vector3(0, 0, 0); // Gewünschte Rotation in Grad
 
     private void Awake()
     {
-        // Sicherstellen, dass die Referenzen im Inspector gesetzt wurden
         if (mainLampRenderer == null)
         {
             Debug.LogError($"⚠️ Kein Haupt-Renderer für {gameObject.name} gesetzt!");
@@ -26,7 +29,6 @@ public class SlotChecker : MonoBehaviour
             Debug.LogError($"⚠️ Kein Parent für zusätzliche Objekte gesetzt bei {gameObject.name}!");
         }
 
-        // Standardmaterial auf Rot setzen
         SetMaterials(loseMaterial);
     }
 
@@ -37,6 +39,9 @@ public class SlotChecker : MonoBehaviour
         if (other.CompareTag(correctTag))
         {
             Debug.Log($"✅ Richtiger Gegenstand erkannt für {gameObject.name}");
+            rbObject = other.GetComponent<Rigidbody>();
+            lastCollider = other; // Speichert den Collider für die spätere Positionierung
+            FreezeObject();
             SetMaterials(winMaterial);
             isCorrect = true;
         }
@@ -63,17 +68,14 @@ public class SlotChecker : MonoBehaviour
 
     private void SetMaterials(Material newMaterial)
     {
-        // Das eine Kindobjekt ändern
         if (mainLampRenderer != null)
         {
             mainLampRenderer.material = newMaterial;
         }
 
-        // Die drei Kinder des "Empty"-Objekts ändern
         if (neonLightsParent != null)
         {
             Renderer[] childRenderers = neonLightsParent.GetComponentsInChildren<Renderer>();
-
             foreach (Renderer rend in childRenderers)
             {
                 rend.material = newMaterial;
@@ -84,5 +86,19 @@ public class SlotChecker : MonoBehaviour
     public bool IsCorrect()
     {
         return isCorrect;
+    }
+
+    void FreezeObject()
+    {
+        if (rbObject != null && lastCollider != null)
+        {
+            // Setzt die Position auf die Mitte des Slots
+            rbObject.transform.position = transform.position;
+
+            // Setzt die Rotation auf den festen Wert
+            rbObject.transform.rotation = Quaternion.Euler(fixedRotation);
+
+            rbObject.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+        }
     }
 }

@@ -13,6 +13,8 @@ public class Script_Post : MonoBehaviour
     private AudioSource triggerSound;
     private AudioSource arrivalSound;
 
+    public Vector3 fixedRotation = new Vector3(0, 0, 0); // Gewünschte Rotation in Grad
+
     private void Start()
     {
         audioSources = GetComponents<AudioSource>();
@@ -29,35 +31,29 @@ public class Script_Post : MonoBehaviour
 
     private void Update()
     {
-        // Prüft, ob Quiz5 aktiviert wurde und ob OnSolutionCorrect noch nicht ausgelöst wurde
         if (quiz5 != null && quiz5.activeInHierarchy && !hasTriggered)
         {
-            hasTriggered = true; // Verhindert mehrfaches Auslösen
+            hasTriggered = true;
             OnSolutionCorrect();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Überprüfe, ob currentProbe im Collider ist
         if (currentProbe != null && other.bounds.Contains(currentProbe.transform.position))
         {
             probeInPost = true;
-
-            // @Lisa: interagierbares quiz display wird active gesetzt, uninteragierbares inactive
 
             if (triggerSound != null)
             {
                 triggerSound.Play();
             }
-            
+
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                FreezeObject(rb);
             }
-            
-            currentProbe.transform.position = transform.position;
         }
     }
 
@@ -72,14 +68,14 @@ public class Script_Post : MonoBehaviour
     private IEnumerator MoveProbeCoroutine(Vector3 endPos)
     {
         Vector3 start = currentProbe.transform.position;
-        Vector3 upPosition = start + Vector3.up * 3f; // Berechne die Position 3 Meter nach oben
+        Vector3 upPosition = start + Vector3.up * 3f;
         float elapsedTime = 0f;
 
-        // Bewege die Probe 3 Meter nach oben
-          if (arrivalSound != null)
+        if (arrivalSound != null)
         {
             arrivalSound.Play();
         }
+
         while (elapsedTime < 1f)
         {
             currentProbe.transform.position = Vector3.Lerp(start, upPosition, elapsedTime);
@@ -87,11 +83,10 @@ public class Script_Post : MonoBehaviour
             yield return null;
         }
 
-        currentProbe.transform.position = upPosition; // Setze die endgültige Position nach oben
+        currentProbe.transform.position = upPosition;
 
-        // Setze die Bewegung zur Endposition
         elapsedTime = 0f;
-       
+
         while (elapsedTime < 1f)
         {
             currentProbe.transform.position = Vector3.Lerp(upPosition, endPos, elapsedTime);
@@ -99,12 +94,25 @@ public class Script_Post : MonoBehaviour
             yield return null;
         }
 
-        
-        currentProbe.transform.position = endPos; // Endgültige Position setzen
+        currentProbe.transform.position = endPos;
         Rigidbody rb = currentProbe.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.None;
+        }
+    }
+
+    private void FreezeObject(Rigidbody rb)
+    {
+        if (rb != null)
+        {
+            // Setzt die Position auf die Mitte des Slots
+            rb.transform.position = transform.position;
+
+            // Setzt die Rotation auf den festen Wert
+            rb.transform.rotation = Quaternion.Euler(fixedRotation);
+
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         }
     }
 }

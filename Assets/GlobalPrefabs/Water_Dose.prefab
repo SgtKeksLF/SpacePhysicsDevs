@@ -73,6 +73,10 @@ PrefabInstance:
       value: Water_Dose
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 060ad38a9946c024394b4fd1bc1c79c7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 060ad38a9946c024394b4fd1bc1c79c7, type: 3}
       propertyPath: m_TagString
       value: PhysicsZone
       objectReference: {fileID: 0}
@@ -451,6 +455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbdb30d97f7cb146b616f6e98e2f651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixedRotation: {x: 90, y: 0, z: 90}
+  objectSound: {fileID: 1696490997258911845}
 --- !u!114 &8864917680608109444
 MonoBehaviour:
   m_ObjectHideFlags: 0

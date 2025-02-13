@@ -1,67 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class Script_ObjectInShelf : MonoBehaviour
-{  
+{
 
     private Rigidbody rb;
     private bool isInShelf = false;
+    private Collider lastCollider; // Speichert den letzten Collider für die Mitte
+    public Vector3 fixedRotation = new Vector3(90, 0, 90); // Gewünschte Rotation in Grad
+    public AudioSource objectSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            FreezeObject();
-        }
-    }
+        objectSound= objectSound.GetComponent<AudioSource>();
 
-    void Update()
-    { //dev note - Don't ask, I don't know
-       if(isInShelf == false && rb.useGravity == false)
-       {
-        rb.useGravity = true;
-       }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PhysicsZone"))  // Wenn das Objekt in das Regal kommt
+        if (other.CompareTag("PhysicsZone")) // Betritt die Zone
         {
-            if (!isInShelf)  // Nur ändern, wenn es noch nicht im Regal ist
-            {
-                FreezeObject();  // Position und Rotation einfrieren
-                rb.useGravity = false;  // Schwerkraft deaktivieren
-                isInShelf = true;
-               
-            }
+            lastCollider = other; // Speichert den Collider für die spätere Positionierung
+            isInShelf = true;
+            FreezeObject();
+            objectSound.mute = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PhysicsZone"))  // Wenn das Objekt das Regal verlässt
+        if (other.CompareTag("PhysicsZone")) // Verlässt die Zone
         {
-            if (isInShelf)  // Nur ändern, wenn es im Regal war
+            if (isInShelf)
             {
-                UnfreezeObject();  // Position und Rotation freigeben
-                rb.useGravity = true;  // Schwerkraft aktivieren
+                UnfreezeObject();
+                rb.useGravity = true;
                 isInShelf = false;
-           
+                objectSound.mute = false;
             }
         }
     }
 
-      void FreezeObject()
+    void FreezeObject()
     {
+        if (lastCollider != null)
+        {
+            // Setzt die Position auf die Mitte des Colliders
+            transform.position = lastCollider.bounds.center;
+
+            // Setzt die Rotation auf den festen Wert
+            transform.rotation = Quaternion.Euler(fixedRotation);
+        }
+
         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
     }
 
-    // Methode zum Freigeben der Einschränkungen
     void UnfreezeObject()
     {
-        rb.constraints = RigidbodyConstraints.None;  // Keine Einschränkungen
+        rb.constraints = RigidbodyConstraints.None;
     }
 }
 

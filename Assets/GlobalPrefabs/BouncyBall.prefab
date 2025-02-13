@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbdb30d97f7cb146b616f6e98e2f651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixedRotation: {x: 90, y: 0, z: 90}
+  objectSound: {fileID: 6764971379807856345}
 --- !u!114 &8458745730246389434
 MonoBehaviour:
   m_ObjectHideFlags: 0
