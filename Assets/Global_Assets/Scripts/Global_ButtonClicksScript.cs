@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Global_ButtonClicksScript : MonoBehaviour
 {
-   public AudioSource audioSource; // Referenz zur Audioquelle
+   public AudioSource audioSource; 
 
     void Start()
     {

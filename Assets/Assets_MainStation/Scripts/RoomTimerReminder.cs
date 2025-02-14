@@ -1,9 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+
+This script plays an audio reminder for the player to explore
+the planet rooms in case he is inactive for too long.
+
+The audio only plays once.
+
+*/
+
 public class RoomTimerReminder : MonoBehaviour
 {
-    public GameObject player; 
+    public BoxCollider player;
     public AudioSource reminderAudio; 
     public float reminderTime = 30f; 
 
@@ -15,8 +24,7 @@ public class RoomTimerReminder : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Spieler hat Raum betreten");
-            // Reset, falls der Spieler erneut eintritt
+            // Debug.Log("Player entered room, countdown started.");
             playerInRoom = true;
             hasReminderPlayed = false; 
             timeSpentInRoom = 0f; 
@@ -27,7 +35,7 @@ public class RoomTimerReminder : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Spieler hat Raum verlassen");
+            // Debug.Log("Playerleft room.");
             playerInRoom = false;
             timeSpentInRoom = 0f; 
         }

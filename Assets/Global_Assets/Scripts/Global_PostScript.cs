@@ -6,6 +6,10 @@ public class Global_PostScript : MonoBehaviour
     public GameObject currentProbe; // Wird im Inspector zugewiesen
     public GameObject targetObject;
     public GameObject quiz5; // Referenz zu "Quiz5"
+    public GameObject quiz0; // Referenz zu "Quiz0"
+    public GameObject quiz1; // Referenz zu "Quiz0"
+
+
     public float moveSpeed = 0.5f;
     private bool hasTriggered = false; // Stellt sicher, dass die Methode nur einmal ausgelöst wird
     public bool probeInPost = false;
@@ -43,6 +47,9 @@ public class Global_PostScript : MonoBehaviour
         if (currentProbe != null && other.bounds.Contains(currentProbe.transform.position))
         {
             probeInPost = true;
+
+            quiz0.SetActive(false);
+            quiz1.SetActive(true);
 
             if (triggerSound != null)
             {

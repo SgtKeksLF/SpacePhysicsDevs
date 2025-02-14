@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lisa.unity
+    path: Assets/Scenes/SpacePhysics.unity
     guid: b29ba711eff0848039bf12e5bf710357
   - enabled: 0
     path: Assets/Scenes/Mars.unity

@@ -1,32 +1,39 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+
+This script reminds the player of using the drill to extract the planet sample.
+
+Therefore it uses the green lamp material again to make sure the reminder is only played 
+when planet physics are active. When the drill spawns a 2 minute countdown starts. 
+If the player does not drill before the countdown ends, the reminder audio will play.
+
+*/
+
 public class Global_DrillReminderScript : MonoBehaviour
 {
-    public Renderer buttonRenderer; // Der Renderer des Buttons
-    public Material greenMaterial; // Das grüne Material für den Button
-    public Collider drillingTrigger; // Der Collider, in den der Bohrer eintreten soll
-    public GameObject drill; // Der Drill, der im Inspector zugewiesen wird
-    public AudioSource reminderAudio; // Die Audioquelle für die Erinnerung
+    public Renderer buttonRenderer; 
+    public Material greenMaterial; 
+    public Collider drillingTrigger; 
+    public GameObject drill; 
+    public AudioSource reminderAudio; 
+
+    public Global_DrillingScript scriptDrilling; // get hasBeenDrilled bool from other script
+
 
     private bool countdownStarted = false;
-    private float reminderDelay = 20f; // Sekunden bis zur Erinnerung
-
-    // Referenz zu DrillTableFreeze
-    public Global_DrillingScript scriptDrilling; // Hier referenzieren wir das SkriptDrilling
+    private float reminderDelay = 120f; 
 
     void Update()
     {
-        // Falls der Button das grüne Material hat und der Countdown noch nicht gestartet wurde
         if (!countdownStarted && IsButtonGreen())
         {
             countdownStarted = true;
             StartCoroutine(StartDrillCountdown());
-            Debug.Log("Bohr-Countdown Start");
-
+            // Debug.Log("Drill countdown started");
         }
 
-        // Falls der Button nicht mehr grün ist, den Countdown stoppen und den Zustand zurücksetzen
         if (countdownStarted && !IsButtonGreen())
         {
             countdownStarted = false;
@@ -35,8 +42,8 @@ public class Global_DrillReminderScript : MonoBehaviour
 
     private bool IsButtonGreen()
     {
-        // Überprüfen, ob das aktuelle Material des Buttons das grüne Material ist
-        Material currentMaterial = buttonRenderer.sharedMaterial; // Holen des aktuellen Materials
+        Material currentMaterial = buttonRenderer.sharedMaterial; 
+        
         return currentMaterial.name == greenMaterial.name;
     }
 
@@ -46,22 +53,21 @@ public class Global_DrillReminderScript : MonoBehaviour
 
         while (timer < reminderDelay)
         {
-            // Statt drillInTrigger verwenden wir jetzt hasBeenDrilled von DrillTableFreeze
-            if (scriptDrilling.hasBeenDrilled) // Überprüfe, ob der Bohrer bereits gebohrt hat
+            // player drills while countdown lasts: don't play audio
+            if (scriptDrilling.hasBeenDrilled) 
             {
-                Debug.Log("Bohrer hat den Trigger betreten, Countdown wird abgebrochen.");
-                yield break; // Abbrechen, wenn der Bohrer den Trigger betreten hat
+                // Debug.Log("Drill entered trigger, cancel countdown.");
+                yield break; 
             }
 
             timer += Time.deltaTime;
-            yield return null; // Warten auf den nächsten Frame
+            yield return null; 
         }
 
-        // Falls 20 Sekunden vergangen sind und der Bohrer nicht in den Trigger eingetreten ist, Audio abspielen
-        if (!scriptDrilling.hasBeenDrilled && reminderAudio != null) // Hier ebenfalls den bool verwenden
+        // player did not drill: play reminder audio
+        if (!scriptDrilling.hasBeenDrilled && reminderAudio != null) 
         {
             reminderAudio.Play();
-            Debug.Log("Reminder-Audio wurde abgespielt");
         }
     }
 }

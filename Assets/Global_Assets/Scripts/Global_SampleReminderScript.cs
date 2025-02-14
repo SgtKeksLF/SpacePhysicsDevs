@@ -1,28 +1,32 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+
+This script reminds the player of taking the plante sample to the mail system.
+
+Therefore it starts a countdown when the sample is spawned. If the player does
+not place the sample in the mail system before the coundtown ends the reminder audio is played.
+
+*/
+
 public class ProbeReminder : MonoBehaviour
 {
-
-    // nachdem gedrillt wurde, startet countdown der Probe, wird abgebrochen, wenn Probe in Post war
     public AudioSource reminderAudio; 
-
-    private bool countdownStarted = false;
-    private float reminderDelay = 20f; // Sekunden bis zur Erinnerung
-
-    // Referenz zu anderen Skripten
     public Global_PostScript ScriptPost; 
     public Global_DrillingScript scriptDrilling; 
 
+
+    private bool countdownStarted = false;
+    private float reminderDelay = 120f;
+
     void Update()
     {
-        // Falls gebohrt wurde und der Countdown noch nicht gestartet wurde
         if (!countdownStarted && scriptDrilling.hasBeenDrilled)
         {
             countdownStarted = true;
             StartCoroutine(StartProbeCountdown());
-            Debug.Log("Probe-Countdown Start");
-
+            // Debug.Log("Sample countdown started");
         }
 
     }
@@ -33,10 +37,9 @@ public class ProbeReminder : MonoBehaviour
 
         while (timer < reminderDelay)
         {
-            // Probe schon in Post?
             if (ScriptPost.probeInPost) 
             {
-                Debug.Log("Probe in Post, Countdown wird abgebrochen.");
+                // Debug.Log("Sample in mail, cancel countdown.");
                 yield break; 
             }
 
@@ -44,11 +47,10 @@ public class ProbeReminder : MonoBehaviour
             yield return null; 
         }
 
-        // Falls 20 Sekunden vergangen sind und die Probe nicht in die Post eingetreten ist, Audio abspielen
         if (!ScriptPost.probeInPost && reminderAudio != null) 
         {
             reminderAudio.Play();
-            Debug.Log("Reminder-Audio wurde abgespielt");
+            // Debug.Log("Reminder audio has played");
         }
     }
 }
