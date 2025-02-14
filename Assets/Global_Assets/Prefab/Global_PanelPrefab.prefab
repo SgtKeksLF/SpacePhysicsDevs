@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4927635330824251813}
   - component: {fileID: 4360605676946809911}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Global_PanelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

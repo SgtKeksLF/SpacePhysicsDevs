@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7589101471446346717}
   - component: {fileID: 2539934617890938218}
   m_Layer: 0
-  m_Name: Saturn_Particles
+  m_Name: Saturn_ParticlesPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

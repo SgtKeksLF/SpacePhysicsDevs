@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8646626329643082306}
   - component: {fileID: 4608572315588061778}
   m_Layer: 0
-  m_Name: Audio Trigger Planet  (RoomCollider)
+  m_Name: Global_ReminderTriggerPlanetsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

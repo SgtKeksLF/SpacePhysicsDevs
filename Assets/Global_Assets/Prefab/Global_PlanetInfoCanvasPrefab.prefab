@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 8720824755256095524}
   - component: {fileID: 6696182886062878577}
   m_Layer: 0
-  m_Name: PlanetInfoCanvas
+  m_Name: Global_PlanetInfoCanvasPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
