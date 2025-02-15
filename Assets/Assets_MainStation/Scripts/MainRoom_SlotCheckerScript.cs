@@ -21,12 +21,12 @@ public class MainRoom_SlotCheckerScript : MonoBehaviour
     {
         if (mainLampRenderer == null)
         {
-            Debug.LogError($"⚠️ Kein Haupt-Renderer für {gameObject.name} gesetzt!");
+            // Debug.LogError($"No renderer für {gameObject.name} defined!");
         }
 
         if (neonLightsParent == null)
         {
-            Debug.LogError($"⚠️ Kein Parent für zusätzliche Objekte gesetzt bei {gameObject.name}!");
+            // Debug.LogError($"No parent for additional objects of {gameObject.name}!");
         }
 
         SetMaterials(loseMaterial);
@@ -34,11 +34,11 @@ public class MainRoom_SlotCheckerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"🔍 Erkanntes Objekt: {other.gameObject.name}, Tag: {other.tag}, Collider: {other}");
+        // Debug.Log($"Trigger object: {other.gameObject.name}, tag: {other.tag}, collider: {other}");
 
         if (other.CompareTag(correctTag))
         {
-            Debug.Log($"✅ Richtiger Gegenstand erkannt für {gameObject.name}");
+            // Debug.Log($"Correct Item for {gameObject.name}");
             rbObject = other.GetComponent<Rigidbody>();
             lastCollider = other; // Speichert den Collider für die spätere Positionierung
             FreezeObject();

@@ -45,14 +45,14 @@ public class Mercury_MercuryPhysicsScript : MonoBehaviour
         Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();    
         if(mercuryLampRenderer != null && earthLampRenderer != null)
         { 
-            Debug.Log("Render not null");
+            // Debug.Log("Render not null");
             Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
             
           
             if(currentMercuryLampMaterial == redLampMaterial)
             {
                 earthLampRenderer.material = redLampMaterial;
-                Debug.Log("Mercury physics");
+                // Debug.Log("Mercury physics");
                 Physics.gravity = new Vector3(0, mercuryGravity, 1);  
                   
                 
@@ -85,14 +85,14 @@ public class Mercury_MercuryPhysicsScript : MonoBehaviour
             if (display0 != null) display0.SetActive(true);
             if (display1 != null) display1.SetActive(false);
 
-            Debug.Log("Displays gefunden");
+            //Debug.Log("Displays found");
         }
     }
 }
 
 public IEnumerator MercuryLampDelay()
 {   Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>();
-    Debug.Log("Waiting");
+    // Debug.Log("waiting");
     yield return new WaitForSeconds(0.5f); 
     mercuryLampRenderer.material = greenLampMaterial;
 }

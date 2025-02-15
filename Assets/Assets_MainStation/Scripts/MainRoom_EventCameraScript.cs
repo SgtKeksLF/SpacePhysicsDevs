@@ -27,7 +27,7 @@ public class MainRoom_EventCameraScript : MonoBehaviour
         }
         else
         {
-            Debug.LogError("XR Kamera oder Canvas wurde nicht gefunden.");
+            // Debug.LogError("XR Camera or Canvas missing.");
         }
     }
 }

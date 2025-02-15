@@ -163,7 +163,7 @@ public class Venus_GrabPhysicsScript: MonoBehaviour
                 waterRenderer.material = evaporateWaterMaterial;
                 if (canOfWaterAudio != null)
                 {
-                    Debug.Log("Sound is playing");
+                    // Debug.Log("soud is playing");
                     canOfWaterAudio.Play();
                 }
             }

@@ -157,7 +157,7 @@ public class Saturn_GrabPhysicsScript : MonoBehaviour
                 waterRenderer.material = freezingWaterMaterial; //Changes appearance of the water to simulate frozen water
                 if (freezeOfWaterAudio != null)
                 {
-                    Debug.Log("Sound is playing");
+                    // Debug.Log("sound is playing");
                     freezeOfWaterAudio.Play();
                 }
             }

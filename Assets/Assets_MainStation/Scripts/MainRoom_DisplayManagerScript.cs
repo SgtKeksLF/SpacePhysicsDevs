@@ -17,7 +17,7 @@ public class MainRoom_DisplayManagerScript : MonoBehaviour
 
         if (settingsDisplay == null)
         {
-            Debug.LogError($"Settings Display ({SETTINGS_DISPLAY_NAME}) konnte nicht gefunden werden!");
+            // Debug.LogError($"Settings Display ({SETTINGS_DISPLAY_NAME}) missing");
             return;
         }
 
@@ -25,7 +25,7 @@ public class MainRoom_DisplayManagerScript : MonoBehaviour
         currentDisplay = FindActiveDisplay();
         if (currentDisplay == null)
         {
-            Debug.LogError("Kein aktives Display gefunden!");
+            // Debug.LogError("no active display");
         }
     }
 

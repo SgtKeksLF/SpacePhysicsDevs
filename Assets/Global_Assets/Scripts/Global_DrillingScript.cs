@@ -102,7 +102,7 @@ public class Global_DrillingScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            Debug.LogWarning("Keine AudioSource auf diesem Objekt gefunden!");
+            // Debug.LogWarning("No audio source on this object!");
         }
          else if (audioSource != null && !audioSource.isPlaying)
         {

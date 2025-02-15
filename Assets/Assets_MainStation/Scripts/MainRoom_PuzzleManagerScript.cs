@@ -38,7 +38,7 @@ public class MainRoom_PuzzleManagerScript : MonoBehaviour
         slots = FindObjectsOfType<MainRoom_SlotCheckerScript>();
         if (slots.Length == 0)
         {
-            Debug.LogError("Keine Slots gefunden!");
+            // Debug.LogError("no Slots found!");
         }
 
         trophyRB = trophyObject.GetComponent<Rigidbody>();
@@ -67,7 +67,7 @@ public class MainRoom_PuzzleManagerScript : MonoBehaviour
             bigLampRenderer.material = winMaterial;
 
             // Debug-Ausgabe, um zu prüfen, ob die Funktion zum Bewegen aufgerufen wird
-            Debug.Log("Alle Slots korrekt! Starte die Bewegung der Probe.");
+            // Debug.Log("all samples correct");
 
             // Führe die Funktion mit einer Verzögerung aus
             StartCoroutine(DelayedTrophyMovement());
@@ -80,7 +80,7 @@ public class MainRoom_PuzzleManagerScript : MonoBehaviour
             hasPlayedWinSound = true; // Verhindert mehrfaches Abspielen
         }
 
-        Debug.Log("🎉 Puzzle gelöst!");
+        // Debug.Log("samples completed");
     }
 
     private IEnumerator DelayedTrophyMovement()
@@ -107,15 +107,15 @@ public class MainRoom_PuzzleManagerScript : MonoBehaviour
 {
     if (trophyRB != null)
     {
-        Debug.Log("RB Not null");
-        Debug.Log("Rigidbody gefunden: " + trophyRB.name);
+        // Debug.Log("RB not null");
+        // Debug.Log("Rigidbody found: " + trophyRB.name);
         trophyRB.detectCollisions = false;
         trophyRB.isKinematic = true;
     }
 
     Vector3 startPosition = trophy.localPosition;
 
-    Debug.Log("MoveTrophyUp Coroutine gestartet. Startposition: " + startPosition);
+    // Debug.Log("MoveTrophyUp coroutine started. starting position: " + startPosition);
 
     while (Mathf.Abs(trophy.localPosition.y - targetTrophyPosition.y) > 0.01f)
     {
@@ -136,7 +136,7 @@ public class MainRoom_PuzzleManagerScript : MonoBehaviour
         trophyRB.isKinematic = false;
     }
 
-    Debug.Log("Ziel Y-Position erreicht (lokal): " + targetTrophyPosition.y);
+    // Debug.Log("Y-Position reached (local): " + targetTrophyPosition.y);
 
     // Fail-Safe nach kurzer Zeit
     StartCoroutine(FailSafeCheck());

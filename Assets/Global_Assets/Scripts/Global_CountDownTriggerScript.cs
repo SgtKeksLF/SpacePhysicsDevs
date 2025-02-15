@@ -28,7 +28,7 @@ public class Global_CountDownTriggerScript : MonoBehaviour
     {
         if (other == mainCameraCollider)
         {
-            Debug.Log("Player entered room"); 
+            // Debug.Log("Player entered room"); 
 
             if (!countdownRunning)
             {
