@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
+/*This script allows for items to be put into the shelf and stay in a neutral position.
+The only allowed items are the experiments
+
+This is achived by freezing position and rotation inside the collider. 
+*/
+
 public class Global_ObjectInShelfScript : MonoBehaviour
 {
 
-    private Rigidbody rb;
-    private bool isInShelf = false;
-    private Collider lastCollider; // Speichert den letzten Collider für die Mitte
-    public Vector3 fixedRotation = new Vector3(90, 0, 90); // Gewünschte Rotation in Grad
-    public AudioSource objectSound;
+
+
+    private Rigidbody rb; 
+    private bool isInShelf = false; 
+    private Collider lastCollider; 
+    public Vector3 fixedRotation = new Vector3(90, 0, 90); 
+    public AudioSource objectSound; 
 
     void Start()
     {
@@ -21,21 +29,25 @@ public class Global_ObjectInShelfScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PhysicsZone")) // Betritt die Zone
+        //Only allows the Experiement objects in the shelves 
+        if (other.CompareTag("PhysicsZone")) 
         {
-            lastCollider = other; // Speichert den Collider für die spätere Positionierung
-            isInShelf = true;
+            lastCollider = other; // Saves the collider
+            isInShelf = true; 
+            //Freezes Object in rotation and position
             FreezeObject();
-            objectSound.mute = true;
+            objectSound.mute = true; //mutes objects 
         }
     }
 
+    //reverts the done changes
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PhysicsZone")) // Verlässt die Zone
+        if (other.CompareTag("PhysicsZone")) 
         {
             if (isInShelf)
             {
+                //unfreezes Object
                 UnfreezeObject();
                 rb.useGravity = true;
                 isInShelf = false;
@@ -48,18 +60,20 @@ public class Global_ObjectInShelfScript : MonoBehaviour
     {
         if (lastCollider != null)
         {
-            // Setzt die Position auf die Mitte des Colliders
+            // Sets position into the middle of the collider
             transform.position = lastCollider.bounds.center;
 
-            // Setzt die Rotation auf den festen Wert
+            // Sets rotation
             transform.rotation = Quaternion.Euler(fixedRotation);
         }
 
+        //freezes both position and rotation
         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
     }
 
     void UnfreezeObject()
     {
+        //Unfreezes object
         rb.constraints = RigidbodyConstraints.None;
     }
 }

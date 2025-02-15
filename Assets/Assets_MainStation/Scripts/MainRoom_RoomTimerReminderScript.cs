@@ -10,7 +10,7 @@ The audio only plays once.
 
 */
 
-public class RoomTimerReminder : MonoBehaviour
+public class MainRoom_RoomTimerReminderScript : MonoBehaviour
 {
     public BoxCollider player;
     public AudioSource reminderAudio; 

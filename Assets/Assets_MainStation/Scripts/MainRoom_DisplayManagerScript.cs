@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayManager : MonoBehaviour
+public class MainRoom_DisplayManagerScript : MonoBehaviour
 {
     private GameObject currentDisplay; // Das aktuelle aktive Display
     private GameObject previousDisplay; // Das zuletzt aktive Display vor DisplaySettings

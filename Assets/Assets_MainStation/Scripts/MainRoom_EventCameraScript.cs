@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class XRCanvasEventCamera : MonoBehaviour
+public class MainRoom_EventCameraScript : MonoBehaviour
 {
     public Canvas worldSpaceCanvas;  // Dein World Space Canvas
     private Camera xrCamera;

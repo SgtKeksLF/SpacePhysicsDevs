@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This script enables the Saturn physics and needed canvases
+
+it is generally attached to the buttons in each room, enabling Saturn physics once pressed. This is done by tracking the attached lamps and their materials
+A lamp delay has been implemented to prevent unwanted sound behavior from dependent objects
+*/
+
 public class Saturn_SaturnPhysicsScript : MonoBehaviour
 {
     public Material redLampMaterial;
@@ -10,20 +17,19 @@ public class Saturn_SaturnPhysicsScript : MonoBehaviour
     public GameObject earthLampObject;   
 
     private float balloonVolume = 0.5f; 
-    public GameObject balloon; // Ballonobjekt
+    public GameObject balloon; 
     private Rigidbody balloonRb;
 
-    // Die folgenden Variablen sind für die Physik selbst
-    private float saturnGravity = -10.44f;
+    
+    private float saturnGravity = -10.44f; 
     private float airDensitySaturn = 0.006f; 
 
-
-
-    // Canvas Logik
+    
     public GameObject canvasGravity;
     public GameObject canvasAtmosphere;
     public GameObject canvasPressure;
     public GameObject canvasTemperature;
+
 
 void Awake()
 {
@@ -42,7 +48,8 @@ void Awake()
             }
         }
     }
-    
+
+
     void FixedUpdate()
     {
         
@@ -58,84 +65,81 @@ void Awake()
 
     public void saturnPhysicsChange()
     {
-        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
-        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();     // Renderer des Erde-Objekts
+
+        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>(); 
+        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();   
         if(saturnLampRenderer != null && earthLampRenderer != null)
         { 
-            Debug.Log("Render not null");
+          
             Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
             
           
             if(currentsaturnLampMaterial == redLampMaterial)
             {
                 earthLampRenderer.material = redLampMaterial;
-                Debug.Log("saturn physics");
-                Physics.gravity = new Vector3(0, saturnGravity, 1);  // Merkur-Schwerkraft
-                    // Anwenden der spezifischen Physik für Objekte
-                saturnLampRenderer.material = greenLampMaterial;
+                
+                Physics.gravity = new Vector3(0, saturnGravity, 1); 
 
-                // **DisplayEarth -> Display0 auf allen relevanten Canvases**
+           
                 UpdateCanvasDisplay(canvasGravity);
                 UpdateCanvasDisplay(canvasAtmosphere);
                 UpdateCanvasDisplay(canvasPressure);
                 UpdateCanvasDisplay(canvasTemperature);
+
                 StartCoroutine(SaturnLampDelay());
             }
-            else{
+            
+        }
+    }
 
+
+    private void UpdateCanvasDisplay(GameObject canvas)
+    {
+        if (canvas != null)
+        {
+            Transform displayParent = canvas.transform.Find("Canvas");
+            if (displayParent != null)
+            {   
+         
+                GameObject displayEarth = displayParent.Find("Displays/DisplayEarth")?.gameObject;
+                GameObject display0 = displayParent.Find("Displays/Display0")?.gameObject;
+                GameObject display1 = displayParent.Find("Displays/Display1")?.gameObject;
+          
+                if (displayEarth != null) displayEarth.SetActive(false);
+                if (display0 != null) display0.SetActive(true);
+                if (display1 != null) display1.SetActive(false);
             }
         }
     }
 
-    private void UpdateCanvasDisplay(GameObject canvas)
-{
-    if (canvas != null)
-    {
-        Transform displayParent = canvas.transform.Find("Canvas");
-        if (displayParent != null)
-        {
-            GameObject displayEarth = displayParent.Find("Displays/DisplayEarth")?.gameObject;
-            GameObject display0 = displayParent.Find("Displays/Display0")?.gameObject;
-            GameObject display1 = displayParent.Find("Displays/Display1")?.gameObject;
 
-            if (displayEarth != null) displayEarth.SetActive(false);
-            if (display0 != null) display0.SetActive(true);
-            if (display1 != null) display1.SetActive(false);
+    private void ApplyBalloonBuoyancy()
+    { 
+        if (balloonRb != null)
+        {   
+            float buoyancyForce = 0f;
+            Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>();   
+            Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
+            
+ 
+            if (currentsaturnLampMaterial == greenLampMaterial)
+            {
+                buoyancyForce = airDensitySaturn * balloonVolume * Mathf.Abs(saturnGravity); 
+            }
 
-            Debug.Log("Displays gefunden");
+
+            if (buoyancyForce > 0f)
+            {
+                balloonRb.AddForce(Vector3.up * buoyancyForce);
+            }
         }
+    
     }
-}
 
-private void ApplyBalloonBuoyancy()
-{ 
-    if (balloonRb != null)
-    {   
-        float buoyancyForce = 0f;
-        Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>();   
-        Material currentsaturnLampMaterial = saturnLampRenderer.sharedMaterial;
-        
-        // Auftrieb nur auf der saturn anwenden
-        if (currentsaturnLampMaterial == greenLampMaterial)  // saturn
-        {
-            buoyancyForce = airDensitySaturn * balloonVolume * Mathf.Abs(saturnGravity);
-        }
-
-        // Wenn Auftriebskraft vorhanden, den Ballon anheben
-        if (buoyancyForce > 0f)
-        {
-            balloonRb.AddForce(Vector3.up * buoyancyForce);
-        }
+    public IEnumerator SaturnLampDelay()
+    {   Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>();
+        yield return new WaitForSeconds(0.3f); 
+        saturnLampRenderer.material = greenLampMaterial;
     }
-    else{
-        Debug.Log("Ballon hat kein RB");
-    }
-}
-public IEnumerator SaturnLampDelay()
-{   Renderer saturnLampRenderer = saturnLampObject.GetComponent<Renderer>();
-    Debug.Log("Waiting");
-    yield return new WaitForSeconds(1.0f); 
-    saturnLampRenderer.material = greenLampMaterial;
-}
 
 }

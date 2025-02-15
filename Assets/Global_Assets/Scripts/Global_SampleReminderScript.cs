@@ -10,7 +10,7 @@ not place the sample in the mail system before the coundtown ends the reminder a
 
 */
 
-public class ProbeReminder : MonoBehaviour
+public class SampleReminder : MonoBehaviour
 {
     public AudioSource reminderAudio; 
     public Global_PostScript ScriptPost; 
@@ -25,19 +25,19 @@ public class ProbeReminder : MonoBehaviour
         if (!countdownStarted && scriptDrilling.hasBeenDrilled)
         {
             countdownStarted = true;
-            StartCoroutine(StartProbeCountdown());
+            StartCoroutine(StartSampleCountdown());
             // Debug.Log("Sample countdown started");
         }
 
     }
 
-    private IEnumerator StartProbeCountdown()
+    private IEnumerator StartSampleCountdown()
     {
         float timer = 0f;
 
         while (timer < reminderDelay)
         {
-            if (ScriptPost.probeInPost) 
+            if (ScriptPost.sampleInPost) 
             {
                 // Debug.Log("Sample in mail, cancel countdown.");
                 yield break; 
@@ -47,7 +47,7 @@ public class ProbeReminder : MonoBehaviour
             yield return null; 
         }
 
-        if (!ScriptPost.probeInPost && reminderAudio != null) 
+        if (!ScriptPost.sampleInPost && reminderAudio != null) 
         {
             reminderAudio.Play();
             // Debug.Log("Reminder audio has played");

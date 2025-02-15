@@ -1,21 +1,29 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
+/*
+
+The tutorial version of the drilling script
+
+Attached to the drill trigger is the start of the video
+
+*/
+
 
 public class Tutorial_DrillTriggerScript : MonoBehaviour
 {
     public GameObject drill;       
-    public GameObject probePrefab; 
+    public GameObject samplePrefab; 
     public Transform spawnPoint;   
     public AudioSource audioSource; 
-    public VideoPlayer videoPlayer; // Referenz zum VideoPlayer
-    public GameObject player; // Spieler-Referenz
-    public GameObject displayVideo; // Display, das das Video zeigt (RawImage)
-    public GameObject display5; // Das neue Display nach dem Video
-    public GameObject display4; // Das neue Display vor dem Video
+    public VideoPlayer videoPlayer; 
+    public GameObject player; 
+    public GameObject displayVideo; 
+    public GameObject display5; 
+    public GameObject display4;
 
-    public Light mainLight; // Das neue Display vor dem Video
-    public Light spotLightCanvas; // Das neue Display vor dem Video
+    public Light mainLight;
+    public Light spotLightCanvas;
 
 
 
@@ -23,26 +31,25 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Überprüfen, ob das Objekt "Drill" in den Collider eintritt
+     
         if (!hasTriggered && other.gameObject == drill)
         {
             hasTriggered = true; 
             
-            // Spiele den Audio-Sound ab
+    
             if (audioSource != null)
             {
                 audioSource.Play();
             }
 
-            // Erzeuge die "Probe" an der vorgesehenen Stelle
-            if (probePrefab != null && spawnPoint != null)
+            if (samplePrefab != null && spawnPoint != null)
             {
-                Instantiate(probePrefab, spawnPoint.position, spawnPoint.rotation);
+                Instantiate(samplePrefab, spawnPoint.position, spawnPoint.rotation);
 
-                // Spielerbewegung einfrieren
+              
                 FreezePlayerMovement();
 
-                // Starte die Verzögerung für das Video
+              
                 StartCoroutine(PlayVideoWithDelay(3f)); 
             }
         }
@@ -67,8 +74,8 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
 
         if (videoPlayer != null)
         {
-            videoPlayer.Play(); // Video starten
-            videoPlayer.loopPointReached += OnVideoFinished; // Event für das Ende des Videos
+            videoPlayer.Play(); 
+            videoPlayer.loopPointReached += OnVideoFinished; 
         }
     }
 
@@ -76,15 +83,15 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
     {
         if (displayVideo != null)
         {
-            displayVideo.SetActive(false); // Video-Display ausblenden
+            displayVideo.SetActive(false); 
         }
 
         if (display5 != null)
         {
-            display5.SetActive(true); // Neues Display aktivieren
+            display5.SetActive(true); 
         }
 
-        // Spieler wieder freigeben
+  
         UnfreezePlayerMovement();
     }
 
@@ -107,7 +114,7 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
             Rigidbody rb = player.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.constraints = RigidbodyConstraints.None; // Alle Einschränkungen entfernen
+                rb.constraints = RigidbodyConstraints.None; 
             }
         }
     }

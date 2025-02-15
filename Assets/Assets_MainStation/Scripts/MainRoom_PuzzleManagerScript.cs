@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class PuzzleManager : MonoBehaviour
+public class MainRoom_PuzzleManagerScript : MonoBehaviour
 {
-    public static PuzzleManager Instance; // Singleton-Instanz
+    public static MainRoom_PuzzleManagerScript Instance; // Singleton-Instanz
 
     [SerializeField] private Renderer bigLampRenderer; // Renderer der großen Lampe
     [SerializeField] private Material winMaterial; // Material für gewonnen (grün)
@@ -19,7 +19,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private Light mainLight; // Das Hauptlicht
     [SerializeField] private Light spotLight; // Das Spotlight
 
-    private SlotChecker[] slots; // Liste aller Slots
+    private MainRoom_SlotCheckerScript[] slots; // Liste aller Slots
     private bool hasPlayedWinSound = false; // Damit der Sound nur einmal abgespielt wird
     private Rigidbody trophyRB;
 
@@ -34,8 +34,8 @@ public class PuzzleManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // findet alle SlotChecker
-        slots = FindObjectsOfType<SlotChecker>();
+        // findet alle MainRoom_SlotCheckerScript
+        slots = FindObjectsOfType<MainRoom_SlotCheckerScript>();
         if (slots.Length == 0)
         {
             Debug.LogError("Keine Slots gefunden!");
@@ -46,7 +46,7 @@ public class PuzzleManager : MonoBehaviour
 
     public void CheckWinCondition()
     {
-        foreach (SlotChecker slot in slots)
+        foreach (MainRoom_SlotCheckerScript slot in slots)
         {
             if (!slot.IsCorrect())
             {

@@ -1,26 +1,38 @@
 using UnityEngine;
 
+/*
+This script disables the buttons inside of the planet rooms, making the player complete the quest before leaving again
+
+This script required the DoorScript() and XR GRab Interactable to be the first two scripts attached to the button
+
+*/
+
 public class Global_MaterialAndScriptManagerScript : MonoBehaviour
 {  
-   
-    public Material newMaterial;
-    public GameObject quiz5;
+    public Material newMaterial; 
 
-    private Material originalMaterial;
-    private Renderer objectRenderer;
-    private bool hasQuizActivated = false;
+    public GameObject quiz5; 
+
+
+    private Material originalMaterial; 
+    private Renderer buttonObjectRenderer; 
+    private bool hasQuizActivated = false; 
+
     private MonoBehaviour targetScript1;
     private MonoBehaviour targetScript2;
 
+
     void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
+        buttonObjectRenderer = GetComponent<Renderer>();
 
-        if (objectRenderer != null)
+       
+        if (buttonObjectRenderer != null)
         {
-            originalMaterial = objectRenderer.material;
+            originalMaterial = buttonObjectRenderer.material;
         }
 
+       
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
         if (scripts.Length > 2)
         {
@@ -28,23 +40,26 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
             targetScript2 = scripts[2];
         }
 
+ 
         ChangeMaterialAndDisableScripts();
     }
 
+ 
     void Update()
     {
         if (!hasQuizActivated && quiz5 != null && quiz5.activeInHierarchy)
         {
             hasQuizActivated = true;
+   
             RestoreMaterialAndEnableScripts();
         }
     }
 
     private void ChangeMaterialAndDisableScripts()
     {
-        if (objectRenderer != null && newMaterial != null)
+        if (buttonObjectRenderer != null && newMaterial != null)
         {
-            objectRenderer.material = newMaterial;
+            buttonObjectRenderer.material = newMaterial;
         }
 
         if (targetScript1 != null)
@@ -60,9 +75,9 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
 
     private void RestoreMaterialAndEnableScripts()
     {
-        if (objectRenderer != null && originalMaterial != null)
+        if (buttonObjectRenderer != null && originalMaterial != null)
         {
-            objectRenderer.material = originalMaterial;
+            buttonObjectRenderer.material = originalMaterial;
             // @Lisa Text �ber bUTTON AUF "t�R �FFNEN �NDERN"
             // text "t�r �ffnen" aktiv
             // text quiz beantworten inaktiv
@@ -78,6 +93,6 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
             targetScript2.enabled = true;
         }
 
-        enabled = false; // Deaktiviert dieses Skript, um Update() zu stoppen
+        enabled = false; 
     }
 }

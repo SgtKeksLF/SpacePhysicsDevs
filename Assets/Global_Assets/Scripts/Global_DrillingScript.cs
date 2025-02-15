@@ -4,15 +4,21 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
+/*
+This script is responsible for the drilling and spawning of the sample and particles per room
+
+The drilling is only enabled if the correct light and therefore physics situation is currently happening
+*/
 
 public class Global_DrillingScript : MonoBehaviour
 {
-   
- 
     private bool drillInZone = false;
     public bool hasBeenDrilled = false;
 
- 
+    public Material greenLampMaterial;
+    public GameObject otherPlanetLampObject;
+    public bool planetCorrect = false;
+
 
     void Update()
     {
@@ -30,17 +36,13 @@ public class Global_DrillingScript : MonoBehaviour
      
     }
 
-    public Material greenLampMaterial;
-    public GameObject mercuryLampObject;
-  
 
-    public bool planetCorrect = false;
     public void materialCheck()
     {
 
-        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>();
-        Material currentMercuryLampMaterial = mercuryLampRenderer.sharedMaterial;
-        if(currentMercuryLampMaterial == greenLampMaterial)
+        Renderer otherPlanetLampRenderer = otherPlanetLampObject.GetComponent<Renderer>();
+        Material currentOtherPlanetLampMaterial = otherPlanetLampRenderer.sharedMaterial;
+        if(currentOtherPlanetLampMaterial == greenLampMaterial)
         {
             
             planetCorrect = true;
@@ -51,48 +53,38 @@ public class Global_DrillingScript : MonoBehaviour
      
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Drill"))
-
-            {
-            
+        {
             drillInZone = true;
             hasBeenDrilled = true;
-            }
-      
-       
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("A"))
-        {
-            drillInZone = false;
         }
-       
+      
     }
 
-
- 
 
     public ParticleSystem drillingParticleSystem;
     public Quaternion newParticleRotation = Quaternion.Euler(215, 0, 0);
     public GameObject particleSpawnTargetObject;
 
+
     public GameObject sample;
     public GameObject spawnPointObject;
-
     public Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource audioSource;
+
  
 
     private IEnumerator StartDrilling()
     {
        
-        particleTrigger();
-        playDrillingSound();
-        yield return new WaitForSeconds(1.0f); 
+        particleTrigger(); 
+        playDrillingSound(); 
+        yield return new WaitForSeconds(1.0f);
+        
+      
         Vector3 targetPosition = spawnPointObject.transform.position;
         sample.transform.position = targetPosition;
     }

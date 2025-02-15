@@ -2,6 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+This script enables the Mercury physics and needed canvases
+
+it is generally attached to the buttons in each room, enabling Mercury physics once pressed. This is done by tracking the attached lamps and their materials
+A lamp delay has been implemented to prevent unwanted sound behavior from dependent objects
+*/
+
 public class Mercury_MercuryPhysicsScript : MonoBehaviour
 {
     public Material redLampMaterial;
@@ -10,11 +17,10 @@ public class Mercury_MercuryPhysicsScript : MonoBehaviour
     public GameObject earthLampObject;   
 
 
-    // Die folgenden Variablen sind für die Physik selbst
     private float mercuryGravity = -3.9f;
 
 
-    // Canvas Logik
+
     public GameObject canvasGravity;
     public GameObject canvasAtmosphere;
     public GameObject canvasPressure;
@@ -35,8 +41,8 @@ public class Mercury_MercuryPhysicsScript : MonoBehaviour
 
     public void MercuryPhysicsChange()
     {
-        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); // Renderer des Merkur-Objekts
-        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();     // Renderer des Erde-Objekts
+        Renderer mercuryLampRenderer = mercuryLampObject.GetComponent<Renderer>(); 
+        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();    
         if(mercuryLampRenderer != null && earthLampRenderer != null)
         { 
             Debug.Log("Render not null");
@@ -47,11 +53,11 @@ public class Mercury_MercuryPhysicsScript : MonoBehaviour
             {
                 earthLampRenderer.material = redLampMaterial;
                 Debug.Log("Mercury physics");
-                Physics.gravity = new Vector3(0, mercuryGravity, 1);  // Merkur-Schwerkraft
-                    // Anwenden der spezifischen Physik für Objekte
-                mercuryLampRenderer.material = greenLampMaterial;
+                Physics.gravity = new Vector3(0, mercuryGravity, 1);  
+                  
+                
 
-                // **DisplayEarth -> Display0 auf allen relevanten Canvases**
+
                 UpdateCanvasDisplay(canvasGravity);
                 UpdateCanvasDisplay(canvasAtmosphere);
                 UpdateCanvasDisplay(canvasPressure);

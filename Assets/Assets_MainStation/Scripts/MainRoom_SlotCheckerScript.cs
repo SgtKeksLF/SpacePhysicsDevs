@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotChecker : MonoBehaviour
+public class MainRoom_SlotCheckerScript : MonoBehaviour
 {
     [SerializeField] private string correctTag;
     [SerializeField] private Material winMaterial; // Das grüne Material
@@ -51,7 +51,7 @@ public class SlotChecker : MonoBehaviour
             isCorrect = false;
         }
 
-        PuzzleManager.Instance.CheckWinCondition();
+        MainRoom_PuzzleManagerScript.Instance.CheckWinCondition();
     }
 
     private void OnTriggerExit(Collider other)
@@ -63,7 +63,7 @@ public class SlotChecker : MonoBehaviour
             isCorrect = false;
         }
 
-        PuzzleManager.Instance.CheckWinCondition();
+        MainRoom_PuzzleManagerScript.Instance.CheckWinCondition();
     }
 
     private void SetMaterials(Material newMaterial)

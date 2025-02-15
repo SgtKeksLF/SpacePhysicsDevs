@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-This script enables the Venus physics and needed canvases
+This script enables the normal earth physics and needed canvases
 
-it is generally attached to the buttons in each room, enabling venus physics once pressed. This is done by tracking the attached lamps and their materials
+it is generally attached to the buttons in each room, enabling earth physics by default and once pressed. This is done by tracking the attached lamps and their materials
 A lamp delay has been implemented to prevent unwanted sound behavior from dependent objects
 */
 
-public class Venus_VenusPhysicsScript : MonoBehaviour
+public class Mars_MarsPhysicsScript : MonoBehaviour
 {
     public Material redLampMaterial;
     public Material greenLampMaterial;
-    public GameObject venusLampObject;
+    public GameObject marsLampObject;
     public GameObject earthLampObject;   
+
 
     private float balloonVolume = 0.5f; 
     public GameObject balloon; 
     private Rigidbody balloonRb;
- 
-
     
-    private float venusGravity = -8.87f;
-    private float airDensityVenus = 67.0f;
- 
+
+    private float marsGravity = -3.72f;  
+    private float airDensityMars = 0.02f;  
+    private float atmosphereAddition = 0.8f; 
 
     public GameObject canvasGravity;
     public GameObject canvasAtmosphere;
     public GameObject canvasPressure;
     public GameObject canvasTemperature;
-  
+
 
 void Awake()
 {
@@ -50,51 +50,50 @@ void Awake()
         }
     }
     
-
+    
     void FixedUpdate()
     {
         
-        ApplyBalloonBuoyancy();
+        ApplyBalloonBuoyancy(); 
     }
 
 
-    public void OnButtonPressed()
+      public void OnButtonPressed()
     {
-       VenusPhysicsChange();
+       marsPhysicsChange();
         
     }
 
-    public void VenusPhysicsChange()
+    public void marsPhysicsChange()
     {
+        
+        Renderer marsLampRenderer = marsLampObject.GetComponent<Renderer>(); 
+        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();    
 
-        Renderer venusLampRenderer = venusLampObject.GetComponent<Renderer>(); 
-        Renderer earthLampRenderer = earthLampObject.GetComponent<Renderer>();   
-
-        if(venusLampRenderer != null && earthLampRenderer != null)
+        if(marsLampRenderer != null && earthLampRenderer != null)
         { 
-           
-            Material currentvenusLampMaterial = venusLampRenderer.sharedMaterial;
+            
+            Material currentmarsLampMaterial = marsLampRenderer.sharedMaterial;
             
           
-            if(currentvenusLampMaterial == redLampMaterial)
-            {
+            if(currentmarsLampMaterial == redLampMaterial)
+            {  
                 earthLampRenderer.material = redLampMaterial;
-                
-                Physics.gravity = new Vector3(0, venusGravity, 1); 
-                    
+              
+                Physics.gravity = new Vector3(0, marsGravity, 1);  
+                   
+                     
                 
 
-             
+              
                 UpdateCanvasDisplay(canvasGravity);
                 UpdateCanvasDisplay(canvasAtmosphere);
                 UpdateCanvasDisplay(canvasPressure);
                 UpdateCanvasDisplay(canvasTemperature);
 
-              
-                StartCoroutine(VenusLampDelay());
-            }
-            else{
-
+           
+                StartCoroutine(MarsLampDelay());
+                 
             }
         }
     }
@@ -112,28 +111,30 @@ void Awake()
                 GameObject display0 = displayParent.Find("Displays/Display0")?.gameObject;
                 GameObject display1 = displayParent.Find("Displays/Display1")?.gameObject;
 
-              
+             
                 if (displayEarth != null) displayEarth.SetActive(false);
                 if (display0 != null) display0.SetActive(true);
                 if (display1 != null) display1.SetActive(false);
 
-            
+                
             }
         }
     }
 
+   
     private void ApplyBalloonBuoyancy()
     { 
         if (balloonRb != null)
         {   
             float buoyancyForce = 0f;
-            Renderer venusLampRenderer = venusLampObject.GetComponent<Renderer>();   
-            Material currentVenusLampMaterial = venusLampRenderer.sharedMaterial;
+            Renderer marsLampRenderer = marsLampObject.GetComponent<Renderer>();   
+            Material currentmarsLampMaterial = marsLampRenderer.sharedMaterial;
             
-  
-            if (currentVenusLampMaterial == greenLampMaterial)
+          
+            if (currentmarsLampMaterial == greenLampMaterial) 
             {
-                buoyancyForce = airDensityVenus * balloonVolume * Mathf.Abs(venusGravity); 
+                buoyancyForce = airDensityMars * balloonVolume * Mathf.Abs(marsGravity);
+                buoyancyForce = buoyancyForce + atmosphereAddition;
             }
 
        
@@ -144,11 +145,10 @@ void Awake()
         }
     }
 
-    public IEnumerator VenusLampDelay()
-    {   Renderer venusLampRenderer = venusLampObject.GetComponent<Renderer>();
-        yield return new WaitForSeconds(0.5f); 
-        venusLampRenderer.material = greenLampMaterial;
+    public IEnumerator MarsLampDelay()
+    {   Renderer marsLampRenderer = marsLampObject.GetComponent<Renderer>();
+        yield return new WaitForSeconds(0.3f); 
+        marsLampRenderer.material = greenLampMaterial;
     }
-
 
 }

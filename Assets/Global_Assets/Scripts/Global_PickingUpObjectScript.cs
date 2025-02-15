@@ -2,20 +2,28 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/*
+This scripts attaches sounds to collision and pick up from Items
+
+Sounds are only allowed one second after the game starts to prevent unwanted sounds
+*/
+
+
 public class Global_PickingUpObjectScript : MonoBehaviour
 {
     private AudioSource audioSource;
     private bool canPlaySound = false;
+
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            Debug.LogWarning("Keine AudioSource auf diesem Objekt gefunden!");
+           
         }
         
-        // Starte das Delay für das Abspielen der Sounds
+       
         StartCoroutine(EnableSoundAfterDelay(1f));
     }
 
@@ -25,6 +33,7 @@ public class Global_PickingUpObjectScript : MonoBehaviour
         canPlaySound = true;
     }
 
+
     public void OnGrab()
     {   
         if (canPlaySound && audioSource != null && !audioSource.isPlaying)
@@ -32,6 +41,7 @@ public class Global_PickingUpObjectScript : MonoBehaviour
             audioSource.Play();
         }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {

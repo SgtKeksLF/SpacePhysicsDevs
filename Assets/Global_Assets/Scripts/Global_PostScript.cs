@@ -1,23 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+This script connects the quizz screen with the post system and is responsible for transport of the sample to the main room. 
+
+It uses the same logic function of ObjectInShelf to have the item hover inside the model of the post system until the quiz is succesfully cleared.
+It then sends the sample to the main room. 
+*/
+
 public class Global_PostScript : MonoBehaviour
 {
-    public GameObject currentProbe; // Wird im Inspector zugewiesen
-    public GameObject targetObject;
-    public GameObject quiz5; // Referenz zu "Quiz5"
-    public GameObject quiz0; // Referenz zu "Quiz0"
-    public GameObject quiz1; // Referenz zu "Quiz0"
+    public GameObject currentSample; // Variable for the room sample
+    public GameObject targetObject; // Reference to object that is supposed to be transported
+    public GameObject quiz5; 
+    public GameObject quiz0; 
+    public GameObject quiz1; 
 
 
     public float moveSpeed = 0.5f;
-    private bool hasTriggered = false; // Stellt sicher, dass die Methode nur einmal ausgelöst wird
-    public bool probeInPost = false;
+    private bool hasTriggered = false; 
+    public bool sampleInPost = false;
     private AudioSource[] audioSources;
     private AudioSource triggerSound;
     private AudioSource arrivalSound;
 
-    public Vector3 fixedRotation = new Vector3(0, 0, 0); // Gewünschte Rotation in Grad
+    public Vector3 fixedRotation = new Vector3(0, 0, 0);
 
     private void Start()
     {
@@ -26,10 +33,6 @@ public class Global_PostScript : MonoBehaviour
         {
             triggerSound = audioSources[0];
             arrivalSound = audioSources[1];
-        }
-        else
-        {
-            Debug.LogError("Nicht genügend AudioSources auf dem Objekt vorhanden!", this);
         }
     }
 
@@ -44,9 +47,9 @@ public class Global_PostScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (currentProbe != null && other.bounds.Contains(currentProbe.transform.position))
+        if (currentSample != null && other.bounds.Contains(currentSample.transform.position))
         {
-            probeInPost = true;
+            sampleInPost = true;
 
             quiz0.SetActive(false);
             quiz1.SetActive(true);
@@ -66,15 +69,15 @@ public class Global_PostScript : MonoBehaviour
 
     private void OnSolutionCorrect()
     {
-        if (currentProbe != null && targetObject != null)
+        if (currentSample != null && targetObject != null)
         {
-            StartCoroutine(MoveProbeCoroutine(targetObject.transform.position));
+            StartCoroutine(MoveSampleCoroutine(targetObject.transform.position));
         }
     }
 
-    private IEnumerator MoveProbeCoroutine(Vector3 endPos)
+    private IEnumerator MoveSampleCoroutine(Vector3 endPos)
     {
-        Vector3 start = currentProbe.transform.position;
+        Vector3 start = currentSample.transform.position;
         Vector3 upPosition = start + Vector3.up * 3f;
         float elapsedTime = 0f;
 
@@ -85,24 +88,24 @@ public class Global_PostScript : MonoBehaviour
 
         while (elapsedTime < 1f)
         {
-            currentProbe.transform.position = Vector3.Lerp(start, upPosition, elapsedTime);
+            currentSample.transform.position = Vector3.Lerp(start, upPosition, elapsedTime);
             elapsedTime += Time.deltaTime * moveSpeed;
             yield return null;
         }
 
-        currentProbe.transform.position = upPosition;
+        currentSample.transform.position = upPosition;
 
         elapsedTime = 0f;
 
         while (elapsedTime < 1f)
         {
-            currentProbe.transform.position = Vector3.Lerp(upPosition, endPos, elapsedTime);
+            currentSample.transform.position = Vector3.Lerp(upPosition, endPos, elapsedTime);
             elapsedTime += Time.deltaTime * moveSpeed;
             yield return null;
         }
 
-        currentProbe.transform.position = endPos;
-        Rigidbody rb = currentProbe.GetComponent<Rigidbody>();
+        currentSample.transform.position = endPos;
+        Rigidbody rb = currentSample.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.None;
@@ -113,10 +116,10 @@ public class Global_PostScript : MonoBehaviour
     {
         if (rb != null)
         {
-            // Setzt die Position auf die Mitte des Slots
+           
             rb.transform.position = transform.position;
 
-            // Setzt die Rotation auf den festen Wert
+           
             rb.transform.rotation = Quaternion.Euler(fixedRotation);
 
             rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;

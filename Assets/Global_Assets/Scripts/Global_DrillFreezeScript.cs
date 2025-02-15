@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This script freezes the drill in position and rotation upon being put onto the table
+It includes measure to prevent noises should clipping problems occure
+*/
+
 public class Global_DrillFreezeScript : MonoBehaviour
 {
     public GameObject drill;
@@ -10,22 +15,22 @@ public class Global_DrillFreezeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Überprüfe, ob das kollidierende Objekt den Tag "Drill" hat
+        
         if (other.CompareTag("Drill"))
         {
       
-            
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                
+                rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation; 
             }
 
-            // Objekt in die Mitte des Colliders mit fester Position und Rotation setzen
+           
             other.transform.position = transform.position + fixedPosition;
             other.transform.rotation = Quaternion.Euler(fixedRotationEuler);
             
-            // Audio stummschalten
+      
             AudioSource audioSource = other.GetComponent<AudioSource>();
             if (audioSource != null)
             {
@@ -34,9 +39,10 @@ public class Global_DrillFreezeScript : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit(Collider other)
     {
-        // Überprüfe, ob das kollidierende Objekt den Tag "Drill" hat
+        
         if (other.CompareTag("Drill"))
         {
            
@@ -44,10 +50,10 @@ public class Global_DrillFreezeScript : MonoBehaviour
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.constraints = RigidbodyConstraints.None; // Hebt alle Einschränkungen auf
+                rb.constraints = RigidbodyConstraints.None; 
             }
 
-            // Audio wieder aktivieren
+           
             AudioSource audioSource = other.GetComponent<AudioSource>();
             if (audioSource != null)
             {

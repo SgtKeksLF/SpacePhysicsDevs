@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+/*
+
+The tutorial version of the door script
+
+The door opens upon completion of the video
+
+*/
 
 public class Tutorial_DoorScript : MonoBehaviour
 {
-     public GameObject door;
+    public GameObject door;
     public float moveDistance = 3f;
     public float moveSpeed = 2f;
     private bool isMoving = false;
@@ -21,25 +28,18 @@ public class Tutorial_DoorScript : MonoBehaviour
             startPos = door.transform.position;
             targetPos = startPos + Vector3.up * moveDistance;
         }
-        else
-        {
-            Debug.LogError("Tür-GameObject nicht zugewiesen!", this);
-        }
-
+      
         videoPlayer = GetComponent<VideoPlayer>();
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += OnVideoEnd; // Event abonnieren
         }
-        else
-        {
-            Debug.LogError("Kein VideoPlayer an diesem GameObject gefunden!", this);
-        }
+      
     }
 
     private void OnVideoEnd(VideoPlayer vp)
     {
-        ToggleDoor(); // Tür öffnen, wenn das Video endet
+        ToggleDoor(); 
     }
 
     public void ToggleDoor()
