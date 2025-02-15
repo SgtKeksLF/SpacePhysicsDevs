@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4892619070090700746}
   m_Layer: 0
-  m_Name: Shelves
+  m_Name: Global_ShelvesPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -50,7 +50,7 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
                 FreezePlayerMovement();
 
               
-                StartCoroutine(PlayVideoWithDelay(3f)); 
+                StartCoroutine(PlayVideoWithDelay(5f)); 
             }
         }
     }
@@ -58,18 +58,15 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
     private IEnumerator PlayVideoWithDelay(float delay)
     {
 
-
-        mainLight.enabled = false;
-
-
-        spotLightCanvas.enabled = true;
-
         yield return new WaitForSeconds(delay); 
 
         if (displayVideo != null)
         {
             displayVideo.SetActive(true); 
             display4.SetActive(false);
+
+            mainLight.enabled = false;
+            spotLightCanvas.enabled = true;
         }
 
         if (videoPlayer != null)
