@@ -6612,6 +6612,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drill Venus
       objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -9223,8 +9239,24 @@ PrefabInstance:
       value: Drill
       objectReference: {fileID: 0}
     - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8960688927469001977, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
       propertyPath: m_Name
@@ -10213,11 +10245,11 @@ MonoBehaviour:
   winMaterial: {fileID: 2100000, guid: ccf4bf91e8c094fb4ba0168ab09147ae, type: 2}
   loseMaterial: {fileID: 2100000, guid: 3a40d352465cb4611bd3bc40327bed9f, type: 2}
   winSound: {fileID: 599596235}
+  trophyObject: {fileID: 670045112}
   trophy: {fileID: 856245872}
   targetTrophyPosition: {x: 7.6324553, y: 2.187, z: 2.2956257}
   trophyMoveSpeed: 0.5
   delayBeforeMoving: 3
-  trophyObject: {fileID: 670045112}
   mainLight: {fileID: 1852734904}
   spotLight: {fileID: 993908154}
 --- !u!4 &599596234
@@ -11177,12 +11209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a308d20ebbfd403abad9026cb7fb063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1713283613}
   drill: {fileID: 1220222043}
   samplePrefab: {fileID: 2462695531986735865, guid: cea54d9a675343243a358399ed2720bd, type: 3}
   spawnPoint: {fileID: 220523236}
   audioSource: {fileID: 641641236}
   videoPlayer: {fileID: 1064213249}
-  player: {fileID: 1713283613}
   displayVideo: {fileID: 688022018}
   display5: {fileID: 1094782442}
   display4: {fileID: 621562553}
@@ -15394,6 +15426,22 @@ PrefabInstance:
     - target: {fileID: 8200320510615838024, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
       propertyPath: m_Name
       value: Drill Mars
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828942728410367986, guid: 3755e9415cdd10d4992b0d778dd9b1ae, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19617,6 +19665,7 @@ GameObject:
   - component: {fileID: 1201587636}
   - component: {fileID: 1201587635}
   - component: {fileID: 1201587634}
+  - component: {fileID: 1201587639}
   m_Layer: 0
   m_Name: Tutorial_Door
   m_TagString: Untagged
@@ -19710,6 +19759,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 798165466}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!82 &1201587639
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201587633}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e76ba22ff96ad4f49a801a64070c5959, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.2
+  MaxDistance: 1
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1201589734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7040129768992871059, guid: 6d309ace231a05847a3b2a6a88231f9b, type: 3}
@@ -19959,15 +20104,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 99.999985
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 99.999985
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 99.999985
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20008,6 +20153,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 29.99
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f02318a896f562049a7f45ee53f75e0e, type: 3}
       propertyPath: m_Name

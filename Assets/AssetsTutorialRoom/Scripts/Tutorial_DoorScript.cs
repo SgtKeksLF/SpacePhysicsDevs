@@ -20,7 +20,8 @@ public class Tutorial_DoorScript : MonoBehaviour
     private Vector3 startPos;
     private Vector3 targetPos;
     private VideoPlayer videoPlayer;
-
+    public AudioSource openSound; 
+ 
     void Start()
     {
         if (door != null)
@@ -28,13 +29,12 @@ public class Tutorial_DoorScript : MonoBehaviour
             startPos = door.transform.position;
             targetPos = startPos + Vector3.up * moveDistance;
         }
-      
+
         videoPlayer = GetComponent<VideoPlayer>();
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += OnVideoEnd; 
         }
-      
     }
 
     private void OnVideoEnd(VideoPlayer vp)
@@ -48,6 +48,12 @@ public class Tutorial_DoorScript : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(isOpen ? MoveDoorCoroutine(startPos) : MoveDoorCoroutine(targetPos));
+            
+            if (!isOpen && openSound != null) 
+            {
+                openSound.Play();
+            }
+            
             isOpen = !isOpen;
         }
     }
