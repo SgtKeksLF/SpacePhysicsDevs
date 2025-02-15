@@ -95,11 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5ba4f1c6bf3446987a59be0df17d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
   buttonObject: {fileID: 0}
   greenLampMaterial: {fileID: 0}
   reminderAudio: {fileID: 4608572315588061778}
   countdownTime: 5
+  mainCameraCollider: {fileID: 0}
 --- !u!82 &4608572315588061778
 AudioSource:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
