@@ -18060,6 +18060,7 @@ MonoBehaviour:
   door: {fileID: 1201587633}
   moveDistance: 3
   moveSpeed: 2
+  openSound: {fileID: 1201587639}
 --- !u!4 &1084163666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4674866689513902170, guid: 0ff29f12084c7465f8fde142d642fcf6, type: 3}
