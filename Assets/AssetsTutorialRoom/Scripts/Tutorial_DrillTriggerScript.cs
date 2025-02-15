@@ -5,27 +5,27 @@ using UnityEngine.Video;
 
 The tutorial version of the drilling script
 
-Attached to the drill trigger is the start of the video
+Attached to the drill trigger is the start of the tutorial video
 
 */
 
 
 public class Tutorial_DrillTriggerScript : MonoBehaviour
 {
+    public GameObject player; 
+
     public GameObject drill;       
     public GameObject samplePrefab; 
     public Transform spawnPoint;   
     public AudioSource audioSource; 
+    
     public VideoPlayer videoPlayer; 
-    public GameObject player; 
     public GameObject displayVideo; 
     public GameObject display5; 
     public GameObject display4;
 
     public Light mainLight;
     public Light spotLightCanvas;
-
-
 
     private bool hasTriggered = false; 
 
@@ -46,10 +46,8 @@ public class Tutorial_DrillTriggerScript : MonoBehaviour
             {
                 Instantiate(samplePrefab, spawnPoint.position, spawnPoint.rotation);
 
-              
                 FreezePlayerMovement();
 
-              
                 StartCoroutine(PlayVideoWithDelay(5f)); 
             }
         }

@@ -1,17 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/*
+
+This Script manages the quizz canvases placed in ech planet room.
+
+With a delay it changes the shown displays as on the last quiz display is no button
+and the player is not meant to change the display himself.
+
+*/
 
 public class Global_QuizManagerScript : MonoBehaviour
 {
-    public GameObject quiz3;  // Das Display, das für 10 Sekunden aktiv sein soll
-    public GameObject quiz5;  // Das Display, das danach aktiviert wird
+    public GameObject quiz3;
+    public GameObject quiz5;
 
     private bool isCountdownRunning = false;
 
     void Update()
     {
-        // Wenn Quiz3 aktiv ist und der Countdown noch nicht läuft, starte ihn
         if (quiz3 != null && quiz5 != null && quiz3.activeSelf && !isCountdownRunning)
         {
             StartCoroutine(CountdownToSwitch());
@@ -20,17 +27,17 @@ public class Global_QuizManagerScript : MonoBehaviour
 
     private IEnumerator CountdownToSwitch()
     {
-        isCountdownRunning = true;  // Countdown-Flag setzen, damit er nicht mehrfach startet
+        isCountdownRunning = true;
 
-        yield return new WaitForSeconds(1f);  // 5 Sekunden warten
+        yield return new WaitForSeconds(1f);
 
-        if (quiz3 != null && quiz5 != null)  
+        if (quiz3 != null && quiz5 != null)
         {
-            quiz3.SetActive(false);  // Quiz3 ausblenden
-            quiz5.SetActive(true);   // Quiz5 anzeigen
+            quiz3.SetActive(false);
+            quiz5.SetActive(true);
         }
 
-        isCountdownRunning = false; // Countdown zurücksetzen, falls Quiz3 später erneut aktiviert wird
+        isCountdownRunning = false;
     }
 }
 

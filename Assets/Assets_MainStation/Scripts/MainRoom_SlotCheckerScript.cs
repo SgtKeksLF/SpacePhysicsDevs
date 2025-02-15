@@ -1,47 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/*
+
+This script checks if the planetsample that the player tries to place on a
+sample shelf is the right one. Example: He places the Mars sample in the Venus slot so 
+this script remainsthe red material for "wrong slot".
+
+The planet samples, their sample shelves and their neon lights are each tagged with their 
+slot (slot1 for Mercury, slot2 for Venus, slot3 for Mars, slot4 for Saturn)
+
+*/
 
 public class MainRoom_SlotCheckerScript : MonoBehaviour
 {
-    [SerializeField] private string correctTag;
-    [SerializeField] private Material winMaterial; // Das grüne Material
-    [SerializeField] private Material loseMaterial; // Das rote Material
+    public string correctTag;
+    public Material winMaterial; 
+    public Material loseMaterial; 
 
-    [SerializeField] private Renderer mainLampRenderer; // Der Renderer für das einzelne Kindobjekt
-    [SerializeField] private Transform neonLightsParent; // Das leere Objekt, das die 3 anderen Objekte enthält
+    public Renderer mainLampRenderer; 
+    public Transform neonLightsParent; 
     private Rigidbody rbObject;
-    private Collider lastCollider; // Speichert den letzten Collider für die Positionierung
+    private Collider lastCollider; 
 
     private bool isCorrect = false;
 
-    public Vector3 fixedRotation = new Vector3(0, 0, 0); // Gewünschte Rotation in Grad
+    public Vector3 fixedRotation = new Vector3(0, 0, 0); 
 
+    // at game start all slots are marked green as there are no samples collected yet
     private void Awake()
     {
-        if (mainLampRenderer == null)
-        {
-            // Debug.LogError($"No renderer für {gameObject.name} defined!");
-        }
-
-        if (neonLightsParent == null)
-        {
-            // Debug.LogError($"No parent for additional objects of {gameObject.name}!");
-        }
-
         SetMaterials(loseMaterial);
     }
 
+    // checking if same tag and so if correct placed sample
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log($"Trigger object: {other.gameObject.name}, tag: {other.tag}, collider: {other}");
-
         if (other.CompareTag(correctTag))
         {
-            // Debug.Log($"Correct Item for {gameObject.name}");
             rbObject = other.GetComponent<Rigidbody>();
-            lastCollider = other; // Speichert den Collider für die spätere Positionierung
+            lastCollider = other; 
+            
             FreezeObject();
+            
             SetMaterials(winMaterial);
             isCorrect = true;
         }
@@ -58,7 +58,6 @@ public class MainRoom_SlotCheckerScript : MonoBehaviour
     {
         if (other.CompareTag(correctTag))
         {
-            Debug.Log($"🔴 Richtiger Gegenstand entfernt von {gameObject.name}");
             SetMaterials(loseMaterial);
             isCorrect = false;
         }
@@ -92,10 +91,8 @@ public class MainRoom_SlotCheckerScript : MonoBehaviour
     {
         if (rbObject != null && lastCollider != null)
         {
-            // Setzt die Position auf die Mitte des Slots
             rbObject.transform.position = transform.position;
 
-            // Setzt die Rotation auf den festen Wert
             rbObject.transform.rotation = Quaternion.Euler(fixedRotation);
 
             rbObject.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;

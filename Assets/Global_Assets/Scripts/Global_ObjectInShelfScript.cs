@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
-/*This script allows for items to be put into the shelf and stay in a neutral position.
+/*
+
+This script allows for items to be put into the shelf and stay in a neutral position.
 The only allowed items are the experiments
 
 This is achived by freezing position and rotation inside the collider. 

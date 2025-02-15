@@ -32,7 +32,7 @@ public class Tutorial_DoorScript : MonoBehaviour
         videoPlayer = GetComponent<VideoPlayer>();
         if (videoPlayer != null)
         {
-            videoPlayer.loopPointReached += OnVideoEnd; // Event abonnieren
+            videoPlayer.loopPointReached += OnVideoEnd; 
         }
       
     }

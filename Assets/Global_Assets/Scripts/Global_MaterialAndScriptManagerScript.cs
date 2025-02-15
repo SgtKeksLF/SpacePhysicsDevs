@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /*
@@ -10,9 +11,8 @@ This script required the DoorScript() and XR GRab Interactable to be the first t
 public class Global_MaterialAndScriptManagerScript : MonoBehaviour
 {  
     public Material newMaterial; 
-
     public GameObject quiz5; 
-
+    public TMP_Text textElement;
 
     private Material originalMaterial; 
     private Renderer buttonObjectRenderer; 
@@ -25,6 +25,8 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
     void Start()
     {
         buttonObjectRenderer = GetComponent<Renderer>();
+
+        textElement.text = "Beantworte das Quiz, um die Tür zu öffnen";
 
        
         if (buttonObjectRenderer != null)
@@ -50,6 +52,8 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
         if (!hasQuizActivated && quiz5 != null && quiz5.activeInHierarchy)
         {
             hasQuizActivated = true;
+            
+            textElement.text = "Tür öffnen";
    
             RestoreMaterialAndEnableScripts();
         }
@@ -78,9 +82,6 @@ public class Global_MaterialAndScriptManagerScript : MonoBehaviour
         if (buttonObjectRenderer != null && originalMaterial != null)
         {
             buttonObjectRenderer.material = originalMaterial;
-            // @Lisa Text �ber bUTTON AUF "t�R �FFNEN �NDERN"
-            // text "t�r �ffnen" aktiv
-            // text quiz beantworten inaktiv
         }
 
         if (targetScript1 != null)
