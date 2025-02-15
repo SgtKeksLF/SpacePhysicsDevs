@@ -170,7 +170,7 @@ public class Venus_GrabPhysicsScript: MonoBehaviour
         }
     }
 
-    // Reverts changes made in VenusBeansPhysics()
+
     private void VenusBeansPhysicsRelease()
     {
         canOfBeans.transform.localScale -= venusCanScale;
